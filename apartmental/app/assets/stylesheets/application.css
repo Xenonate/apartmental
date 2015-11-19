@@ -12,4 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require mapbox
  */
+
+#poop {
+  color: red;
+  background-color: #eee;
+}
