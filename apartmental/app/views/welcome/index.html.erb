@@ -1,1 +1,13 @@
-hayo for yayo
+<%= form_for :search, url: searches_path do |f| %>
+  <p>
+    <%= f.label :search_street %><br>
+    <%= f.text_field :search_street %>
+  </p>
+  <p>
+    <%= f.label :search_city %><br>
+    <%= f.text_field :search_city %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
