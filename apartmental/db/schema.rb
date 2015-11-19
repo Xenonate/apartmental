@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20151119185923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
   create_table "addresses", force: :cascade do |t|
     t.string "street_number"
     t.string "street_name"
@@ -28,10 +27,7 @@ ActiveRecord::Schema.define(version: 20151119185923) do
     t.string "long"
   end
 
-  create_table "faves", force: :cascade do |t|
-=======
   create_table "favorites", force: :cascade do |t|
->>>>>>> master
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
