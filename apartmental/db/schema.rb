@@ -16,17 +16,17 @@ ActiveRecord::Schema.define(version: 20151119021226) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "faves", force: :cascade do |t|
+  create_table "favorites", force: :cascade do |t|
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_faves", force: :cascade do |t|
+  create_table "user_favorites", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "fave_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "favorite_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
