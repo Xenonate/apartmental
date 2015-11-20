@@ -11,4 +11,5 @@ class MapboxController < ActionController::Base
     end
   end
 
+
 end
