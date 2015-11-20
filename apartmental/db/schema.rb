@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119223420) do
+ActiveRecord::Schema.define(version: 20151119185923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
+    t.string "image_url"
     t.string "street_number"
     t.string "street_name"
     t.string "street_type"
@@ -24,14 +25,14 @@ ActiveRecord::Schema.define(version: 20151119223420) do
     t.string "city"
     t.string "state"
     t.string "zipcode"
+    t.string "price"
+    t.string "bedrooms"
     t.string "lat"
     t.string "long"
-    t.string "price"
     t.string "walkscore"
-    t.string "bedrooms"
-    t.string "url"
-    t.string "neighborhood"
     t.string "built"
+    t.string "listing_url"
+    t.string "neighborhood"
   end
 
   create_table "favorites", force: :cascade do |t|
