@@ -10,6 +10,8 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
 require 'geokit'
+require 'hirb'
+
 # include Geokit::Geocoders
 
 # require "rails/test_unit/railtie"
@@ -17,7 +19,7 @@ require 'geokit'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+Hirb.enable
 module Apartmental
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

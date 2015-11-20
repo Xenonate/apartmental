@@ -1,0 +1,82 @@
+id,street_number,street_name,street_type,apt_number,city,state,zipcode,lat,long,price,walkscore,bedrooms,url,neighborhood,built
+6,856, Peru, Ave,, San_Francisco,  CA, 94112,37.724375,-122.423285, 4500,61, 3,http://www.zillow.com/homedetails/856-Peru-Ave-San-Francisco-CA-94112/15168202_zpid/,Excelsior,1961
+11,160, Santa Marina, St,, San_Francisco,  CA, 94110,37.73935,-122.420247, 4600,93, 2,http://www.zillow.com/homedetails/160-Santa-Marina-St-San-Francisco-CA-94110/15163442_zpid/,Bernal Heights,1929
+13,142, Gates, St,, San_Francisco,  CA, 94110,37.740967,-122.414061, 6000,84, 2,http://www.zillow.com/homedetails/142-Gates-St-San-Francisco-CA-94110/15161945_zpid/,Bernal Heights,1906
+16,285, Paris, St,, San_Francisco,  CA, 94112,37.724063,-122.43279, 2750,90, 2,http://www.zillow.com/homedetails/285-Paris-St-San-Francisco-CA-94112/15169540_zpid/,Excelsior,1900
+18,4130, Cesar Chavez, St,, San_Francisco,  CA, 94131,37.74762,-122.4323, 3395,85, 1,http://www.zillow.com/homedetails/4130-Cesar-Chavez-St-APT-61-San-Francisco-CA-94131/2101377484_zpid/,Noe Valley,3000
+20,11, Divisadero, St,, San_Francisco,  CA, 94117,37.76755,-122.436726, 4850,96, 2,http://www.zillow.com/homedetails/11-Divisadero-St-San-Francisco-CA-94117/15126954_zpid/,Buena Vista Park,1907
+24,55 1/2,  Lucy, St,, San_Francisco,  CA, 94124,37.72998,-122.393157, 2750,89, 2,http://www.zillow.com/homedetails/55-1-2-Lucy-St-San-Francisco-CA-94124/2100784055_zpid/,Bayview,3000
+26,491, 29th, St,, San_Francisco,  CA, 94131,37.743258,-122.430791, 4980,86, 3,http://www.zillow.com/homedetails/491-29th-St-San-Francisco-CA-94131/15183345_zpid/,Noe Valley,1886
+32,332, Russia, Ave,, San_Francisco,  CA, 94112,37.72001,-122.434413, 3150,89, 2,http://www.zillow.com/homedetails/330-332-Russia-Ave-San-Francisco-CA-94112/15174662_zpid/,Excelsior,1900
+38,2852, Bryant, St,, San_Francisco,  CA, 94110,37.748811,-122.40907, 11995,89, 6,http://www.zillow.com/homedetails/2852-Bryant-St-San-Francisco-CA-94110/15152938_zpid/,Mission,1915
+41,20, Rivas, Ave,, San_Francisco,  CA, 94132,37.71725,-122.4816, 3650,71, 2,http://www.zillow.com/homedetails/20-Rivas-Ave-San-Francisco-CA-94132/2100482327_zpid/,Stonestown,3000
+45,388, Beale, St,, San_Francisco,  CA, 94105,37.7876,-122.3919, 4568,85, 2,http://www.zillow.com/homedetails/388-Beale-St-67905-San-Francisco-CA-94105/2103451757_zpid/,South Beach,3000
+47,1740, Oakdale, Ave,, San_Francisco,  CA, 94124,37.736291,-122.392787, 2800,85, 2,http://www.zillow.com/homedetails/1738-1740-Oakdale-Ave-San-Francisco-CA-94124/15156269_zpid/,Bayview,1965
+51,200, Portola, Dr,, San_Francisco,  CA, 94131,37.74747,-122.4445, 4000,66, 2,http://www.zillow.com/homedetails/200-Portola-Dr-1-San-Francisco-CA-94131/2100935040_zpid/,Twin Peaks,3000
+54,234, Randall, St,, San_Francisco,  CA, 94131,37.74014,-122.4284, 5900,87, 3,http://www.zillow.com/homedetails/234-Randall-St-San-Francisco-CA-94131/2100514573_zpid/,Glen Park,1989
+56,238, Evelyn, Way,, San_Francisco,  CA, 94127,37.742661,-122.449695, 3950,71, 3,http://www.zillow.com/homedetails/238-Evelyn-Way-San-Francisco-CA-94127/15134282_zpid/,Miraloma Park,1944
+60,3070, San Bruno, Ave,, San_Francisco,  CA, 94134,37.72303,-122.402, 2200,84, 1,http://www.zillow.com/homedetails/3070-San-Bruno-Ave-San-Francisco-CA-94134/2100662477_zpid/,Portola,3000
+62,2131, 34th, Ave,, San_Francisco,  CA, 94116,37.7473,-122.492442, 3700,70, 2,http://www.zillow.com/homedetails/2131-34th-Ave-San-Francisco-CA-94116/15117307_zpid/,Parkside,1940
+64,4319, Cesar Chavez, St,, San_Francisco,  CA, 94131,37.74689,-122.4364, 4290,82, 2,http://www.zillow.com/homedetails/4319-Cesar-Chavez-St-San-Francisco-CA-94131/2100672728_zpid/,Noe Valley,1908
+69,809, Grafton, Ave,, San_Francisco,  CA, 94112,37.7198,-122.461491, 4200,77, 3,http://www.zillow.com/homedetails/809-Grafton-Ave-San-Francisco-CA-94112/15190509_zpid/,Ingleside,1951
+71,189, Mount Vernon, Ave,, San_Francisco,  CA, 94112,37.716806,-122.445826, 4000,81, 4,http://www.zillow.com/homedetails/189-Mount-Vernon-Ave-San-Francisco-CA-94112/15191587_zpid/,Outer Mission,1937
+73,195, Bepler, St,, San_Francisco,  CA, 94112,37.708325,-122.464249, 3350,76, 2,http://www.zillow.com/homedetails/195-Bepler-St-San-Francisco-CA-94112/15196258_zpid/,Outer Mission,1986
+77,126, Bradford, St,, San_Francisco,  CA, 94110,37.740885,-122.4098, 3995,81, 2,http://www.zillow.com/homedetails/126-Bradford-St-San-Francisco-CA-94110/15162139_zpid/,Bernal Heights,1952
+9,310, Arballo, Dr,  # 2, San_Francisco,  CA, 94132,37.72096,-122.4831, 3850,79, 2,http://www.zillow.com/homedetails/310-Arballo-Dr-2-San-Francisco-CA-94132/2100479654_zpid/,Stonestown,3000
+27,3637, 18th, St,  APT 1, San_Francisco,  CA, 94110,37.761289,-122.424587, 6200,97, 3,http://www.zillow.com/homedetails/3637-18th-St-APT-1-San-Francisco-CA-94110/15144652_zpid/,Mission,1999
+3,733, Myra, Way,, San_Francisco,  CA, 94127,37.74038,-122.451364, 3800,62, 2,http://www.zillow.com/homedetails/733-Myra-Way-San-Francisco-CA-94127/15136679_zpid/,Miraloma Park,1950
+29,501, Crescent, Way,  #5112, San_Francisco,  CA, 94134,37.711929,-122.388603, 1500,31, 1,http://www.zillow.com/homedetails/501-Crescent-Way-APT-5112-San-Francisco-CA-94134/79847569_zpid/,Bayview,2006
+37,285, Paris, St,  # A, San_Francisco,  CA, 94112,37.72406,-122.4328, 2750,90, 2,http://www.zillow.com/homedetails/285-Paris-St-A-San-Francisco-CA-94112/2100598156_zpid/,Excelsior,3000
+43,4236, 25th, St,  APT 01, San_Francisco,  CA, 94114,37.74989,-122.4349, 2500,96,  Studio,http://www.zillow.com/homedetails/4236-25th-St-APT-01-San-Francisco-CA-94114/2100916031_zpid/,Noe Valley,3000
+50,300, Judson, Ave,  # B, San_Francisco,  CA, 94112,37.72856,-122.449, 2495,75, 3,http://www.zillow.com/homedetails/300-Judson-Ave-B-San-Francisco-CA-94112/2100482278_zpid/,Sunnyside,3000
+66,355, Serrano, Dr,  # 10, San_Francisco,  CA, 94132,37.71898,-122.4809, 2970,79, 1,http://www.zillow.com/homedetails/355-Serrano-Dr-10-San-Francisco-CA-94132/2100480887_zpid/,Stonestown,3000
+79,2515, Fillmore, St,  # 12, San_Francisco,  CA, 94115,37.79271,-122.4351, 6495,97, 3,http://www.zillow.com/homedetails/2515-Fillmore-St-12-San-Francisco-CA-94115/2100480113_zpid/,Pacific Heights,3000
+8,100, Font, Blvd,  APT 7D, San_Francisco,  CA, 94132,37.71509,-122.4729, 2815,74, 1,http://www.zillow.com/homedetails/100-Font-Blvd-APT-7D-San-Francisco-CA-94132/2100519499_zpid/,Stonestown,3000
+10,112, Ripley, St,  APT 1, San_Francisco,  CA, 94110,37.744,-122.4127, 2800,76, 1,http://www.zillow.com/homedetails/112-Ripley-St-APT-1-San-Francisco-CA-94110/2100718861_zpid/,Bernal Heights,1960
+22,101, Crescent, Way,  APT 2216, San_Francisco,  CA, 94134,37.71092,-122.3893, 3200,37, 2,http://www.zillow.com/homedetails/101-Crescent-Way-APT-2216-San-Francisco-CA-94134/2127730373_zpid/,Bayview,3000
+28,3245, Vicente, St,  APT 1, San_Francisco,  CA, 94116,37.73791,-122.5019, 2100,67, 1,http://www.zillow.com/homedetails/3245-Vicente-St-APT-1-San-Francisco-CA-94116/2100550252_zpid/,Outer Parkside,3000
+30,8, Keystone, Way,  APT 3A, San_Francisco,  CA, 94127,37.72565,-122.462525, 3200,86, 2,http://www.zillow.com/homedetails/8-Keystone-Way-APT-3A-San-Francisco-CA-94127/15142206_zpid/,Mount Davidson Manor,1985
+42,5150, Diamond Heights, Blvd,  APT 107B, San_Francisco,  CA, 94131,37.746441,-122.440418, 3600,70, 1,http://www.zillow.com/homedetails/5150-Diamond-Heights-Blvd-APT-107B-San-Francisco-CA-94131/15199016_zpid/,Diamond Heights,1972
+49,908, Steiner, St,  # B, San_Francisco,  CA, 94117,37.77796,-122.433, 2995,92, 1,http://www.zillow.com/homedetails/908-Steiner-St-B-San-Francisco-CA-94117/2100481796_zpid/,Western Addition,3000
+57,144, Clinton, Park,  # B, San_Francisco,  CA, 94103,37.7694,-122.423, 2000,98,  Studio,http://www.zillow.com/homedetails/144-Clinton-Park-B-San-Francisco-CA-94103/2100481156_zpid/,Mission,3000
+65,151, Margaret, Avenue,  # Top Floor, San_Francisco,  CA, 94112,37.71658,-122.453, 2800,49, 2,http://www.zillow.com/homedetails/151-Margaret-Avenue-Top-Floor-San-Francisco-CA-94112/2100759056_zpid/,Oceanview,3000
+76,95, Ora, Way,  UNIT F103, San_Francisco,  CA, 94131,37.74037,-122.4375, 1670,56,  Studio,http://www.zillow.com/homedetails/95-Ora-Way-UNIT-F103-San-Francisco-CA-94131/2100671945_zpid/,Diamond Heights,3000
+2,107, Knockash, Hl,, San_Francisco,  CA, 94127,37.742082,-122.458083, 8995,78, 5,http://www.zillow.com/homedetails/107-Knockash-Hl-San-Francisco-CA-94127/15133094_zpid/,Forest Hill Extension,1997
+4,2378, 22ND, Ave,, San_Francisco,  CA, 94116,37.743343,-122.478603, 3800,91, 3,http://www.zillow.com/homedetails/2378-2380-22ND-Ave-San-Francisco-CA-94116/15120438_zpid/,Parkside,1925
+5,3355, Folsom, St,, San_Francisco,  CA, 94110,37.74465,-122.4133, 4295,82, 2,http://www.zillow.com/homedetails/3355-Folsom-St-San-Francisco-CA-94110/2100790215_zpid/,Bernal Heights,3000
+7,37, Santa Paula, Ave,, San_Francisco,  CA, 94127,37.739243,-122.463025, 10995,86, 3,http://www.zillow.com/homedetails/37-Santa-Paula-Ave-San-Francisco-CA-94127/15136809_zpid/,St. Francis Wood,1930
+12,149, Mullen, Ave,, San_Francisco,  CA, 94110,37.746553,-122.408318, 7900,79, 4,http://www.zillow.com/homedetails/149-Mullen-Ave-San-Francisco-CA-94110/15160319_zpid/,Bernal Heights,1900
+14,303, Garces, Dr,, San_Francisco,  CA, 94132,37.71615,-122.4818, 2820,60, 1,http://www.zillow.com/homedetails/303-Garces-Dr-San-Francisco-CA-94132/2100482347_zpid/,Stonestown,3000
+15,239, Castenada, Ave,, San_Francisco,  CA, 94116,37.746826,-122.46247, 3900,61, 2,http://www.zillow.com/homedetails/239-Castenada-Ave-San-Francisco-CA-94116/15132945_zpid/,Forest Hill,1941
+17,163, Clearfield, Dr,, San_Francisco,  CA, 94132,37.730473,-122.491591, 3995,73, 3,http://www.zillow.com/homedetails/163-Clearfield-Dr-San-Francisco-CA-94132/15197792_zpid/,Lakeshore,1951
+19,4226, 25th, St,, San_Francisco,  CA, 94114,37.7499,-122.434602, 12995,96, 4,http://www.zillow.com/homedetails/4226-25th-St-San-Francisco-CA-94114/15180985_zpid/,Noe Valley,1908
+21,640, Myra, Way,, San_Francisco,  CA, 94127,37.739829,-122.450242, 4100,62, 2,http://www.zillow.com/homedetails/640-Myra-Way-San-Francisco-CA-94127/111920738_zpid/,Miraloma Park,1950
+23,415, Gonzalez, Dr,, San_Francisco,  CA, 94132,37.71599,-122.4772, 3625,80, 2,http://www.zillow.com/homedetails/415-Gonzalez-Dr-San-Francisco-CA-94132/2100501499_zpid/,Stonestown,3000
+25,360, Hyde, St,, San_Francisco,  CA, 94109,37.78426,-122.4158, 1745,98,  Studio,http://www.zillow.com/homedetails/360-Hyde-St-San-Francisco-CA-94109/2100479534_zpid/,Tenderloin,3000
+33,233, Dorado, Ter,, San_Francisco,  CA, 94112,37.72626,-122.4616, 4500,82, 3,http://www.zillow.com/homedetails/233-Dorado-Ter-San-Francisco-CA-94112/2102349404_zpid/,Mount Davidson Manor,1990
+34,1478, Church, St,, San_Francisco,  CA, 94131,37.7471,-122.427, 7600,91, 4,http://www.zillow.com/homedetails/1478-Church-St-San-Francisco-CA-94131/2128771101_zpid/,Noe Valley,1900
+36,10, Harbor, Rd,, San_Francisco,  CA , 94124,37.73122,-122.3772, 900,50, 1,http://www.zillow.com/homedetails/10-Harbor-Rd-San-Francisco-CA-94124/2100525817_zpid/,Hunters Point,3000
+39,102, Santa Marina, St,, San_Francisco,  CA, 94110,37.739587,-122.421114, 6995,93, 3,http://www.zillow.com/homedetails/102-Santa-Marina-St-San-Francisco-CA-94110/2140031340_zpid/,Bernal Heights,3000
+40,5285, Diamond Heights, Blvd,, San_Francisco,  CA, 94131,37.744195,-122.437845, 3445,75, 1,http://www.zillow.com/homedetails/5285-Diamond-Heights-Blvd-San-Francisco-CA-94131/96016019_zpid/,Noe Valley,1972
+44,388, Beale, St,, San_Francisco,  CA, 94105,37.7876,-122.3919, 3720,85, 1,http://www.zillow.com/homedetails/388-Beale-St-67905-San-Francisco-CA-94105/2103451757_zpid/,South Beach,3000
+46,5106, Diamond Heights, Blvd,, San_Francisco,  CA, 94131,37.74696,-122.4418, 5500,62, 3,http://www.zillow.com/homedetails/5106-Diamond-Heights-Blvd-San-Francisco-CA-94131/2100645742_zpid/,Diamond Heights,3000
+48,6, Skyview, Way,, San_Francisco,  CA, 94131,37.749078,-122.450109, 4500,32, 3,http://www.zillow.com/homedetails/6-Skyview-Way-San-Francisco-CA-94131/15132104_zpid/,Midtown Terrace,1956
+52,408, Font, Blvd,, San_Francisco,  CA, 94132,37.71879,-122.4786, 3625,83, 2,http://www.zillow.com/homedetails/408-Font-Blvd-San-Francisco-CA-94132/2100482274_zpid/,Stonestown,3000
+53,4220, 26th, St,, San_Francisco,  CA, 94131,37.748292,-122.434576, 2900,94, 1,http://www.zillow.com/homedetails/4220-26th-St-San-Francisco-CA-94131/15181510_zpid/,Noe Valley,1886
+55,106, Edna, St,, San_Francisco,  CA, 94112,37.727663,-122.446277, 5500,75, 4,http://www.zillow.com/homedetails/106-Edna-St-San-Francisco-CA-94112/15140895_zpid/,Sunnyside,1919
+35,4324, Cesar Chavez, St,, San_Francisco,  CA, 94131,37.747366,-122.436585, 4995,82, 2,http://www.zillow.com/homedetails/4324-Cesar-Chavez-St-San-Francisco-CA-94131/15181607_zpid/,Noe Valley,1940
+31,283, Cresta Vista, Dr,, San_Francisco,  CA, 94127,37.735618,-122.453705, 5195,41, 4,http://www.zillow.com/homedetails/283-Cresta-Vista-Dr-San-Francisco-CA-94127/15135888_zpid/,Westwood Highlands,1962
+58,465, 30th, St,, San_Francisco,  CA, 94131,37.741672,-122.43027, 4350,87, 3,http://www.zillow.com/homedetails/465-30th-St-San-Francisco-CA-94131/15183639_zpid/,Glen Park,1910
+59,200, Dellbrook, Ave,, San_Francisco,  CA, 94131,37.749404,-122.452802, 4600,49, 3,http://www.zillow.com/homedetails/200-Dellbrook-Ave-San-Francisco-CA-94131/15132399_zpid/,Midtown Terrace,1956
+61,86, Everglade, Dr,, San_Francisco,  CA, 94132,37.732506,-122.488666, 3900,72, 3,http://www.zillow.com/homedetails/86-Everglade-Dr-San-Francisco-CA-94132/15197664_zpid/,Lakeshore,1950
+63,240, Portola, Dr,, San_Francisco,  CA, 94131,37.747465,-122.444529, 4900,66, 2,http://www.zillow.com/homedetails/240-Portola-Dr-San-Francisco-CA-94131/15132614_zpid/,Twin Peaks,1996
+67,1430, Hudson, Ave,, San_Francisco,  CA, 94124,37.738483,-122.384981, 3300,79, 2,http://www.zillow.com/homedetails/1430-Hudson-Ave-San-Francisco-CA-94124/15155695_zpid/,Hunters Point,1951
+68,77, Bluxome, St,, San_Francisco,  CA, 94107,37.77626,-122.3971, 2840,92,  Studio,http://www.zillow.com/homedetails/77-Bluxome-St-San-Francisco-CA-94107/2103398418_zpid/,South of Market,3000
+70,1214, Bowdoin, St,, San_Francisco,  CA, 94134,37.72073,-122.408636, 4150,49, 3,http://www.zillow.com/homedetails/1214-Bowdoin-St-San-Francisco-CA-94134/15172179_zpid/,Portola,1951
+72,1423, Sanchez, St,, San_Francisco,  CA, 94131,37.74623,-122.4291, 3695,90, 1,http://www.zillow.com/homedetails/1423-Sanchez-St-San-Francisco-CA-94131/2100502745_zpid/,Noe Valley,3000
+74,267, Chenery, St,, San_Francisco,  CA, 94131,37.7375,-122.427, 4500,84, 3,http://www.zillow.com/homedetails/267-Chenery-St-San-Francisco-CA-94131/2100591469_zpid/,Glen Park,1911
+75,3848, 26th, St,, San_Francisco,  CA, 94131,37.7488,-122.426, 4950,91, 2,http://www.zillow.com/homedetails/3848-26th-St-San-Francisco-CA-94131/2100759769_zpid/,Eureka Valley - Dolores Heights - Castro,3000
+78,855, San Jose, Ave,, San_Francisco,  CA, 94110,37.74135,-122.4233, 3300,95, 2,http://www.zillow.com/homedetails/855-San-Jose-Ave-San-Francisco-CA-94110/2100549724_zpid/,Bernal Heights,3000
+1,4724, Mission, St,, San_Francisco,  CA, 94112,37.7227,-122.437, 3695,91, 4,http://www.zillow.com/homedetails/4724-Mission-St-San-Francisco-CA-94112/2116110426_zpid/,Mission Terrace,3000
+80,1554, Noe, St,, San_Francisco,  CA, 94131,37.74405,-122.4312, 4450,86, 2,http://www.zillow.com/homedetails/1554-Noe-St-San-Francisco-CA-94131/2100622164_zpid/,Noe Valley,3000
+81,2934, 21st, Ave,, San_Francisco,  CA, 94132,37.733817,-122.47676, 3950,81, 2,http://www.zillow.com/homedetails/2934-21st-Ave-San-Francisco-CA-94132/15196384_zpid/,Merced Manor,1932
