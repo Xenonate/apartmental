@@ -9,13 +9,14 @@
 
 require 'csv'
 # =======Import the CSV========
-CSV.foreach('db/csv/database_seed.csv', headers: true, header_converters: :symbol) do |row|
+CSV.foreach('db/csv/database_export112015.csv', headers: true, header_converters: :symbol) do |row|
   Address.create!(row.to_hash)
+  # p row
 end
 #=============================
 
 # addresses = Address.all
-
+# address = Address.find(274)
 
 # =======Change apartments to nil========
 
@@ -29,14 +30,18 @@ end
 # end
 #========================================
 
+# 44,240, 272,431
+#125, 372 - change to Broadway Ave
 
+# brian api = X1-ZWz1f0unluukgb_5gnlr
+# nathan api =  X1-ZWz1f0u7tly4nf_55f1z
 
 #==================Information From Zillow==================
-# rillow = Rillow.new('X1-ZWz1f0u7tly4nf_55f1z')
+# rillow = Rillow.new('X1-ZWz1f0unluukgb_5gnlr')
 # addresses.each do |address|
 #   p address.id
+#   p "#{address.street_number} #{address.street_name} #{address.street_type} ", "#{address.city} #{address.state} #{address.zipcode}"
 #  results = rillow.get_deep_search_results("#{address.street_number} #{address.street_name} #{address.apt_number}", "#{address.city} #{address.state} #{address.zipcode}")
-#     # p results['request'][0]["zpid"][0]
 #     lat =  results['response'][0]['results'][0]['result'][0]['address'][0]['latitude'][0]
 #     long = results['response'][0]['results'][0]['result'][0]['address'][0]['longitude'][0]
 #     built = if results['response'][0]['results'][0]['result'][0]['yearBuilt']
@@ -51,12 +56,12 @@ end
 #   address.lat = lat
 #   address.built = built
 #   address.neighborhood = neighborhood
-#   address.url = url
+#   address.listing_url = url
 #   address.save
 
 
 #   # =======test========
-#   # p results
+#   p results
 #   # p long
 #   # p lat
 #   # p built
