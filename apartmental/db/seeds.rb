@@ -9,13 +9,14 @@
 
 require 'csv'
 # =======Import the CSV========
-CSV.foreach('db/csv/database_seed.csv', headers: true, header_converters: :symbol) do |row|
-  Address.create!(row.to_hash)
-end
+# CSV.foreach('db/csv/new_database_seed112015.csv', headers: true, header_converters: :symbol) do |row|
+#   Address.create!(row.to_hash)
+#   # p row
+# end
 #=============================
 
-# addresses = Address.all
-
+addresses = Address.all
+# address = Address.find(274)
 
 # =======Change apartments to nil========
 
@@ -29,41 +30,45 @@ end
 # end
 #========================================
 
+# 44,240, 272,431
+#125, 372 - change to Broadway Ave
 
+# brian api = X1-ZWz1f0unluukgb_5gnlr
+# nathan api =  X1-ZWz1f0u7tly4nf_55f1z
 
 #==================Information From Zillow==================
-# rillow = Rillow.new('X1-ZWz1f0u7tly4nf_55f1z')
-# addresses.each do |address|
-#   p address.id
-#  results = rillow.get_deep_search_results("#{address.street_number} #{address.street_name} #{address.apt_number}", "#{address.city} #{address.state} #{address.zipcode}")
-#     # p results['request'][0]["zpid"][0]
-#     lat =  results['response'][0]['results'][0]['result'][0]['address'][0]['latitude'][0]
-#     long = results['response'][0]['results'][0]['result'][0]['address'][0]['longitude'][0]
-#     built = if results['response'][0]['results'][0]['result'][0]['yearBuilt']
-#               results['response'][0]['results'][0]['result'][0]['yearBuilt'][0]
-#             else
-#               '3000'
-#             end
-#     neighborhood = results['response'][0]['results'][0]['result'][0]['localRealEstate'][0]['region'][0]['name']
-#     url = results['response'][0]['results'][0]['result'][0]['links'][0]['homedetails'][0]
+rillow = Rillow.new('X1-ZWz1f0unluukgb_5gnlr')
+addresses.each do |address|
+  p address.id
+  p "#{address.street_number} #{address.street_name} #{address.street_type} ", "#{address.city} #{address.state} #{address.zipcode}"
+ results = rillow.get_deep_search_results("#{address.street_number} #{address.street_name} #{address.apt_number}", "#{address.city} #{address.state} #{address.zipcode}")
+    lat =  results['response'][0]['results'][0]['result'][0]['address'][0]['latitude'][0]
+    long = results['response'][0]['results'][0]['result'][0]['address'][0]['longitude'][0]
+    built = if results['response'][0]['results'][0]['result'][0]['yearBuilt']
+              results['response'][0]['results'][0]['result'][0]['yearBuilt'][0]
+            else
+              '3000'
+            end
+    neighborhood = results['response'][0]['results'][0]['result'][0]['localRealEstate'][0]['region'][0]['name']
+    url = results['response'][0]['results'][0]['result'][0]['links'][0]['homedetails'][0]
 
-#   address.long = long
-#   address.lat = lat
-#   address.built = built
-#   address.neighborhood = neighborhood
-#   address.url = url
-#   address.save
+  address.long = long
+  address.lat = lat
+  address.built = built
+  address.neighborhood = neighborhood
+  address.listing_url = url
+  address.save
 
 
-#   # =======test========
-#   # p results
-#   # p long
-#   # p lat
-#   # p built
-#   # p neighborhood
-#   # p url
+  # =======test========
+  p results
+  # p long
+  # p lat
+  # p built
+  # p neighborhood
+  # p url
 
-# end
+end
 #=====================================================================
 
 
