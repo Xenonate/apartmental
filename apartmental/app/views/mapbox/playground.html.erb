@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset=utf-8 />
+  <title>Markers as links</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+  <style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; right:0; width:40%; }
+  </style>
+</head>
+<body>
+
+
+  <div id='map'></div>
+  <div id='results'></div>
+
+  <div id="poop"style="background-color: red;">
+    poop
+  </div>
+
+    <script>
+    L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
+    var map = L.mapbox.map('map', 'mapbox.streets')
+    .setView([37.7570841,-122.45], 12);
+
+    var myLayer = L.mapbox.featureLayer().addTo(map);
+    var geoJson = []
+
+    <% @long_lat_link.each do |longlatlink| %>
+    geoJson.push({
+      type: 'Feature',
+      "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
+      "properties": {
+        "url": "<%= longlatlink[1] %>",
+        "marker-symbol": "star",
+        "marker-color": "#ff8888",
+        "marker-size": "large",
+        "city": "Washington, D.C."
+      }
+    });
+    <% end %>
+
+// Add custom popups to each using our custom feature properties
+myLayer.on('layeradd', function(e) {
+  var marker = e.layer,
+  feature = marker.feature;
+
+    // Create custom popup content
+    var popupContent =  '<a target="_blank" class="popup" href="' + feature.properties.url + '">' +
+    '<img src="' + feature.properties.image + '" />' +
+    feature.properties.city +
+    '</a>';
+
+    // http://leafletjs.com/reference.html#popup
+    marker.bindPopup(popupContent,{
+      closeButton: false,
+      minWidth: 320
+    });
+  });
+
+// Add features to the map
+myLayer.setGeoJSON(geoJson);
+</script>
+</body>
+</html>
