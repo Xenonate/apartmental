@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  test
   <title>Apartmental</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.js"></script>
   <link href="http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.css" rel="stylesheet" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta charset=utf-8 />
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; right:0; width:40%; }
+  </style>
 </head>
 <body>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
