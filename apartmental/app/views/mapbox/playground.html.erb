@@ -18,8 +18,8 @@
   <div id='map'></div>
   <div id='results'></div>
 
-  <div id="poop" style="background-color=red">
-    <p> Hello <p>
+  <div id="poop"style="background-color: red;">
+    poop
   </div>
 
     <script>
@@ -30,31 +30,19 @@
     var myLayer = L.mapbox.featureLayer().addTo(map);
     var geoJson = []
 
-
+    <% @long_lat_link.each do |longlatlink| %>
     geoJson.push({
       type: 'Feature',
-      "geometry": { "type": "Point", "coordinates": [-122.45, 37.7570841]},
+      "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
       "properties": {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg",
-        "url": "https://en.wikipedia.org/wiki/Washington,_D.C.",
-        "marker-symbol": "star",
-        "marker-color": "#ff8888",
-        "marker-size": "large",
-        "city": "Washington, D.C."
-      }
-    },
-    {
-      type: 'Feature',
-      "geometry": { "type": "Point", "coordinates": [-122.6, 37.8]},
-      "properties": {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg",
-        "url": "https://en.wikipedia.org/wiki/Washington,_D.C.",
+        "url": "<%= longlatlink[1] %>",
         "marker-symbol": "star",
         "marker-color": "#ff8888",
         "marker-size": "large",
         "city": "Washington, D.C."
       }
     });
+    <% end %>
 
 // Add custom popups to each using our custom feature properties
 myLayer.on('layeradd', function(e) {

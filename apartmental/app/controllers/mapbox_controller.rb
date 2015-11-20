@@ -4,6 +4,11 @@ class MapboxController < ActionController::Base
   # protect_from_forgery with: :exception
 
   def playground
+    addresses = Address.all
+    @long_lat_link = []
+    addresses.each do |address|
+      @long_lat_link << [[address.long.to_f, address.lat.to_f], address.url]
+    end
   end
 
 end
