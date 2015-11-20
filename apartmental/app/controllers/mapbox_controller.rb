@@ -7,7 +7,7 @@ class MapboxController < ActionController::Base
     addresses = Address.all
     @long_lat_link = []
     addresses.each do |address|
-      @long_lat_link << [[address.long.to_f, address.lat.to_f], address.url]
+      @long_lat_link << [[address.long.to_f, address.lat.to_f], address.listing_url]
     end
   end
 
