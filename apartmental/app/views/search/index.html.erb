@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 HELLO
 <style>
 body { margin:0; padding:0; }
@@ -17,12 +16,13 @@ body { margin:0; padding:0; }
   <% @addresses.each do |address| %>
   <table>
     <tr>
-      <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %></a></td>
+      <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %></a>
+        <%= address.image_url %>
+      </td>
     </tr>
     <table>
   <% end %>
   </div>
-
   <script>
   L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
   var map = L.mapbox.map('map', 'mapbox.streets')
@@ -45,7 +45,7 @@ body { margin:0; padding:0; }
       "marker-color": "#ff8888",
       "marker-size": "large",
       "city": "Washington, D.C.",
-      "image": ""
+      "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
     }
   });
   <% end %>
