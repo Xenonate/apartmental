@@ -1,13 +1,24 @@
 <%= form_for :search, url: searches_path do |f| %>
   <p>
-    <%= f.label :search_street %><br>
-    <%= f.text_field :search_street %>
-  </p>
-  <p>
     <%= f.label :search_city %><br>
     <%= f.text_field :search_city %>
+  </p>
+  <p>
+    <%= f.label :search_price %><br>
+    <%= f.text_field :search_price %>
+  </p>
+  <p>
+    <%= f.label :search_bedroom %><br>
+    <%= f.text_field :search_bedroom %>
+  </p>
+  <p>
+    <%= f.label :search_period %><br>
+    <%= f.text_field :search_period %>
   </p>
   <p>
     <%= f.submit %>
   </p>
 <% end %>
+
+
+Address.update_attributes(city: address)
