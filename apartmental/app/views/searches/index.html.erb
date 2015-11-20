@@ -23,7 +23,7 @@ You got <%= @addresses.count %> results!
     <% @addresses.each do |address| %>
     <table>
       <tr>
-        <td><a href="<%= address.url %>"><%= address.street_number %> <%= address.street_name %> </a>Your average rent price is predicted to be $<%= address.rental_average(@length_of_stay) %> over <%= @length_of_stay %> years </td>
+        <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %> </a>Your average rent price is predicted to be $<%= address.rental_average(@length_of_stay) %> over <%= @length_of_stay %> years </td>
       </tr>
       <table
     <% end %>
