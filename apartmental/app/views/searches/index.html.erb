@@ -1,26 +1,36 @@
-<<<<<<< HEAD
-HELLO
-<style>
-body { margin:0; padding:0; }
-#map { position:absolute; top:0; bottom:0; right:0; width:40%; }
-</style>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+You got <%= @addresses.count %> results!
 
 
-<div id='map'></div>
-<div id='results'></div>
+<!DOCTYPE html>
+<html>
+<head>
 
-<div id="poop">
-  <% @addresses.each do |address| %>
-  <table>
-    <tr>
-      <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %></a></td>
-    </tr>
+  <meta charset=utf-8 />
+  <title>Markers as links</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+  <style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; right:0; width:40%; }
+  </style>
+</head>
+<body>
+
+
+  <div id='map'></div>
+  <div id='results'></div>
+
+  <div id="poop">
+    <% @addresses.each do |address| %>
     <table>
-  <% end %>
+      <tr>
+
+        <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %> </a>Your average rent price is predicted to be $<%= address.rental_average(@length_of_stay) %> over <%= @length_of_stay %> years </td>
+      </tr>
+      <table
+    <% end %>
   </div>
 
   <script>
