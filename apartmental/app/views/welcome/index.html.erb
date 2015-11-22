@@ -1,20 +1,20 @@
 
-<%= form_for :search, layout: :inline, url: searches_path do |f| %>
+<form name="search" action="/searches" method="post" style="inline">
 
-
-<%= f.label :search_city %>
-<select name="search_city" class: "form-control">
+<label>City</label>
+<select name="search[search_city]" class: "form-control">
   <option value="San Francisco">San Francisco</option>
   <option value="New York City">New York City</option>
   <option value="Melbourne">Melbourne</option>
   <option value="Beijing">Beijing</option>
 </select>
 
-<%= f.label :search_price %>
-<%= f.text_field :search_price, placeholder: "4000", class: "form-control"  %>
+<label>Price</label>
+<input type="text" name="search[search_min_price]" placeholder="min" class: "form-control" required><br>
+<input type="text" name="search[search_max_price]" placeholder="max" class: "form-control" required><br>
 
-<%= f.label :search_bedroom %>
- <select name="search_bedroom" class: "form-control">
+<label>Bedroom</label>
+ <select name="search[search_bedroom]" class: "form-control">
   <option value="Studio">Studio</option>
   <option value="1">1</option>
   <option value="2">2</option>
@@ -23,14 +23,29 @@
   <option value="5">5+</option>
 </select>
 
-<%= f.label :search_period %>
- <select name="search_period" class: "form-control">
+<label>Length of stay</label>
+ <select name="search[search_period]" class: "form-control">
   <option value="1">1 year</option>
   <option value="2">2 years</option>
   <option value="3">3 years</option>
   <option value="4">4 years</option>
   <option value="5">5+ years</option>
 </select>
+
+<label>Address</label>
+<input type="text" name="search[search_address]" placeholder="Where do you work?" class: "form-control"><br>
+
+<label>Mode</label>
+ <select name="search[search_mode]" class: "form-control">
+  <option value="transit">Public transit</option>
+  <option value="bike">Bike</option>
+  <option value="drive">Drive</option>
+  <option value="walk">Walk</option>
+</select>
+
+<label>Travel time</label>
+<input type="text" name="search[search_min_time]" placeholder="min" class: "form-control" required><br>
+<input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" required><br>
 <!-- slider that kind of works -->
 <!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
   <!-- <head> -->
@@ -51,13 +66,10 @@
   </body> -->
 
 
-<div class="bfh-slider" data-name="slider3" data-min="5" data-max="25">
-</div>
+<!-- <div class="bfh-slider" data-name="slider3" data-min="5" data-max="25">
+</div> -->
 
-<%= f.submit %>
-
-
-<% end %>
+<input type="submit" value="Submit">
 
 <!-- http://sfvideo.com/shutterstock_v1149793.mp4 -->
 <!-- https://s3.amazonaws.com/fancyfootageclips/website/vid/2015-10-04-dtla.mp4 -->

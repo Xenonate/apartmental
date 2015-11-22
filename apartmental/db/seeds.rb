@@ -15,7 +15,7 @@ CSV.foreach('db/csv/database_export_112115.csv', headers: true, header_converter
 end
 # =============================
 
-addresses = Address.all
+# addresses = Address.all
 # address = Address.find(274)
 
 # =======Change apartments to nil========
