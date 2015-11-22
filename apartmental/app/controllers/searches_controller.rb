@@ -108,11 +108,23 @@ class SearchesController < ActionController::Base
       p "pindex"
       p @pindex = @pindex_price + @pindex_walkscore + @pindex_crimerate + @pindex_commutescore
 
-      @sorted_results[@pindex] = address
+      @sorted_results[@pindex] = {
+        "address" => address,
+        "pindex_price" => @pindex_price,
+        "pindex_walkscore" => @pindex_walkscore,
+        "pindex_commutescore" => @pindex_walkscore,
+        "pindex_crimerate" => @pindex_crimerate
+      }
+
+
 
     end
 
     @sorted_results.sort_by{|key, value| key}
+    p "*" * 50
+    @sorted_results.each_value do |value|
+        p value
+      end
 
     render 'searches/index', layout: 'layouts/application'
   end
