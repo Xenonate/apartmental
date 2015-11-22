@@ -3,16 +3,34 @@
 
 
 <%= f.label :search_city %>
-<%= f.text_field :search_city, placeholder: "San Francisco", class: "form-control" %>
+<select name="search_city" class: "form-control">
+  <option value="San Francisco">San Francisco</option>
+  <option value="New York City">New York City</option>
+  <option value="Melbourne">Melbourne</option>
+  <option value="Beijing">Beijing</option>
+</select>
 
 <%= f.label :search_price %>
 <%= f.text_field :search_price, placeholder: "4000", class: "form-control"  %>
 
 <%= f.label :search_bedroom %>
-<%= f.text_field :search_bedroom, placeholder: "2", class: "form-control"  %>
+ <select name="search_bedroom" class: "form-control">
+  <option value="Studio">Studio</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5+</option>
+</select>
 
 <%= f.label :search_period %>
-
+ <select name="search_period" class: "form-control">
+  <option value="1">1 year</option>
+  <option value="2">2 years</option>
+  <option value="3">3 years</option>
+  <option value="4">4 years</option>
+  <option value="5">5+ years</option>
+</select>
 
 
 
