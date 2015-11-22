@@ -19,9 +19,9 @@
         <th>Crime Rate</th>
         <th>Increase Estimate<th>
       </tr>
-      You got <%= @addresses.count %> results!
+      You got <%= @sorted_results.count %> results!
 
-      <% @addresses.each do |address| %>
+      <% @sorted_results.each_value do |address| %>
         <tr>
           <td><a href="<%= address.listing_url %>" target="_blank"><%= address.street_number %> <%= address.street_name %> <%= address.street_type %></td>
 
@@ -41,7 +41,6 @@
 
 
 </div>
-""
 
 
 <script>
