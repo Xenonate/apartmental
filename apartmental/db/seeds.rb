@@ -7,15 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-# require 'csv'
-# # =======Import the CSV========
-# CSV.foreach('db/csv/database_export_112115.csv', headers: true, header_converters: :symbol) do |row|
-#   Address.create!(row.to_hash)
-#   # p row
-# end
+require 'csv'
+# =======Import the CSV========
+CSV.foreach('db/csv/database_export_112115.csv', headers: true, header_converters: :symbol) do |row|
+  Address.create!(row.to_hash)
+  # p row
+end
 # =============================
 
-# addresses = Address.all
+addresses = Address.all
 # address = Address.find(274)
 
 # =======Change apartments to nil========
@@ -29,6 +29,7 @@
 #   end
 # end
 #========================================
+
 
 # 44,240, 272,431
 #125, 372 - change to Broadway Ave

@@ -5,27 +5,42 @@
       <%= form_for :search, url: searches_path do |f| %>
       <p>
         <%= f.label :search_city %><br>
-        <%= f.text_field :search_city %>
+        <select name="search_city">
+          <option value="San Francisco">San Francisco</option>
+        </select>
       </p>
       <p>
         <%= f.label :search_price %><br>
-        <%= f.text_field :search_price %>
+
+        0
+        <input type="range" name="search_price" min="0" max="10000" step="100" value="1000"> 10000
       </p>
       <p>
         <%= f.label :search_bedroom %><br>
-        <%= f.text_field :search_bedroom %>
+        <select name="search_bedroom">
+          <option value="Studio">Studio</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5+">5</option>
+        </select>
       </p>
       <p>
-        <%= f.label :search_period %><br>
+        <%= f.label :search_period %>(Optional)<br>
         <%= f.text_field :search_period %>
       </p>
       <p>
-        <%= f.label :input_address %><br>
+        <%= f.label :input_address %>(Optional)<br>
         <%= f.text_field :input_address %>
       </p>
       <p>
-        <%= f.label :input_mode %><br>
+        <%= f.label :input_mode %>(Optional)<br>
         <%= f.text_field :input_mode %>
+      </p>
+      <p>
+        <%= f.label :input_commute_time %>(Optional)<br>
+        <%= f.text_field :input_commute_time %>
       </p>
       <p>
         <%= f.submit %>
