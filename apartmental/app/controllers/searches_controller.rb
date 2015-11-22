@@ -7,7 +7,6 @@ class SearchesController < ActionController::Base
     @addresses.each do |address|
       @long_lat_link << [[address.long.to_f, address.lat.to_f], address.listing_url]
     end
-
     @length_of_stay = search_params[:search_period].to_i
 # /////////////////////////////////////////////////////////////////////////////
 #     @average_price = address.rental_average(@length_of_stay)
@@ -69,7 +68,7 @@ class SearchesController < ActionController::Base
 #     @pindex = @pindex_price + @pindex_walkscore + @pindex_crimerate + @pindex_commutescore
 #//////////////////////////////////////////////////////////////////////////////
 
-    render 'searches/index'
+    render 'searches/index', layout: 'layouts/application'
   end
 
   def index
@@ -79,7 +78,7 @@ class SearchesController < ActionController::Base
   private
 
   def search_params
-    params.require(:search).permit(:search_price, :search_city, :search_bedroom, :search_period, :length_of_stay)
+    params.require(:search).permit(:search_price, :search_city, :search_bedroom, :search_period)
   end
 
 end
