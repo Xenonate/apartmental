@@ -11,6 +11,11 @@ require "action_view/railtie"
 require "sprockets/railtie"
 require 'geokit'
 require 'hirb'
+require 'nokogiri'
+require 'open-uri'
+require 'nokogiri'
+require 'open-uri'
+Hirb.enable
 
 # include Geokit::Geocoders
 
@@ -19,7 +24,6 @@ require 'hirb'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-Hirb.enable
 module Apartmental
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
