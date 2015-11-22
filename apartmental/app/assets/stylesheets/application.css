@@ -16,11 +16,26 @@
  *= require mapbox
  */
 
+
 #poop{
   color: red;
-  background-color: #eee;
+  background-color: red;
 }
 
 html {
+  background-color: red;
+}
+
+#background {
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: -999;
+  width: 100%;
+  height: 100%;
+}
+
+.searchbox{
+  /*position: absolute;*/
   background-color: red;
 }

@@ -8,7 +8,7 @@ class SearchesController < ActionController::Base
       @long_lat_link << [[address.long.to_f, address.lat.to_f], address.listing_url]
     end
     @length_of_stay = search_params[:search_period].to_i
-    render 'searches/index'
+    render 'searches/index', layout: 'layouts/application'
   end
 
   def index
