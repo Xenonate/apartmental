@@ -1,48 +1,60 @@
-You got <%= @addresses.count %> results!
+<div class="row">
+  <div id='map' class="col-md-6"></div>
 
-
-
-  <div id='map'></div>
-  <div id='results'></div>
-
-  <div id="poop">
-    <% @addresses.each do |address| %>
-    <table>
+  <div id="poop" class="col-md-6">
+    <table class="table">
       <tr>
-
-        <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %> </a>Your average rent price is predicted to be $<%= address.rental_average(@length_of_stay) %> over <%= @length_of_stay %> years </td>
+        <th>Address</th>
+        <th>$/mo</th>
+        <th>WalkScore</th>
+        <th>Increase Estimate<th>
       </tr>
-      <table
-    <% end %>
+      You got <%= @addresses.count %> results!
+
+      <% @addresses.each do |address| %>
+        <tr>
+          <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %> <%= address.street_type %></td>
+          <td> $<%= number_with_delimiter(address.price, :delimiter => ",") %>
+          <td> <%= address.walkscore %> </td>
+          <td> </a>Your average rent price is predicted to be $<%= address.rental_average(@length_of_stay) %> over <%= @length_of_stay %> years </td>
+        </tr>
+      <% end %>
+
+    <table>
   </div>
 
 
-  <script>
-  L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
-  var map = L.mapbox.map('map', 'mapbox.streets')
-  .setView([37.7570841,-122.45], 12);
 
-  var myLayer = L.mapbox.featureLayer().addTo(map);
-  var geoJson = []
+</div>
 
-  <% @long_lat_link.each do |longlatlink| %>
-  geoJson.push({
-    type: 'Feature',
-    "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
-    "properties": {
-      "icon": {
-        "className": "dot",
-        "iconSize": [600,100]
-      },
-      "url": "<%= longlatlink[1] %>",
-      "marker-symbol": "star",
-      "marker-color": "#ff8888",
-      "marker-size": "large",
-      "city": "Washington, D.C.",
-      "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
-    }
-  });
-  <% end %>
+
+
+<script>
+    L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
+    var map = L.mapbox.map('map', 'mapbox.streets')
+    .setView([37.7570841,-122.45], 12);
+
+    var myLayer = L.mapbox.featureLayer().addTo(map);
+    var geoJson = []
+
+    <% @long_lat_link.each do |longlatlink| %>
+    geoJson.push({
+      type: 'Feature',
+      "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
+      "properties": {
+        "icon": {
+          "className": "dot",
+          "iconSize": [600,100]
+        },
+        "url": "<%= longlatlink[1] %>",
+        "marker-symbol": "star",
+        "marker-color": "#ff8888",
+        "marker-size": "large",
+        "city": "Washington, D.C.",
+        "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
+      }
+    });
+    <% end %>
 
 // Add custom popups to each using our custom feature properties
 myLayer.on('layeradd', function(e) {
@@ -71,8 +83,6 @@ myLayer.on('mouseover', function(e) {
 });
 
 </script>
-
-
 
 
 
