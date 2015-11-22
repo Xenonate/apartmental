@@ -1,22 +1,37 @@
-<div class="row">
+<div class="container">
+<div class ="row">
+  <div class="col-md-12">
+    pop
+  </div>
+</div>
+</div>
+
+<div class="container">
+<div class="row-fluid">
   <div id='map' class="col-md-6"></div>
 
   <div id="poop" class="col-md-6">
-    <table class="table">
+    <table class="table-condensed table-striped table-hover">
       <tr>
         <th>Address</th>
         <th>$/mo</th>
         <th>WalkScore</th>
+        <th>Crime Rate</th>
         <th>Increase Estimate<th>
       </tr>
       You got <%= @addresses.count %> results!
 
       <% @addresses.each do |address| %>
         <tr>
-          <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %> <%= address.street_type %></td>
+          <td><a href="<%= address.listing_url %>" target="_blank"><%= address.street_number %> <%= address.street_name %> <%= address.street_type %></td>
+
           <td> $<%= number_with_delimiter(address.price, :delimiter => ",") %>
           <td> <%= address.walkscore %> </td>
-          <td> </a>Your average rent price is predicted to be $<%= address.rental_average(@length_of_stay) %> over <%= @length_of_stay %> years </td>
+
+          <td> <%= address.crime_rate %> </td>
+
+
+          <td> $<%= number_with_delimiter(address.rental_average(@length_of_stay), :delimiter => ",") %> over <%= @length_of_stay %> years </td>
         </tr>
       <% end %>
 
@@ -26,7 +41,7 @@
 
 
 </div>
-
+""
 
 
 <script>
@@ -77,10 +92,7 @@ myLayer.on('layeradd', function(e) {
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
 
-myLayer.on('mouseover', function(e) {
-  e.layer.openPopup();
-  $('body').css("background-color", "red");
-});
+
 
 </script>
 
