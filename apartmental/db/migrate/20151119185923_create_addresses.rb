@@ -17,6 +17,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :built
       t.string :listing_url
       t.string :neighborhood
+      t.string :crime_rate
 
       t.timestamp null: false
     end
