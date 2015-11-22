@@ -167,8 +167,8 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
-  nokogiri
   mapbox-rails!
+  nokogiri
   pg
   rails (= 4.2.4)
   rillow

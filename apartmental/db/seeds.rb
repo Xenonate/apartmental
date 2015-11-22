@@ -101,33 +101,25 @@
 # require_relative 'html_whitespace_cleaner'
 # require 'nokogiri'
 # require 'open-uri'
-# # address=Address.find(47)
 # addresses = Address.all
 # addresses.each do |address|
-#   p address.id
 #   url = "https://www.walkscore.com/score/#{address.street_number}-#{address.street_name.delete(" ")}-#{address.street_type.delete(" ")}-#{address.city.delete(" ")}-#{address.state}-#{address.zipcode}"
-#   p url
-#   # p "*" * 50
 #   html = File.read(open(url))
-#   # p "*" * 50
 #   clean_html = HTMLWhitespaceCleaner.clean(html)
-#   # p "*" * 50
 #   nokogiri_document = Nokogiri.parse(clean_html)
-#   # p "*" * 50
 #   html_node = nokogiri_document.children.last
-#   # p "*" * 50
 #   html_node.css('.letter-grade')
 #   # crimerate = if html_node.css('.letter-grade') != []
 #   address.update_attributes(crime_rate: (html_node.css('.letter-grade').first ? html_node.css('.letter-grade').first.text.delete(" ") : "B"))
 # end
 #======================================
-require_relative 'html_whitespace_cleaner'
-html = File.read(open("http://www.zillow.com/homedetails/592-39th-Ave-San-Francisco-CA-94121/2100661300_zpid/"))#open will turn a website into a file and the read will turn the file into a string.
+# require_relative 'html_whitespace_cleaner'
+# html = File.read(open("http://www.zillow.com/homedetails/592-39th-Ave-San-Francisco-CA-94121/2100661300_zpid/"))#open will turn a website into a file and the read will turn the file into a string.
 
-clean_html = HTMLWhitespaceCleaner.clean(html)
-nokogiri_document = Nokogiri.parse(clean_html)
-p html_node = nokogiri_document.children.last
-p nokogiri_document.css(".zsg-content-component")[1].text
+# clean_html = HTMLWhitespaceCleaner.clean(html)
+# nokogiri_document = Nokogiri.parse(clean_html)
+# p html_node = nokogiri_document.children.last
+# p nokogiri_document.css(".zsg-content-component")[1].text
 
-p nokogiri_document.css(".zsg-content-component")[1].inner_html
+# p nokogiri_document.css(".zsg-content-component")[1].inner_html
 

@@ -9,12 +9,21 @@ class SearchesController < ActionController::Base
     end
     @length_of_stay = search_params[:search_period].to_i
 # /////////////////////////////////////////////////////////////////////////////
-#     @average_price = address.rental_average(@length_of_stay)
-#     @crime_rate = address.crime_rate
-#     @commute_time = http://api2.walkscore.com/api/v1/traveltime/json?wsapikey=YOUR_API_KEY_HERE&
-# mode=walk&origin=47.649677,-122.357569&destination=47.646757,-122.361152&
-# destination=47.6517,-122.3545
-#     @walkscore = address.walkscore
+    address = @addresses[4]
+    p address.id
+    p address.price.to_i
+    p "average_price"
+    p @average_price = address.rental_average(@length_of_stay)
+    p @crime_rate = address.crime_rate
+    p coords = Geokit::Geocoders::GoogleGeocoder.geocode(search_params[:input_address])
+    call = "mode=#{search_params[:input_mode]}&origin=#{address.lat},#{address.long}&destination=#{coords.lat},#{coords.lng}"
+    url = URI.parse(URI.encode("http://api2.walkscore.com/api/v1/traveltime/json?wsapikey=b72221d8763203418d081f140357696e&#{call}"))
+    json = HTTParty.get(url)
+    response = JSON.parse(json.body)
+    p "*" * 50
+    p @commute_time = (response["response"]["results"][0]["travel_times"][0]["seconds"])/60 #in mins
+
+    p @walkscore = address.walkscore
 
 #     @price_range = (@max_price-@min_price)
 
@@ -78,7 +87,7 @@ class SearchesController < ActionController::Base
   private
 
   def search_params
-    params.require(:search).permit(:search_price, :search_city, :search_bedroom, :search_period)
+    params.require(:search).permit(:search_price, :search_city, :search_bedroom, :search_period, :input_address, :input_mode)
   end
 
 end

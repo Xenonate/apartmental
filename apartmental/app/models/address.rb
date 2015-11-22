@@ -1,15 +1,10 @@
 class Address < ActiveRecord::Base
   def rental_average(length_of_stay)
-    total_rent = 0
-    if self.built.to_i < 1973
-      predicted_increase = 0.019
-    else
-      predicted_increase = 1
-     # hash with neighborhoods and zestimate price increases
-   end
 
   total_rent = 0
+
   predicted_increase = 0
+
   if self.built.to_i < 1973
     predicted_increase = 1.9
   else
@@ -86,8 +81,10 @@ class Address < ActiveRecord::Base
   p predicted_increase
 
   for i in 0..(length_of_stay -1)
-    total_rent += self.price.to_i * ((1 + predicted_increase) **i)
+    total_rent += self.price.to_i * ((1 + (predicted_increase/100)) ** i)
   end
+
+  p total_rent
 
   (total_rent/length_of_stay).round(0)
 end
