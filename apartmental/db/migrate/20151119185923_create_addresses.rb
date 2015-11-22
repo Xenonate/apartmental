@@ -9,7 +9,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :zipcode
-      t.string :price
+      t.integer :price
       t.string :bedrooms
       t.string :lat
       t.string :long
