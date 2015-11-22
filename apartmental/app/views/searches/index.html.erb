@@ -1,21 +1,30 @@
-You got <%= @addresses.count %> results!
 
 
+<div class="row">
+  <div class="col-md-6">
+    hi poop sex
+  </div>
+  <div class="col-md-6">
+    hi poop sex
+  </div>
+<div>
 
-  <div id='map'></div>
-  <div id='results'></div>
+<div class="row">
+  <div id='map' class="col-md-6"></div>
 
-  <div id="poop">
+
+  <div id="poop" class="col-md-6">
+    You got <%= @addresses.count %> results!
     <% @addresses.each do |address| %>
     <table>
       <tr>
 
         <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %> </a>Your average rent price is predicted to be $<%= address.rental_average(@length_of_stay) %> over <%= @length_of_stay %> years </td>
       </tr>
-      <table
+      <table>
     <% end %>
   </div>
-
+</div>
 
   <script>
   L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
@@ -71,8 +80,6 @@ myLayer.on('mouseover', function(e) {
 });
 
 </script>
-
-
 
 
 

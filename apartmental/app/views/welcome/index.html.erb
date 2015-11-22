@@ -19,15 +19,6 @@
 
   <% end %>
 
-<%= form_for :search, url: searches_path, layout: :inline do |f| %>
-  <%= f.email_field :email, class: "form-control" %>
-  <%= f.password_field :password %>
-  <%= f.check_box :remember_me, checked: true %>
-  <%= f.submit 'Sign in' %>
-<% end %>
-
-
-
 <video id="hero" preload="auto" autoplay="true" loop="loop">
   <source src="https://s3.amazonaws.com/fancyfootageclips/website/vid/2015-10-04-dtla.mp4" type="video/mp4">
   </video>
