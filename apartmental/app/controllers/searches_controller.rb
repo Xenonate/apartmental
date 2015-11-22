@@ -22,7 +22,7 @@ class SearchesController < ActionController::Base
     # call = "mode=#{search_params[:input_mode]}&origin=#{address.lat},#{address.long}&destination=#{coords.lat},#{coords.lng}"
     # url = URI.parse(URI.encode("http://api2.walkscore.com/api/v1/traveltime/json?wsapikey=b72221d8763203418d081f140357696e&#{call}"))
     # json = HTTParty.get(url)
-    # response = JSON.parse(json.body)
+    # response = JSON.parse(json.body)git
     # p "*" * 50
     # p @commute_time = response#["response"]["results"][0]["travel_times"][0]["seconds"] #in mins
 
