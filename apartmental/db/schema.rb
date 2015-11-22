@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20151119185923) do
     t.string "built"
     t.string "listing_url"
     t.string "neighborhood"
+    t.string "crime_rate"
   end
 
   create_table "favorites", force: :cascade do |t|
