@@ -86,7 +86,7 @@ class Address < ActiveRecord::Base
   p predicted_increase
 
   for i in 0..(length_of_stay -1)
-    total_rent += self.price.to_i * ((1 + predicted_increase) **i)
+    total_rent += self.price.to_i * ((1 + predicted_increase/100) **i)
   end
 
   (total_rent/length_of_stay).round(0)
