@@ -71,10 +71,6 @@ class SearchesController < ActionController::Base
       #   @commutescore_weight = 0.25
       # end
 
-      @price_weight = search_params[:price_weight].to_i
-      @commute_weight = search_params[:commute_weight].to_i
-      @walkscore_weight = search_params[:walkscore_weight].to_i
-      @crime_weight = search_params[:crime_weight].to_i
 
       @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
 
@@ -98,24 +94,52 @@ class SearchesController < ActionController::Base
         # p "price range"
         # p @price_range
         # p "pindex price"
-       p @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(@average_price.to_f-search_params[:search_min_price].to_f)/(@price_range.to_f)
+      @price_weight = search_params[:price_weight].to_i
+      @commute_weight = search_params[:commute_weight].to_i
+      @walkscore_weight = search_params[:walkscore_weight].to_i
+      @crime_weight = search_params[:crime_weight].to_i
+
+
+
+      p @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(@average_price.to_f-search_params[:search_min_price].to_f)/(@price_range.to_f)
        "*" * 50
-       p @pindex_walkscore = @walkscore.to_f * @walkscore_weight.to_f / @total_weight.to_f
+      p @pindex_walkscore = @walkscore.to_f * @walkscore_weight.to_f / @total_weight.to_f
        "*" * 50
-       p @pindex_crimerate = @crimescore.to_f * @crime_weight.to_f / @total_weight.to_f
+      p @pindex_crimerate = @crimescore.to_f * @crime_weight.to_f / @total_weight.to_f
        "*" * 50
-       p @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_min_time].to_f-@commute_time / @commute_time_range.to_f)
+      p @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_min_time].to_f-@commute_time / @commute_time_range.to_f)
       p "pindex"
       p @pindex = @pindex_price + @pindex_walkscore + @pindex_crimerate + @pindex_commutescore
+
+
 
       @sorted_results[@pindex] = {
         "address" => address,
         "pindex_price" => @pindex_price,
         "pindex_walkscore" => @pindex_walkscore,
         "pindex_commutescore" => @pindex_walkscore,
-        "pindex_crimerate" => @pindex_crimerate
+        "pindex_crimerate" => @pindex_crimerate,
+        "price_weight" => @price_weight,
+        "commute_weight" => @commute_weight,
+        "walkscore_weight" => @walkscore_weight,
+        "crime_weight" => @crime_weight
       }
 
+      # p "@walkscore.to_f"
+      # p @walkscore.to_f
+      # p "@walkscore_weight.to_f"
+      # p @walkscore_weight.to_f
+      # p "@total_weight.to_f"
+      # p @total_weight.to_f
+      # p @pindex_walkscore
+
+      # p "@crimescore.to_f"
+      # p @crimescore.to_f
+      # p "@crime_weight.to_f"
+      # p @crime_weight.to_f
+      # p "@total_weight.to_f"
+      # p @total_weight.to_f
+      # p @pindex_crimerate
 
 
     end
