@@ -70,16 +70,16 @@ class SearchesController < ActionController::Base
       when "C"
         @crimescore = 75
       end
-      p "*" * 50
-      p @pindex_price = (@price_weight/(@price_range))*(@average_price-search_params[:search_min_price].to_i)
-      p "*" * 50
-      p @pindex_walkscore = @walkscore * @walkscore_weight / 100
-      p "*" * 50
-      p @pindex_crimerate = @crimescore * @crime_weight / 100
-      p "*" * 50
-      p @pindex_commutescore = (@commutescore_weight/(@commute_time_range))*(search_params[:search_min_time].to_i-@commute_time)
-      p "pindex"
-      p @pindex = @pindex_price + @pindex_walkscore + @pindex_crimerate + @pindex_commutescore
+      "*" * 50
+      @pindex_price = (@price_weight/(@price_range))*(@average_price-search_params[:search_min_price].to_i)
+      "*" * 50
+      @pindex_walkscore = @walkscore * @walkscore_weight / 100
+      "*" * 50
+      @pindex_crimerate = @crimescore * @crime_weight / 100
+      "*" * 50
+      @pindex_commutescore = (@commutescore_weight/(@commute_time_range))*(search_params[:search_min_time].to_i-@commute_time)
+      "pindex"
+      @pindex = @pindex_price + @pindex_walkscore + @pindex_crimerate + @pindex_commutescore
 
       @sorted_results[@pindex] = address
 
