@@ -7,7 +7,7 @@ class SearchesController < ActionController::Base
     @addresses.each do |address|
       @long_lat_link << [[address.long.to_f, address.lat.to_f], address.listing_url]
     end
-    @length_of_stay = search_params[:search_period].to_i
+    @length_of_stay = search_params[:search_period] != "" ? search_params[:search_period].to_i : 1
 # /////////////////////////////////////////////////////////////////////////////
 #     @average_price = address.rental_average(@length_of_stay)
 #     @crime_rate = address.crime_rate

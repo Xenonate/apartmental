@@ -17,3 +17,15 @@
 //= require mapbox
 //= require_tree .
 
+ $(function() {
+   $( "#slider" ).slider({
+     min: 400,
+     max: 2400,
+     value: 1500,
+     animate: "slow",
+     orientation: "horizontal",
+     slide: function(event, ui) {
+       $("#price").val(ui.value);
+     }
+   });
+ });
