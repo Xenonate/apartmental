@@ -1,57 +1,55 @@
 
 
 <div class="row">
-  <div class="col-md-6">
-    hi poop sex
-  </div>
-  <div class="col-md-6">
-    hi poop sex
-  </div>
-<div>
-
-<div class="row">
   <div id='map' class="col-md-6"></div>
 
 
   <div id="poop" class="col-md-6">
-    You got <%= @addresses.count %> results!
-    <% @addresses.each do |address| %>
-    <table>
+    <table class="table">
+      <tr>
+        <th>Address</th>
+        <th>Last Name</th>
+      </tr>
+      You got <%= @addresses.count %> results!
+      <% @addresses.each do |address| %>
+
       <tr>
 
-        <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %> </a>Your average rent price is predicted to be $<%= address.rental_average(@length_of_stay) %> over <%= @length_of_stay %> years </td>
+        <td><a href="<%= address.listing_url %>"><%= address.street_number %> <%= address.street_name %></td>
+        <td> </a>Your average rent price is predicted to be $<%= address.rental_average(@length_of_stay) %> over <%= @length_of_stay %> years </td>
       </tr>
-      <table>
+
+        <% end %>
+        <table>
+      </div>
+    </div>
+
+    <script>
+    L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
+    var map = L.mapbox.map('map', 'mapbox.streets')
+    .setView([37.7570841,-122.45], 12);
+
+    var myLayer = L.mapbox.featureLayer().addTo(map);
+    var geoJson = []
+
+    <% @long_lat_link.each do |longlatlink| %>
+    geoJson.push({
+      type: 'Feature',
+      "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
+      "properties": {
+        "icon": {
+          "className": "dot",
+          "iconSize": [600,100]
+        },
+        "url": "<%= longlatlink[1] %>",
+        "marker-symbol": "star",
+        "marker-color": "#ff8888",
+        "marker-size": "large",
+        "city": "Washington, D.C.",
+        "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
+      }
+    });
     <% end %>
-  </div>
-</div>
-
-  <script>
-  L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
-  var map = L.mapbox.map('map', 'mapbox.streets')
-  .setView([37.7570841,-122.45], 12);
-
-  var myLayer = L.mapbox.featureLayer().addTo(map);
-  var geoJson = []
-
-  <% @long_lat_link.each do |longlatlink| %>
-  geoJson.push({
-    type: 'Feature',
-    "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
-    "properties": {
-      "icon": {
-        "className": "dot",
-        "iconSize": [600,100]
-      },
-      "url": "<%= longlatlink[1] %>",
-      "marker-symbol": "star",
-      "marker-color": "#ff8888",
-      "marker-size": "large",
-      "city": "Washington, D.C.",
-      "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
-    }
-  });
-  <% end %>
 
 // Add custom popups to each using our custom feature properties
 myLayer.on('layeradd', function(e) {
