@@ -1,5 +1,3 @@
-require_relative 'html_whitespace_cleaner'
-
 module ApplicationHelper
   def get_weight(type, param)
     if param
