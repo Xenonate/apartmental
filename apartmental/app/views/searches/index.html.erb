@@ -37,16 +37,14 @@
             <td>
               <%= modal title: 'More Info' do%>
               <div class="modal-body">
-                <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas>
                 <%= value_hash["address"].crime_rate %>
                 <%= Address.get_description(value_hash["address"].listing_url) %>
               </div>
               <% end %>
             </td>
-
-
           </tr>
             <tr>
+                <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas>
             </tr>
           <% end %>
 
