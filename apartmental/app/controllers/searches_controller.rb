@@ -72,6 +72,12 @@ class SearchesController < ActionController::Base
       # end
 
 
+      @price_weight = search_params[:price_weight].to_i
+      @commute_weight = search_params[:commute_weight].to_i
+      @walkscore_weight = search_params[:walkscore_weight].to_i
+      @crime_weight = search_params[:crime_weight].to_i
+
+
       @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
 
       case @crime_rate
@@ -94,10 +100,6 @@ class SearchesController < ActionController::Base
         # p "price range"
         # p @price_range
         # p "pindex price"
-      @price_weight = search_params[:price_weight].to_i
-      @commute_weight = search_params[:commute_weight].to_i
-      @walkscore_weight = search_params[:walkscore_weight].to_i
-      @crime_weight = search_params[:crime_weight].to_i
 
 
 
