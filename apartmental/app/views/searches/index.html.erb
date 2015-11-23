@@ -17,7 +17,8 @@
         <th>$/mo</th>
         <th>WalkScore</th>
         <th>Crime Rate</th>
-        <th>Increase Estimate<th>
+        <th>Increase Estimate</th>
+        <th>More</th>
       </tr>
       You got <%= @sorted_results.count %> results!
 
@@ -32,6 +33,14 @@
 
 
           <td> $<%= number_with_delimiter(address.rental_average(@length_of_stay), :delimiter => ",") %> over <%= @length_of_stay %> years </td>
+
+          <td>
+            <%= modal, title: 'More Info'%>
+              <div class="modal-body">
+
+              </div>
+            <% end %>
+          </td>
         </tr>
       <% end %>
 
