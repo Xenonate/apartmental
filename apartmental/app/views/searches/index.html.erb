@@ -21,17 +21,17 @@
       </tr>
       You got <%= @sorted_results.count %> results!
 
-      <% @sorted_results.each_value do |address| %>
+      <% @sorted_results.each_value do |value_hash| %>
         <tr>
-          <td><a href="<%= address.listing_url %>" target="_blank"><%= address.street_number %> <%= address.street_name %> <%= address.street_type %></td>
+          <td><a href="<%= value_hash["address"].listing_url %>" target="_blank"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></td>
 
-          <td> $<%= number_with_delimiter(address.price, :delimiter => ",") %>
-          <td> <%= address.walkscore %> </td>
+          <td> $<%= number_with_delimiter(value_hash["address"].price, :delimiter => ",") %>
+          <td> <%= value_hash["address"].walkscore %> </td>
 
-          <td> <%= address.crime_rate %> </td>
+          <td> <%= value_hash["address"].crime_rate %> </td>
 
 
-          <td> $<%= number_with_delimiter(address.rental_average(@length_of_stay), :delimiter => ",") %> over <%= @length_of_stay %> years </td>
+          <td> $<%= number_with_delimiter(value_hash["address"].rental_average(@length_of_stay), :delimiter => ",") %> over <%= @length_of_stay %> years </td>
         </tr>
       <% end %>
 

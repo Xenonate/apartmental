@@ -1,5 +1,5 @@
 
-<form name="search" action="/searches" method="post" style="inline">
+<form name="search" action="/searches" method="post" style="inline" class="form-control">
 
 <label>City</label>
 <select name="search[search_city]" class: "form-control">
@@ -46,6 +46,16 @@
 <label>Travel time</label>
 <input type="text" name="search[search_min_time]" placeholder="min" class: "form-control" required><br>
 <input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" required><br>
+
+  <label>How much do you care about price?:</label>
+  <input type="range" class: "form-control" name="search[price_weight]" id="points" value="3" min="1" max="5">
+    <label>How much do you care about commute?:</label>
+  <input type="range" class: "form-control" name="search[commute_weight]" id="points" value="3" min="1" max="5">
+      <label>How much do you care about crime?:</label>
+  <input type="range" class: "form-control" name="search[crime_weight]" id="points" value="3" min="1" max="5">
+      <label>How much do you care about walkscore?:</label>
+  <input type="range" class: "form-control" name="search[walkscore_weight]" id="points" value="3" min="1" max="5">
+
 <!-- slider that kind of works -->
 <!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
   <!-- <head> -->
@@ -66,11 +76,16 @@
   </body> -->
 
 
-<!-- <div class="bfh-slider" data-name="slider3" data-min="5" data-max="25">
-</div> -->
+<!-- <div class="form-control bfh-slider" data-name="slider3" data-min="5" data-max="25"> -->
+<!-- </div> -->
+
+<!-- <form method="post" action="demoform.asp"> -->
+
+<!-- <input id="ex1" class="form-control" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/> -->
+
 
 <input type="submit" value="Submit">
-
+</form>
 <!-- http://sfvideo.com/shutterstock_v1149793.mp4 -->
 <!-- https://s3.amazonaws.com/fancyfootageclips/website/vid/2015-10-04-dtla.mp4 -->
 

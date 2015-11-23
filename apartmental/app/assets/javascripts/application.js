@@ -17,15 +17,29 @@
 //= require mapbox
 //= require_tree .
 
- $(function() {
-   $( "#slider" ).slider({
-     min: 400,
-     max: 2400,
-     value: 1500,
-     animate: "slow",
-     orientation: "horizontal",
-     slide: function(event, ui) {
-       $("#price").val(ui.value);
-     }
-   });
- });
+ // $(function() {
+ //   $( "#slider" ).slider({
+ //     min: 400,
+ //     max: 2400,
+ //     value: 1500,
+ //     animate: "slow",
+ //     orientation: "horizontal",
+ //     slide: function(event, ui) {
+ //       $("#price").val(ui.value);
+ //     }
+ //   });
+ // });
+
+
+// $('#ex1').slider({
+//   formatter: function(value) {
+//     return 'Current value: ' + value;
+//   }
+// });
+
+// // Without JQuery
+// var slider = new Slider('#ex1', {
+//   formatter: function(value) {
+//     return 'Current value: ' + value;
+//   }
+// });
