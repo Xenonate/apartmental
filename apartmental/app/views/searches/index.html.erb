@@ -17,7 +17,8 @@
         <th>$/mo</th>
         <th>WalkScore</th>
         <th>Crime Rate</th>
-        <th>Increase Estimate<th>
+        <th>Increase Estimate</th>
+        <th>More</th>
       </tr>
       You got <%= @sorted_results.count %> results!
 
@@ -32,15 +33,24 @@
 
 
           <td> $<%= number_with_delimiter(value_hash["address"].rental_average(@length_of_stay), :delimiter => ",") %> over <%= @length_of_stay %> years </td>
+
+          <td>
+            <%= modal title: 'More Info' do%>
+              <div class="modal-body">
+                <%= value_hash["address"].crime_rate %>
+                <%= Address.get_description(value_hash["address"].listing_url) %>
+              </div>
+            <% end %>
+          </td>
         </tr>
+        <canvas id="myChart" width="400" height="400" data = "<%value_hash%>"></canvas>
       <% end %>
 
     <table>
   </div>
 
-
-
 </div>
+
 
 
 <script>
@@ -91,6 +101,37 @@ myLayer.on('layeradd', function(e) {
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
 
+///////////////////////////////////////////
+var ctx = document.getElementById("myChart").getContext("2d");
+
+// var address_info =
+
+var data = {
+    labels: ["Rent", "Commute Time", "Crime Rate", "Walkscore"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: [50, 10, 10, 20]
+        },
+        {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [35, 7, 8, 18]
+        }
+    ]
+};
+
+var myRadarChart = new Chart(ctx).Radar(data);
 
 
 </script>
