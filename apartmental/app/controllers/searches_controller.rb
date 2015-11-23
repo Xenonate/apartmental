@@ -18,12 +18,17 @@ class SearchesController < ActionController::Base
       # p "average_price"
       @average_price = address.rental_average(@length_of_stay)
       @crime_rate = address.crime_rate
-      coords = Geokit::Geocoders::GoogleGeocoder.geocode(search_params[:search_address])
-    call = "mode=#{search_params[:search_mode]}&origin=#{address.lat},#{address.long}&destination=#{coords.lat},#{coords.lng}"
+
+      #////Commented out Google API calls //////#
+
+      # coords = Geokit::Geocoders::GoogleGeocoder.geocode(search_params[:search_address])
+      #call = "mode=#{search_params[:search_mode]}&origin=#{address.lat},#{address.long}&destination=#{coords.lat},#{coords.lng}"
+      call = "mode=#{search_params[:search_mode]}&origin=#{address.lat},#{address.long}&destination=37.7706312,-122.4167"
       url = URI.parse(URI.encode("http://api2.walkscore.com/api/v1/traveltime/json?wsapikey=b72221d8763203418d081f140357696e&#{call}"))
       json = HTTParty.get(url)
       response = JSON.parse(json.body)
-
+      p "*" * 8
+      p response
       @commute_time = (response["response"]["results"][0]["travel_times"][0]["seconds"])/60 #in mins
 
       @walkscore = address.walkscore.to_i
