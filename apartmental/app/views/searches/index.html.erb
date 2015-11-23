@@ -37,7 +37,12 @@
             <td>
               <%= modal title: 'More Info' do%>
               <div class="modal-body">
-                <%= value_hash["address"].crime_rate %>
+                <h3>Address: </h3><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %>
+                <h3>Price: </h3>
+                $<%= number_with_delimiter(value_hash["address"].price, :delimiter => ",") %>
+                <h3>Picture: </h3>
+                <img src="<%= value_hash["address"].image_url %>" >
+                <h3>Description: </h3>
                 <%= Address.get_description(value_hash["address"].listing_url) %>
               </div>
               <% end %>
@@ -114,13 +119,27 @@ myLayer.setGeoJSON(geoJson);
 //   console.log("Hi:") + $(this).index
 // })
 
-$(".leaflet-marker-icon").hover(function(){
-  var index = $(".leaflet-marker-icon").index(this)
+// Hovering mapbox marker hilights appropriate row on results table
+$(".leaflet-marker-icon").mouseover(function(){
+  var index = $(".leaflet-marker-icon").index(this) + 1
   console.log(index)
   // $("tbody tr:eq(" + index + ")").fadeOut(1500)
   // $("tbody tr:eq(" + index + ")").fadeIn(1500)
   $("tbody tr:eq(" + index + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
-})
+}).mouseout(function() {
+  var index = $(".leaflet-marker-icon").index(this) + 1
+  $("tbody tr:eq(" + index + ")").css({ "background-color": "", "color": "" })
+});
+
+$("tbody tr").mouseover(function(){
+  var index = ($("tbody tr").index(this) - 1)
+  console.log(index)
+  $(".leaflet-marker-icon:eq(" + index + ")").css("background-color", "red")
+}).mouseout(function() {
+  var index = ($("tbody tr").index(this) - 1)
+  $(".leaflet-marker-icon:eq(" + index + ")").css("background-color", "")
+});
+
 
 ///////////////////////////////////////////
 <% @sorted_results.each_value do |value_hash| %>
