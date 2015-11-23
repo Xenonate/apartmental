@@ -48,9 +48,9 @@
               <% end %>
             </td>
           </tr>
-            <tr>
+<!--             <tr>
                 <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas>
-            </tr>
+            </tr> -->
           <% end %>
 
           <table>
@@ -121,23 +121,23 @@ myLayer.setGeoJSON(geoJson);
 
 // Hovering mapbox marker hilights appropriate row on results table
 $(".leaflet-marker-icon").mouseover(function(){
-  var index = $(".leaflet-marker-icon").index(this) + 1
+  var index = $(".leaflet-marker-icon").index(this)
   console.log(index)
   // $("tbody tr:eq(" + index + ")").fadeOut(1500)
   // $("tbody tr:eq(" + index + ")").fadeIn(1500)
-  $("tbody tr:eq(" + index + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
+  $("tbody tr:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
 }).mouseout(function() {
-  var index = $(".leaflet-marker-icon").index(this) + 1
-  $("tbody tr:eq(" + index + ")").css({ "background-color": "", "color": "" })
+  var index = $(".leaflet-marker-icon").index(this)
+  $("tbody tr:eq(" + (index + 1) + ")").css({ "background-color": "", "color": "" })
 });
 
 $("tbody tr").mouseover(function(){
-  var index = ($("tbody tr").index(this) - 1)
-  console.log(index)
-  $(".leaflet-marker-icon:eq(" + index + ")").css("background-color", "red")
+  var index = $("tbody tr").index(this)
+  console.log("Table Row:" + index)
+  $(".leaflet-marker-icon:eq(" + (index-1) + ")").css("background-color", "red")
 }).mouseout(function() {
-  var index = ($("tbody tr").index(this) - 1)
-  $(".leaflet-marker-icon:eq(" + index + ")").css("background-color", "")
+  var index = $("tbody tr").index(this)
+  $(".leaflet-marker-icon:eq(" + (index-1) + ")").css("background-color", "")
 });
 
 
