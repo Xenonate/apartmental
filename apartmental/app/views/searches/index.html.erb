@@ -33,6 +33,7 @@
 
           <td> $<%= number_with_delimiter(value_hash["address"].rental_average(@length_of_stay), :delimiter => ",") %> over <%= @length_of_stay %> years </td>
         </tr>
+        <canvas id="myChart" width="400" height="400" data = "<%value_hash%>"></canvas>
       <% end %>
 
     <table>
@@ -40,7 +41,6 @@
 
 </div>
 
-<canvas id="myChart" width="400" height="400"></canvas>
 
 
 <script>
@@ -92,7 +92,11 @@ myLayer.on('layeradd', function(e) {
 myLayer.setGeoJSON(geoJson);
 
 ///////////////////////////////////////////
+var
+
 var ctx = document.getElementById("myChart").getContext("2d");
+
+var address_info =
 
 var data = {
     labels: ["Rent", "Commute Time", "Crime Rate", "Walkscore"],

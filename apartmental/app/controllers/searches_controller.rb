@@ -47,31 +47,6 @@ class SearchesController < ActionController::Base
       # get_weight(@commutescore_weight, search_params[:commutescore])
 
 
-      # if search_params[:price_weight]
-      #   @price_weight = search_params[:price_weight]
-      # else
-      #   @price_weight = 0.25
-      # end
-
-      # if search_params[:walkscore_weight]
-      #   @walkscore_weight = search_params[:walkscore_weight]
-      # else
-      #   @walkscore_weight = 0.25
-      # end
-
-      # if search_params[:crime_weight]
-      #   @crime_weight = search_params[:crime_weight]
-      # else
-      #   @crime_weight = 0.25
-      # end
-
-      # if search_params[:commutescore]
-      #   @commutescore_weight = search_params[:commutescore_weight]
-      # else
-      #   @commutescore_weight = 0.25
-      # end
-
-
       @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
 
       case @crime_rate
