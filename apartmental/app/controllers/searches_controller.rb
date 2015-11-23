@@ -91,25 +91,27 @@ class SearchesController < ActionController::Base
 
 
         # p "price weight"
-        # p (@price_weight.to_f/@total_weight.to_f)
+        # p @price_weight.to_f
         # p "total weight"
-        # p (@average_price - search_params[:search_min_price].to_i)/(@price_range)
+        # p @total_weight.to_f
         # p "average price"
         # p @average_price
+        # p "search_params[:search_max_price].to_f"
+        # p search_params[:search_max_price].to_f
         # p search_params[:search_min_price].to_i
         # p "price range"
-        # p @price_range
+        # p @price_range.to_f
         # p "pindex price"
 
 
 
-       @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(search_params[:search_max_price].to_f - @average_price.to_f)/(@price_range.to_f) * 100
+       p @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(search_params[:search_max_price].to_f - @average_price.to_f)/(@price_range.to_f) * 100
        "*" * 50
-       @pindex_walkscore = @walkscore.to_f * @walkscore_weight.to_f / @total_weight.to_f
+       p @pindex_walkscore = @walkscore.to_f * @walkscore_weight.to_f / @total_weight.to_f
        "*" * 50
-       @pindex_crimerate = @crimescore.to_f * @crime_weight.to_f / @total_weight.to_f
+       p @pindex_crimerate = @crimescore.to_f * @crime_weight.to_f / @total_weight.to_f
        "*" * 50
-       @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_max_time].to_f-@commute_time / @commute_time_range.to_f)
+       p @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_max_time].to_f-@commute_time / @commute_time_range.to_f)
        "pindex"
       p @pindex = @pindex_price + @pindex_walkscore + @pindex_crimerate + @pindex_commutescore
 
@@ -121,10 +123,10 @@ class SearchesController < ActionController::Base
         "pindex_walkscore" => @pindex_walkscore,
         "pindex_commutescore" => @pindex_walkscore,
         "pindex_crimerate" => @pindex_crimerate,
-        "price_weight" => @price_weight,
-        "commute_weight" => @commute_weight,
-        "walkscore_weight" => @walkscore_weight,
-        "crime_weight" => @crime_weight
+        "price_weight" => (@price_weight / @total_weight) * 100,
+        "commute_weight" => (@commute_weight / @total_weight) * 100,
+        "walkscore_weight" => (@walkscore_weight / @total_weight) * 100,
+        "crime_weight" => (@crime_weight / @total_weight) * 100
       }
 
       # p "@walkscore.to_f"
