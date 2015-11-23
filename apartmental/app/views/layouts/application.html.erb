@@ -4,6 +4,7 @@
   <title>Apartmental</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
   <link href="http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.css" rel="stylesheet" />
 
    <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
@@ -14,7 +15,6 @@
   <%= csrf_meta_tags %>
   <meta charset=utf-8 />
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-
   <style>
 
   #map { display: block; position:absolute; top:0; right:0; height: 100%; }
@@ -25,7 +25,5 @@
   <%= yield %>
 
 </body>
-<video id="hero" preload="auto" autoplay="true" loop="loop">
-  <source src="http://sfvideo.com/shutterstock_v1149793.mp4" type="video/mp4">
-  </video>
+
 </html>
