@@ -1,7 +1,7 @@
 <div class="container">
 <div class ="row">
   <div class="col-md-12">
-    pop
+    poppppp
   </div>
 </div>
 </div>
@@ -11,7 +11,7 @@
   <div id='map' class="col-md-6"></div>
 
   <div id="poop" class="col-md-6">
-    <table class="table-condensed table-striped table-hover">
+    <table class="table-condensed table-hover">
       <tr>
         <th>Address</th>
         <th>$/mo</th>
@@ -80,6 +80,12 @@
     });
     <% end %>
 
+    $(".leaflet-control-attribution").hover(function(){
+      $(this).fadeOut(1500);
+    })
+
+
+
 // Add custom popups to each using our custom feature properties
 myLayer.on('layeradd', function(e) {
   var marker = e.layer,
@@ -100,6 +106,19 @@ myLayer.on('layeradd', function(e) {
 
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
+
+// $(".leaflet-marker-icon:gt(0)").hover(function(){
+//   $(this).fadeOut(1000)
+//   console.log("Hi:") + $(this).index
+// })
+
+$(".leaflet-marker-icon").hover(function(){
+  var index = $(".leaflet-marker-icon").index(this)
+  console.log(index)
+  // $("tbody tr:eq(" + index + ")").fadeOut(1500)
+  // $("tbody tr:eq(" + index + ")").fadeIn(1500)
+  $("tbody tr:eq(" + index + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
+})
 
 ///////////////////////////////////////////
 var ctx = document.getElementById("myChart").getContext("2d");
