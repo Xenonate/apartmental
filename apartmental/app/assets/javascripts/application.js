@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require chart_configuration
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -17,15 +18,15 @@
 //= require mapbox
 //= require_tree .
 
- $(function() {
-   $( "#slider" ).slider({
-     min: 400,
-     max: 2400,
-     value: 1500,
-     animate: "slow",
-     orientation: "horizontal",
-     slide: function(event, ui) {
-       $("#price").val(ui.value);
-     }
-   });
- });
+ // $(function() {
+ //   $( "#slider" ).slider({
+ //     min: 400,
+ //     max: 2400,
+ //     value: 1500,
+ //     animate: "slow",
+ //     orientation: "horizontal",
+ //     slide: function(event, ui) {
+ //       $("#price").val(ui.value);
+ //     }
+ //   });
+ // });
