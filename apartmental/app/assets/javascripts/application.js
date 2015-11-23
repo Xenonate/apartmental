@@ -13,6 +13,7 @@
 //= require chart_configuration
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require mapbox
@@ -30,3 +31,5 @@
  //     }
  //   });
  // });
+
+$(function(){ $(document).foundation(); });

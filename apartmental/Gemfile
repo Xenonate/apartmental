@@ -27,6 +27,7 @@ gem 'mapbox-rails', :git => "https://github.com/aai/mapbox-rails.git"
 
 gem 'hirb'
 
+gem 'foundation-rails'
 
 gem 'geokit-rails'
 gem 'awesome_print'
