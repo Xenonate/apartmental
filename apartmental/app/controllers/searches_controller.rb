@@ -23,7 +23,7 @@ class SearchesController < ActionController::Base
       url = URI.parse(URI.encode("http://api2.walkscore.com/api/v1/traveltime/json?wsapikey=b72221d8763203418d081f140357696e&#{call}"))
       json = HTTParty.get(url)
       response = JSON.parse(json.body)
-      p "*" * 50
+
       @commute_time = (response["response"]["results"][0]["travel_times"][0]["seconds"])/60 #in mins
 
       @walkscore = address.walkscore.to_i
@@ -51,8 +51,38 @@ class SearchesController < ActionController::Base
       @walkscore_weight = search_params[:walkscore_weight].to_i
       @crime_weight = search_params[:crime_weight].to_i
 
-      p "total_weight"
-      p @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
+      # if search_params[:price_weight]
+      #   @price_weight = search_params[:price_weight]
+      # else
+      #   @price_weight = 0.25
+      # end
+
+      # if search_params[:walkscore_weight]
+      #   @walkscore_weight = search_params[:walkscore_weight]
+      # else
+      #   @walkscore_weight = 0.25
+      # end
+
+      # if search_params[:crime_weight]
+      #   @crime_weight = search_params[:crime_weight]
+      # else
+      #   @crime_weight = 0.25
+      # end
+
+      # if search_params[:commutescore]
+      #   @commutescore_weight = search_params[:commutescore_weight]
+      # else
+      #   @commutescore_weight = 0.25
+      # end
+
+
+      @price_weight = search_params[:price_weight].to_i
+      @commute_weight = search_params[:commute_weight].to_i
+      @walkscore_weight = search_params[:walkscore_weight].to_i
+      @crime_weight = search_params[:crime_weight].to_i
+
+
+      @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
 
       case @crime_rate
       when "A"
@@ -77,14 +107,14 @@ class SearchesController < ActionController::Base
 
 
 
-      p @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(@average_price.to_f-search_params[:search_min_price].to_f)/(@price_range.to_f)
+       @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(search_params[:search_max_price].to_f - @average_price.to_f)/(@price_range.to_f) * 100
        "*" * 50
-      p @pindex_walkscore = @walkscore.to_f * @walkscore_weight.to_f / @total_weight.to_f
+       @pindex_walkscore = @walkscore.to_f * @walkscore_weight.to_f / @total_weight.to_f
        "*" * 50
-      p @pindex_crimerate = @crimescore.to_f * @crime_weight.to_f / @total_weight.to_f
+       @pindex_crimerate = @crimescore.to_f * @crime_weight.to_f / @total_weight.to_f
        "*" * 50
-      p @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_min_time].to_f-@commute_time / @commute_time_range.to_f)
-      p "pindex"
+       @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_max_time].to_f-@commute_time / @commute_time_range.to_f)
+       "pindex"
       p @pindex = @pindex_price + @pindex_walkscore + @pindex_crimerate + @pindex_commutescore
 
 
