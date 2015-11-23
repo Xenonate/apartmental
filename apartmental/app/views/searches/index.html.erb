@@ -140,6 +140,12 @@ $("tbody tr").mouseover(function(){
   $(".leaflet-marker-icon:eq(" + (index-1) + ")").css("background-color", "")
 });
 
+  $(document).ready(function () {
+    // $(".col-md-6").draggable({containment: "parent"}).resizable({handles: "all"});
+    // $(".container").draggable({containment: "parent"}).resizable({handles: "all"});
+    $(".row").draggable({containment: "parent"}).resizable({handles: "all"});
+  });
+
 
 ///////////////////////////////////////////
 <% @sorted_results.each_value do |value_hash| %>
