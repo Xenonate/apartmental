@@ -46,8 +46,13 @@ class SearchesController < ActionController::Base
       # get_weight(@crime_weight, search_params[:crime_weight])
       # get_weight(@commutescore_weight, search_params[:commutescore])
 
+      @price_weight = search_params[:price_weight].to_i
+      @commute_weight = search_params[:commute_weight].to_i
+      @walkscore_weight = search_params[:walkscore_weight].to_i
+      @crime_weight = search_params[:crime_weight].to_i
 
-      @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
+      p "total_weight"
+      p @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
 
       case @crime_rate
       when "A"
@@ -69,10 +74,6 @@ class SearchesController < ActionController::Base
         # p "price range"
         # p @price_range
         # p "pindex price"
-      @price_weight = search_params[:price_weight].to_i
-      @commute_weight = search_params[:commute_weight].to_i
-      @walkscore_weight = search_params[:walkscore_weight].to_i
-      @crime_weight = search_params[:crime_weight].to_i
 
 
 
@@ -119,11 +120,11 @@ class SearchesController < ActionController::Base
 
     end
 
-    @sorted_results.sort_by{|key, value| key}
     p "*" * 50
     @sorted_results.each_value do |value|
         p value
       end
+    @sorted_results.sort_by{|key, value| key}
 
     render 'searches/index', layout: 'layouts/application'
   end
