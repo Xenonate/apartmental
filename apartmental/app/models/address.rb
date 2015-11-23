@@ -91,7 +91,7 @@ def clean(html)
   remove_all_white_space_between_tags(condense_whitespace(html)).strip
 end
 
-def get_description(url)
+def self.get_description(url)
   html = File.read(open(url))
   clean_html = clean(html)
   nokogiri_document = Nokogiri.parse(clean_html)
