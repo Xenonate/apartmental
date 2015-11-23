@@ -35,7 +35,6 @@
             <td> $<%= number_with_delimiter(value_hash["address"].rental_average(@length_of_stay), :delimiter => ",") %> over <%= @length_of_stay %> years </td>
 
             <td>
-              <!-- , price, , polygon -->
               <%= modal title: 'More Info' do%>
               <div class="modal-body">
                 <h3>Address: </h3><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %>
@@ -49,7 +48,9 @@
               <% end %>
             </td>
           </tr>
-          <canvas id="myChart" width="400" height="400" data = "<%value_hash%>"></canvas>
+            <tr>
+                <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas>
+            </tr>
           <% end %>
 
           <table>
@@ -141,38 +142,48 @@ $("tbody tr").mouseover(function(){
 
 
 ///////////////////////////////////////////
-var ctx = document.getElementById("myChart").getContext("2d");
+<% @sorted_results.each_value do |value_hash| %>
 
-// var address_info =
-
+var ctx = document.getElementById("myChart<%= value_hash["address"].id %>").getContext("2d");
 var data = {
   labels: ["Rent", "Commute Time", "Crime Rate", "Walkscore"],
   datasets: [
   {
-    label: "My First dataset",
+    label: "perfect weight",
     fillColor: "rgba(220,220,220,0.2)",
     strokeColor: "rgba(220,220,220,1)",
     pointColor: "rgba(220,220,220,1)",
     pointStrokeColor: "#fff",
     pointHighlightFill: "#fff",
     pointHighlightStroke: "rgba(220,220,220,1)",
-    data: [50, 10, 10, 20]
+    data: [
+    <%= value_hash["price_weight"] %>,
+    <%= value_hash["commute_weight"] %>,
+    <%= value_hash["crime_weight"] %>,
+    <%= value_hash["walkscore_weight"] %>
+    ]
   },
   {
+    label: "actual weight",
     fillColor: "rgba(151,187,205,0.2)",
     strokeColor: "rgba(151,187,205,1)",
     pointColor: "rgba(151,187,205,1)",
     pointStrokeColor: "#fff",
     pointHighlightFill: "#fff",
     pointHighlightStroke: "rgba(151,187,205,1)",
-    data: [35, 7, 8, 18]
+    data: [
+    <%= value_hash["pindex_price"] %>,
+    <%= value_hash["pindex_commutescore"] %>,
+    <%= value_hash["pindex_crimerate"] %>,
+    <%= value_hash["pindex_walkscore"] %>
+    ]
   }
   ]
 };
 
 var myRadarChart = new Chart(ctx).Radar(data);
 
-
+<% end %>
 </script>
 
 
