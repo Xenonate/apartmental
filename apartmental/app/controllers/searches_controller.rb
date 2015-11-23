@@ -51,15 +51,10 @@ class SearchesController < ActionController::Base
       # get_weight(@crime_weight, search_params[:crime_weight])
       # get_weight(@commutescore_weight, search_params[:commutescore])
 
-      @price_weight = search_params[:price_weight].to_i
-      @commute_weight = search_params[:commute_weight].to_i
-      @walkscore_weight = search_params[:walkscore_weight].to_i
-      @crime_weight = search_params[:crime_weight].to_i
-
-      @price_weight = search_params[:price_weight].to_i
-      @commute_weight = search_params[:commute_weight].to_i
-      @walkscore_weight = search_params[:walkscore_weight].to_i
-      @crime_weight = search_params[:crime_weight].to_i
+      p @price_weight = search_params[:price_weight].to_i
+      p @commute_weight = search_params[:commute_weight].to_i
+      p @walkscore_weight = search_params[:walkscore_weight].to_i
+      p @crime_weight = search_params[:crime_weight].to_i
 
 
       @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
@@ -104,10 +99,14 @@ class SearchesController < ActionController::Base
         "pindex_walkscore" => @pindex_walkscore,
         "pindex_commutescore" => @pindex_walkscore,
         "pindex_crimerate" => @pindex_crimerate,
-        "price_weight" => (@price_weight/@total_weight)*100,
-        "commute_weight" => (@commute_weight/@total_weight)*100,
-        "walkscore_weight" => (@walkscore_weight/@total_weight)*100,
-        "crime_weight" => (@crime_weight/@total_weight)*100
+        "price_weight" => (@price_weight/@total_weight.to_f)*100,
+        "commute_weight" => (@commute_weight/@total_weight.to_f)*100,
+        "walkscore_weight" => (@walkscore_weight/@total_weight.to_f)*100,
+        "crime_weight" => (@crime_weight/@total_weight.to_f)*100
+        # "price_weight" => (@price_weight/@total_weight)*100,
+        # "commute_weight" => (@commute_weight/@total_weight)*100,
+        # "walkscore_weight" => (@walkscore_weight/@total_weight)*100,
+        # "crime_weight" => (@crime_weight/@total_weight)*100
       }
 
       # p "@walkscore.to_f"
