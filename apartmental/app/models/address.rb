@@ -1,3 +1,6 @@
+require "open-uri"
+require "html_whitespace_cleaner"
+
 class Address < ActiveRecord::Base
   def rental_average(length_of_stay)
 
@@ -86,5 +89,39 @@ class Address < ActiveRecord::Base
 
   (total_rent/length_of_stay).round(0)
 end
+
+# def clean(html)
+#   remove_all_white_space_between_tags(condense_whitespace(html)).strip
+# end
+
+def self.get_description(url)
+  html = File.read(open(url))
+  # clean_html = clean(html)
+  # nokogiri_document = Nokogiri.parse(clean_html)
+  # html_node = nokogiri_document.children.last
+  # p nokogiri_document.css(".zsg-content-component")[1].text
+
+  clean_html = HTMLWhitespaceCleaner.clean(html)
+  nokogiri_document = Nokogiri.parse(clean_html)
+  p html_node = nokogiri_document.children.last
+  p nokogiri_document.css(".zsg-content-component")[1].text
+
+# p nokogiri_document.css(".zsg-content-component")[1].inner_html
+
+
+
+  # p nokogiri_document.css(".zsg-content-component")[1].inner_html
+end
+
+private
+  # WHITE_SPACE_BETWEEN_TAGS = /(?<=>)\s+(?=<)/
+
+  # def remove_all_white_space_between_tags(html_string)
+  #   html_string.gsub(WHITE_SPACE_BETWEEN_TAGS, "")
+  # end
+
+  # def condense_whitespace(html_string)
+  #   html_string.gsub(/\s+/, ' ')
+  # end
 
 end
