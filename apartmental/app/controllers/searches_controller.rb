@@ -104,10 +104,10 @@ class SearchesController < ActionController::Base
         "pindex_walkscore" => @pindex_walkscore,
         "pindex_commutescore" => @pindex_walkscore,
         "pindex_crimerate" => @pindex_crimerate,
-        "price_weight" => @price_weight,
-        "commute_weight" => @commute_weight,
-        "walkscore_weight" => @walkscore_weight,
-        "crime_weight" => @crime_weight
+        "price_weight" => (@price_weight/@total_weight)*100,
+        "commute_weight" => (@commute_weight/@total_weight)*100,
+        "walkscore_weight" => (@walkscore_weight/@total_weight)*100,
+        "crime_weight" => (@crime_weight/@total_weight)*100
       }
 
       # p "@walkscore.to_f"

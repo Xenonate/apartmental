@@ -42,8 +42,10 @@
               </div>
             <% end %>
           </td>
+          <td>
+            <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas>
+          </td>
         </tr>
-        <canvas id="myChart" width="400" height="400" data = "<%value_hash%>"></canvas>
       <% end %>
 
     <table>
@@ -121,15 +123,14 @@ $(".leaflet-marker-icon").hover(function(){
 })
 
 ///////////////////////////////////////////
-var ctx = document.getElementById("myChart").getContext("2d");
+var ctx = document.getElementById("myChart<%= value_hash["address"].id %>").getContext("2d");
 
-// var address_info =
 
 var data = {
     labels: ["Rent", "Commute Time", "Crime Rate", "Walkscore"],
     datasets: [
         {
-            label: "My First dataset",
+            label: "perfect weight",
             fillColor: "rgba(220,220,220,0.2)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
@@ -139,6 +140,7 @@ var data = {
             data: [50, 10, 10, 20]
         },
         {
+            label: "actual weight",
             fillColor: "rgba(151,187,205,0.2)",
             strokeColor: "rgba(151,187,205,1)",
             pointColor: "rgba(151,187,205,1)",
