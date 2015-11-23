@@ -1,37 +1,60 @@
+<div id="outer-container">
+  <div id="inner-container">
 
-<form name="search" action="/searches" method="post" style="inline">
 
-<label>City</label>
-<select name="search[search_city]" class: "form-control">
-  <option value="San Francisco">San Francisco</option>
-  <option value="New York City">New York City</option>
-  <option value="Melbourne">Melbourne</option>
-  <option value="Beijing">Beijing</option>
-</select>
 
-<label>Price</label>
-<input type="text" name="search[search_min_price]" placeholder="min" class: "form-control" required><br>
-<input type="text" name="search[search_max_price]" placeholder="max" class: "form-control" required><br>
+    <video id="hero" preload="auto" autoplay="true" loop="loop">
+      <source src="http://sfvideo.com/shutterstock_v1149793.mp4" type="video/mp4">
+    </video>
+    <h1 id="title">APARTMENTAL</h1>
+    <h2>BECAUSE WE'RE CRAZY ABOUT APARTMENTS</h2>
+        <div id='search'>
+    </div>
+    <form id='search-form' class="form-inline" name="search" action="/searches" method="post" style="inline">
 
-<label>Bedroom</label>
- <select name="search[search_bedroom]" class: "form-control">
-  <option value="Studio">Studio</option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5+</option>
-</select>
+        <input id="input-first" class="form-control" type="text" placeholder="Which city would you like to live?"></input>
 
-<label>Length of stay</label>
- <select name="search[search_period]" class: "form-control">
-  <option value="1">1 year</option>
-  <option value="2">2 years</option>
-  <option value="3">3 years</option>
-  <option value="4">4 years</option>
-  <option value="5">5+ years</option>
-</select>
 
+        <input id="input-second" class="form-control" type="text" name="search[search_max_price]" placeholder="Price" class: "form-control" required></input>
+
+
+        <!-- <label>Bedroom</label> -->
+
+         <select name="search[search_bedroom]" class="form-control">
+          <option value="Studio">Studio</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5+</option>
+        </select>
+
+
+        <!-- <label>Length of stay</label> -->
+
+         <select name="search[search_period]" class="form-control">
+          <option value="1">1 year</option>
+          <option value="2">2 years</option>
+          <option value="3">3 years</option>
+          <option value="4">4 years</option>
+          <option value="5">5+ years</option>
+        </select>
+
+
+        <input class='btn submit-btn' type="submit" value="Submit">
+
+      </div>
+      </form>
+
+  </div>
+</div>
+<div>
+</div>
+
+
+<div style="display: none;">
+
+<input type="text" name="search[search_min_price]" placeholder="min" class: "form-control" required>
 <label>Address</label>
 <input type="text" name="search[search_address]" placeholder="Where do you work?" class: "form-control"><br>
 
@@ -44,36 +67,8 @@
 </select>
 
 <label>Travel time</label>
-<input type="text" name="search[search_min_time]" placeholder="min" class: "form-control" required><br>
-<input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" required><br>
-<!-- slider that kind of works -->
-<!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
-  <!-- <head> -->
- <!--  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title> HTML5 Slider </title>
-  <script type="text/javascript">
-  function showValue(num){
-           var result = document.getElementById('result');
-           result.innerHTML = num;
-  }
-  </script>
-  </head>
-  <body>
-
-  <input type="range" id="sliderBar" min="0" max="100" step="1" value="0" onChange="showValue(this.value);"/>
-  <div id="result" style="height:40px;width:40px;border:1px solid #999">
-  </div>
-  </body> -->
-
-
-<!-- <div class="bfh-slider" data-name="slider3" data-min="5" data-max="25">
-</div> -->
-
-<input type="submit" value="Submit">
-
-<!-- http://sfvideo.com/shutterstock_v1149793.mp4 -->
-<!-- https://s3.amazonaws.com/fancyfootageclips/website/vid/2015-10-04-dtla.mp4 -->
-
-
+<input type="text" name="search[search_min_time]" placeholder="min" class: "form-control" required></input><br>
+<input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" required></input><br>
+</div>
 
 
