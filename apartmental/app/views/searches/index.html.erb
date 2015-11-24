@@ -3,31 +3,10 @@
 
     </div>
     <div class="small-6 columns" id="left_column">
-      <div class="row" id="pop_up">
-        <div id="accordion">
-          <ul>
-            <li>
-              <a href="#one">Example one</a>
-              <div id="one" class="accordion">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet in laborum praesentium esse aliquam molestiae animi non facilis perspiciatis corporis ad molestias quo harum suscipit ipsum incidunt ea voluptates accusantium.
-              </div>
-            </li>
-            <li>
-              <a href="#two">Example two</a>
-              <div id="two" class="accordion">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet in laborum praesentium esse aliquam molestiae animi non facilis perspiciatis corporis ad molestias quo harum suscipit ipsum incidunt ea voluptates accusantium.
-              </div>
-            </li>
-            <li>
-              <a href="#three">Example three</a>
-              <div id="three" class="accordion">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet in laborum praesentium esse aliquam molestiae animi non facilis perspiciatis corporis ad molestias quo harum suscipit ipsum incidunt ea voluptates accusantium.
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="row" id="left_up">
+
+      <div class="row" id="pop_up">pop up bar</div>
+      <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
+
         <div id="tile-wrapper">
           <% counter  = 0 %>
           <div>You got <%= @sorted_results.count %> results! </div>
@@ -36,6 +15,7 @@
 
           <% if counter % 2 == 0 %>
           <div class="row">
+
             <%end%>
             <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
               <!-- <%= key %> -->
@@ -43,6 +23,7 @@
               <div class="layer">
                 <img id="tile-image" src="<%= value_hash["address"].image_url %>"></img>
                 <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
+          <div id="description<%=value_hash["address"].id%>"></div>
               </div>
             </div>
 
@@ -100,8 +81,6 @@
   <% end %>
 
 
-
-
 // Add custom popups to each using our custom feature properties
 myLayer.on('layeradd', function(e) {
   var marker = e.layer,
@@ -119,7 +98,6 @@ myLayer.on('layeradd', function(e) {
       minWidth: 320
     });
   });
-
 
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
