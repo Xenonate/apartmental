@@ -1,62 +1,78 @@
   <div id="container">
     <div class="top-bar">
-      <div zf-tabs="">
-<div zf-tab="" title="Tab 1">
-Tab content 1
-</div>
-<div zf-tab="" title="Tab 2">
-Tab content 2
-</div>
-<div zf-tab="" title="Tab 3">
-Tab content 3
-</div>
-</div>
+
     </div>
     <div class="small-6 columns" id="left_column">
-      <div class="row" id="pop_up">pop up bar</div>
+      <div class="row" id="pop_up">
+        <div id="accordion">
+          <ul>
+            <li>
+              <a href="#one">Example one</a>
+              <div id="one" class="accordion">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet in laborum praesentium esse aliquam molestiae animi non facilis perspiciatis corporis ad molestias quo harum suscipit ipsum incidunt ea voluptates accusantium.
+              </div>
+            </li>
+            <li>
+              <a href="#two">Example two</a>
+              <div id="two" class="accordion">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet in laborum praesentium esse aliquam molestiae animi non facilis perspiciatis corporis ad molestias quo harum suscipit ipsum incidunt ea voluptates accusantium.
+              </div>
+            </li>
+            <li>
+              <a href="#three">Example three</a>
+              <div id="three" class="accordion">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet in laborum praesentium esse aliquam molestiae animi non facilis perspiciatis corporis ad molestias quo harum suscipit ipsum incidunt ea voluptates accusantium.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div class="row" id="left_up">
         <div id="tile-wrapper">
           <% counter  = 0 %>
-        <div>You got <%= @sorted_results.count %> results! </div>
+          <div>You got <%= @sorted_results.count %> results! </div>
 
-        <% @sorted_results.each_pair do |key, value_hash| %>
+          <% @sorted_results.each_pair do |key, value_hash| %>
 
-        <% if counter % 2 == 0 %>
+          <% if counter % 2 == 0 %>
           <div class="row">
             <%end%>
-        <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
-          <!-- <%= key %> -->
-          <div class='tile-score'><%= key %></div>
-          <div class="layer">
-          <img id="tile-image" src="<%= value_hash["address"].image_url %>"></img>
-          <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
+            <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
+              <!-- <%= key %> -->
+              <div class='tile-score'><%= key.round(2) %></div>
+              <div class="layer">
+                <img id="tile-image" src="<%= value_hash["address"].image_url %>"></img>
+                <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
+              </div>
+            </div>
+
+            <% if counter % 2 == 1 %>
           </div>
-        </div>
+          <%end%>
 
-        <% if counter % 2 == 1 %>
-        </div>
-        <%end%>
-        <% counter += 1 %>
-        <% end %>
+          <% counter += 1 %>
+          <% end %>
 
+        </div>
       </div>
+
+
+
+      <% if @sorted_results.count % 2 == 1 %>
     </div>
-
-
-
-
+    <% end %>
 
   </div>
 
 
-      <div class="small-6 columns" id="right_column">
-      <div class="row" id="map"></div>
-      <div class="row" id="right_down">
-        <canvas id="myChart" width="400" height="100%"></canvas>
-      </div>
+  <div class="small-6 columns" id="right_column">
+    <div class="row" id="map"></div>
+    <div class="row" id="right_down">
+      <canvas id="myChart" width="400" height="100%"></canvas>
     </div>
+  </div>
 
-<script>
+  <script>
   L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
   var map = L.mapbox.map('map', 'mapbox.streets')
   .setView([37.7570841,-122.45], 12);
