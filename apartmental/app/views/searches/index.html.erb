@@ -2,7 +2,7 @@
     <div class="top-bar">
       top nav
     </div>
-    <div class="small-12 columns medium-6 columns" id="left_column">
+    <div class="small-6 columns" id="left_column">
       <div class="row" id="pop_up">pop up bar</div>
       <div class="row" id="left_up">
 
@@ -36,12 +36,14 @@
           <% end %>
       </div>
     </div>
+
+
+
     <div class="small-6 columns" id="right_column">
       <div class="row" id="map"></div>
       <div class="row" id="right_down">right_down</div>
     </div>
   </div>
-
 <script>
   L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
   var map = L.mapbox.map('map', 'mapbox.streets')
