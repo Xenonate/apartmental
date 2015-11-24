@@ -19,6 +19,7 @@
           <th>Crime Rate</th>
           <th>Increase Estimate</th>
           <th>More</th>
+          <th>LONGLATLIG</th>
         </tr>
         You got <%= @sorted_results.count %> results!
 
@@ -47,6 +48,7 @@
               </div>
               <% end %>
             </td>
+            <td> <%= value_hash["address"].long %> , <%= value_hash["address"].lat %> </td>
           </tr>
 <!--             <tr>
                 <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas>
@@ -114,26 +116,29 @@ myLayer.on('layeradd', function(e) {
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
 
-$("tbody tr").click(function() {
-  var index = $("tbody tr").index(this)
-  console.log(index)
-  var long_lat = (geoJson[index].geometry.coordinates)
-  console.log(long_lat)
-  map.panTo(long_lat.reverse())
-});
+// $("tbody tr").click(function() {
+//   var index = $("tbody tr").index(this)
+//   console.log("Row Index: " + index)
+//   var long_lat = (geoJson[index].geometry.coordinates)
+//   console.log("Marker LatLong: " + long_lat)
+//   map.panTo(long_lat)
+// });
 
 
 // Hovering mapbox marker hilights appropriate row on results table
 $(".leaflet-marker-icon").mouseover(function(){
   var index = $(".leaflet-marker-icon").index(this)
+  console.log("Marker Inex: " +  index)
   $("tbody tr:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
 }).mouseout(function() {
   var index = $(".leaflet-marker-icon").index(this)
   $("tbody tr:eq(" + (index + 1) + ")").css({ "background-color": "", "color": "" })
 });
 
+// Hovering on results column hilights mapbox marker
 $("tbody tr").mouseover(function(){
   var index = $("tbody tr").index(this)
+  console.log("Row Index: " + index)
   $(".leaflet-marker-icon:eq(" + (index-1) + ")").css("background-color", "red")
 }).mouseout(function() {
   var index = $("tbody tr").index(this)
