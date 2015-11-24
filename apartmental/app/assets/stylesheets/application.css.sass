@@ -28,19 +28,6 @@
   margin-left: 0
   margin-bottom: 0
 
-#poop
-  position: absolute
-  top: 0px
-  bottom: 0
-  left: 0
-  overflow-y: scroll
-
-#outer-container
-
-
-#inner-container
-  position: relative
-
 #title
   text-align: center
   position: absolute
@@ -48,6 +35,7 @@
   width: 100%
   top: 100px
   font-size: 5em
+
 
 #hero
   width: 100%
@@ -110,6 +98,7 @@ h2
 #right_up
   height: 65vh
   background-color: purple
+  overflow: hidden
 
 
 #right_down
@@ -124,14 +113,27 @@ h2
   padding-left: 0px
   padding-right: 0px
 
+
 #left_column
   padding-left: 0px
   padding-right: 0px
 
+#left_up
+  overflow: auto
+
+
+
 .tile
   border-style: double
   background-color: linen
-  height: 40vh
-  padding: 3vh
-  margin: 3vh
+  height: 30vh
+  margin: 2vh
+  overflow: hidden
+
+.picture
+  display: block
+  min-width: 58vh
+  float: left
+  margin: -3vh
+  height: 33vh
 
