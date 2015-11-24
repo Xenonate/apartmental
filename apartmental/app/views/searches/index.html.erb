@@ -2,39 +2,36 @@
     <div class="top-bar">
       top nav
     </div>
-    <div class="small-6 columns" id="left_column">
+    <div class="small-12 columns medium-6 columns" id="left_column">
       <div class="row" id="pop_up">pop up bar</div>
       <div class="row" id="left_up">
-        <table class="table-condensed table-hover">
 
-        <tr>
-          <th>Address</th>
-          <th>$/mo</th>
-          <th>WalkScore</th>
-          <th>Crime Rate</th>
-          <th>Increase Estimate</th>
-          <th>More</th>
-        </tr>
-        You got <%= @sorted_results.count %> results!
+          Address
+          $/mo
+          WalkScore
+          Crime Rate
+          Increase Estimate
+          More
+          <%= counter  = 0 %>
+        <div>You got <%= @sorted_results.count %> results! </div>
+        <% @sorted_results.each_pair do |key, value_hash| %>
 
-        <% @sorted_results.each_value do |value_hash| %>
-        <tr>
-          <td><a href="<%= value_hash["address"].listing_url %>" target="_blank"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></td>
+        <% if counter % 2 == 0 %>
+          <div class="row">
+            <%end%>
+        <div class="tile small-5 columns">
 
-          <td> $<%= number_with_delimiter(value_hash["address"].price, :delimiter => ",") %>
-            <td> <%= value_hash["address"].walkscore %> </td>
+          <%= key %>
+          <%= value_hash["image_url"] %>
 
-            <td> <%= value_hash["address"].crime_rate %> </td>
-
-
-            <td> $<%= number_with_delimiter(value_hash["address"].rental_average(@length_of_stay), :delimiter => ",") %> over <%= @length_of_stay %> years </td>
-          </tr>
-            <tr>
+          </div>
                 <!-- <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas> -->
-            </tr>
-          <% end %>
 
-          <table>
+        <% if counter % 2 == 1 %>
+          </div>
+            <%end%>
+            <% counter += 1 %>
+          <% end %>
       </div>
     </div>
     <div class="small-6 columns" id="right_column">

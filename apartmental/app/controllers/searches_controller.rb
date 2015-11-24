@@ -29,13 +29,19 @@ class SearchesController < ActionController::Base
       response = JSON.parse(json.body)
       p "*" * 8
       p response
-      @commute_time = (response["response"]["results"][0]["travel_times"][0]["seconds"])/60 #in mins
+
+      if response
+        @commute_time = (response["response"]["results"][0]["travel_times"][0]["seconds"])/60 #in mins
+      else
+        @commute_time = 0
+      end
 
       @walkscore = address.walkscore.to_i
 
       @price_range = (search_params[:search_max_price].to_i-search_params[:search_min_price].to_i)
 
       @commute_time_range = (search_params[:search_max_time].to_i-search_params[:search_min_time].to_i)
+
 
 
       # def get_weight(type, param)
@@ -51,13 +57,17 @@ class SearchesController < ActionController::Base
       # get_weight(@crime_weight, search_params[:crime_weight])
       # get_weight(@commutescore_weight, search_params[:commutescore])
 
-      p @price_weight = search_params[:price_weight].to_i
-      p @commute_weight = search_params[:commute_weight].to_i
-      p @walkscore_weight = search_params[:walkscore_weight].to_i
-      p @crime_weight = search_params[:crime_weight].to_i
+       @price_weight = search_params[:price_weight].to_i
+       @commute_weight = search_params[:commute_weight].to_i
+       @walkscore_weight = search_params[:walkscore_weight].to_i
+       @crime_weight = search_params[:crime_weight].to_i
 
 
       @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
+
+      if @commute_time == 0
+        @total_weight = @total_weight * 4 / 3
+      end
 
       case @crime_rate
       when "A"
@@ -78,17 +88,21 @@ class SearchesController < ActionController::Base
         # p "price range"
         # p @price_range
         # p "pindex price"
-
-       @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(search_params[:search_max_price].to_f - @average_price.to_f)/(@price_range.to_f) * 100
+        p "price"
+       p @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(search_params[:search_max_price].to_f - @average_price.to_f)/(@price_range.to_f) * 100
        "*" * 50
-       @pindex_walkscore = @walkscore.to_f * @walkscore_weight.to_f / @total_weight.to_f
+       p "walkscore"
+       p @pindex_walkscore = @walkscore.to_f * @walkscore_weight.to_f / @total_weight.to_f
        "*" * 50
-       @pindex_crimerate = @crimescore.to_f * @crime_weight.to_f / @total_weight.to_f
+       p "crimerate"
+       p @pindex_crimerate = @crimescore.to_f * @crime_weight.to_f / @total_weight.to_f
        "*" * 50
-
-       @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_max_time].to_f-@commute_time / @commute_time_range.to_f)
+       p "commute"
+       p @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_max_time].to_f-@commute_time / @commute_time_range.to_f)
 
       p @pindex = @pindex_price + @pindex_walkscore + @pindex_crimerate + @pindex_commutescore
+
+      @pindex = @pindex.round(2)
 
 
 
@@ -127,8 +141,11 @@ class SearchesController < ActionController::Base
 
 
     end
-
-    @sorted_results.sort_by{|key, value| key}
+    p 'before'
+    ap @sorted_results
+    @sorted_results = Hash[@sorted_results.sort.reverse]
+    p 'after'
+    ap @sorted_results
     p "*" * 50
     # @sorted_results.each_value do |value|
     #     p value
