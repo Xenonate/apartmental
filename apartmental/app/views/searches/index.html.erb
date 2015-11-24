@@ -80,9 +80,9 @@
         "iconSize": [600,100]
       },
       "url": "<%= longlatlink[1] %>",
-      "marker-symbol": "star",
+      "marker-symbol": "",
       "marker-color": "#ff8888",
-      "marker-size": "large",
+      "marker-size": "medium",
       "city": "Washington, D.C.",
       "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
     }
@@ -116,13 +116,15 @@ myLayer.on('layeradd', function(e) {
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
 
-// $("tbody tr").click(function() {
-//   var index = $("tbody tr").index(this)
-//   console.log("Row Index: " + index)
-//   var long_lat = (geoJson[index].geometry.coordinates)
-//   console.log("Marker LatLong: " + long_lat)
-//   map.panTo(long_lat)
-// });
+$("tbody tr").click(function() {
+  var index = $("tbody tr").index(this)
+  console.log("Row Index: " + index)
+  var long_lat = (geoJson[index].geometry.coordinates)
+  console.log("Marker LatLong: " + long_lat)
+  // map.panTo(long_lat, 5)
+  map.setView(long_lat.reverse(), 14)
+  long_lat.reverse()
+});
 
 
 // Hovering mapbox marker hilights appropriate row on results table
@@ -133,16 +135,25 @@ $(".leaflet-marker-icon").mouseover(function(){
 }).mouseout(function() {
   var index = $(".leaflet-marker-icon").index(this)
   $("tbody tr:eq(" + (index + 1) + ")").css({ "background-color": "", "color": "" })
+
 });
 
-// Hovering on results column hilights mapbox marker
+// Hovering on results row hilights mapbox marker
 $("tbody tr").mouseover(function(){
   var index = $("tbody tr").index(this)
   console.log("Row Index: " + index)
-  $(".leaflet-marker-icon:eq(" + (index-1) + ")").css("background-color", "red")
+  // console.log(geoJson[index]["properties"]["marker-symbol"])
+  console.log(geoJson[index].properties["marker-symbol"])
+  geoJson[index].properties["marker-symbol"] = "heart"
+  geoJson[index].properties["marker-size"] = "large"
+  myLayer.setGeoJSON(geoJson);
+
+  // geoJson[index].setIcon({"marker-symbol": "heart"})
 }).mouseout(function() {
   var index = $("tbody tr").index(this)
-  $(".leaflet-marker-icon:eq(" + (index-1) + ")").css("background-color", "")
+  geoJson[index].properties["marker-symbol"] = ""
+  geoJson[index].properties["marker-size"] = "medium"
+  myLayer.setGeoJSON(geoJson);
 });
 
 ///////////////////////////////////////////
