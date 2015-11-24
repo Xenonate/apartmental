@@ -5,14 +5,8 @@
     <div class="small-12 columns medium-6 columns" id="left_column">
       <div class="row" id="pop_up">pop up bar</div>
       <div class="row" id="left_up">
-
-          Address
-          $/mo
-          WalkScore
-          Crime Rate
-          Increase Estimate
-          More
-          <%= counter  = 0 %>
+        <div id="tile-wrapper">
+          <% counter  = 0 %>
         <div>You got <%= @sorted_results.count %> results! </div>
         <% @sorted_results.each_pair do |key, value_hash| %>
 
@@ -20,11 +14,14 @@
           <div class="row">
             <%end%>
         <div class="tile small-5 columns">
-
-          <%= key %>
-          <%= image_tag(value_hash["image_url"]) %>
+          <!-- <%= key %> -->
+          <div class='tile-score'><%= key %></div>
+          <div class="layer">
+          <img id="tile-image" src="<%= value_hash["address"].image_url %>"></img>
+          <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
 
           </div>
+        </div>
 
                 <!-- <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas> -->
 
@@ -33,6 +30,7 @@
             <%end%>
             <% counter += 1 %>
           <% end %>
+        </div>
       </div>
     </div>
     <div class="small-6 columns" id="right_column">
