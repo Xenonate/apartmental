@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119185923) do
+ActiveRecord::Schema.define(version: 20151124020109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,23 @@ ActiveRecord::Schema.define(version: 20151119185923) do
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "search_results", force: :cascade do |t|
+    t.integer "search_id"
+    t.integer "address_id"
+    t.string  "pindex"
+    t.string  "pindex_price"
+    t.string  "pindex_walkscore"
+    t.string  "pindex_commutescore"
+    t.string  "pindex_crimerate"
+    t.string  "price_weight"
+    t.string  "commute_weight"
+    t.string  "walkscore_weight"
+    t.string  "crime_weight"
+  end
+
+  create_table "searches", force: :cascade do |t|
   end
 
   create_table "user_favorites", force: :cascade do |t|

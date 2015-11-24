@@ -2,6 +2,8 @@ require "open-uri"
 require "html_whitespace_cleaner"
 
 class Address < ActiveRecord::Base
+  belongs_to :search_result
+
   def rental_average(length_of_stay)
 
   total_rent = 0

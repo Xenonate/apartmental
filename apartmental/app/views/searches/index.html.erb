@@ -2,42 +2,49 @@
     <div class="top-bar">
       top nav
     </div>
-    <div class="small-12 columns medium-6 columns" id="left_column">
+    <div class="small-6 columns" id="left_column">
       <div class="row" id="pop_up">pop up bar</div>
       <div class="row" id="left_up">
         <div id="tile-wrapper">
           <% counter  = 0 %>
         <div>You got <%= @sorted_results.count %> results! </div>
+
         <% @sorted_results.each_pair do |key, value_hash| %>
 
         <% if counter % 2 == 0 %>
           <div class="row">
             <%end%>
-        <div class="tile small-5 columns">
+        <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
           <!-- <%= key %> -->
           <div class='tile-score'><%= key %></div>
           <div class="layer">
           <img id="tile-image" src="<%= value_hash["address"].image_url %>"></img>
           <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
-
           </div>
         </div>
-
-                <!-- <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas> -->
 
         <% if counter % 2 == 1 %>
-          </div>
-            <%end%>
-            <% counter += 1 %>
-          <% end %>
         </div>
+        <%end%>
+        <% counter += 1 %>
+        <% end %>
+
       </div>
     </div>
-    <div class="small-6 columns" id="right_column">
-      <div class="row" id="map"></div>
-      <div class="row" id="right_down">right_down</div>
-    </div>
+
+
+
+
+
   </div>
+
+
+      <div class="small-6 columns" id="right_column">
+      <div class="row" id="map"></div>
+      <div class="row" id="right_down">
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+    </div>
 
 <script>
   L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
@@ -134,48 +141,6 @@ $(".tile").mouseover(function(){
 });
 
 ///////////////////////////////////////////
-<% @sorted_results.each_value do |value_hash| %>
-
-var ctx = document.getElementById("myChart<%= value_hash["address"].id %>").getContext("2d");
-var data = {
-  labels: ["Rent", "Commute Time", "Crime Rate", "Walkscore"],
-  datasets: [
-  {
-    label: "perfect weight",
-    fillColor: "rgba(220,220,220,0.2)",
-    strokeColor: "rgba(220,220,220,1)",
-    pointColor: "rgba(220,220,220,1)",
-    pointStrokeColor: "#fff",
-    pointHighlightFill: "#fff",
-    pointHighlightStroke: "rgba(220,220,220,1)",
-    data: [
-    <%= value_hash["price_weight"] %>,
-    <%= value_hash["commute_weight"] %>,
-    <%= value_hash["crime_weight"] %>,
-    <%= value_hash["walkscore_weight"] %>
-    ]
-  },
-  {
-    label: "actual weight",
-    fillColor: "rgba(151,187,205,0.2)",
-    strokeColor: "rgba(151,187,205,1)",
-    pointColor: "rgba(151,187,205,1)",
-    pointStrokeColor: "#fff",
-    pointHighlightFill: "#fff",
-    pointHighlightStroke: "rgba(151,187,205,1)",
-    data: [
-    <%= value_hash["pindex_price"] %>,
-    <%= value_hash["pindex_commutescore"] %>,
-    <%= value_hash["pindex_crimerate"] %>,
-    <%= value_hash["pindex_walkscore"] %>
-    ]
-  }
-  ]
-};
-
-var myRadarChart = new Chart(ctx).Radar(data);
-
-<% end %>
 </script>
 
 
