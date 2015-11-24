@@ -1,6 +1,16 @@
   <div id="container">
     <div class="top-bar">
-      top nav
+      <div zf-tabs="">
+<div zf-tab="" title="Tab 1">
+Tab content 1
+</div>
+<div zf-tab="" title="Tab 2">
+Tab content 2
+</div>
+<div zf-tab="" title="Tab 3">
+Tab content 3
+</div>
+</div>
     </div>
     <div class="small-6 columns" id="left_column">
       <div class="row" id="pop_up">pop up bar</div>
@@ -42,7 +52,7 @@
       <div class="small-6 columns" id="right_column">
       <div class="row" id="map"></div>
       <div class="row" id="right_down">
-        <canvas id="myChart" width="400" height="400"></canvas>
+        <canvas id="myChart" width="400" height="100%"></canvas>
       </div>
     </div>
 
@@ -95,8 +105,6 @@ myLayer.on('layeradd', function(e) {
   });
 
 
-
-
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
 
@@ -125,22 +133,19 @@ $(".leaflet-marker-icon").mouseover(function(){
 // Hovering on results row hilights mapbox marker
 $(".tile").mouseover(function(){
   var index = $(".tile").index(this)
-  console.log("Row Index: " + index)
   // console.log(geoJson[index]["properties"]["marker-symbol"])
-  console.log(geoJson[index].properties["marker-symbol"])
+  // $(".leaflet-marker-icon:eq(" + index + ")").css("z-index", 500)
+  // console.log(poo)
   geoJson[index].properties["marker-symbol"] = "heart"
   geoJson[index].properties["marker-size"] = "large"
   myLayer.setGeoJSON(geoJson);
 
-  // geoJson[index].setIcon({"marker-symbol": "heart"})
 }).mouseout(function() {
   var index = $(".tile").index(this)
   geoJson[index].properties["marker-symbol"] = ""
   geoJson[index].properties["marker-size"] = "medium"
   myLayer.setGeoJSON(geoJson);
 });
-
-///////////////////////////////////////////
 </script>
 
 
