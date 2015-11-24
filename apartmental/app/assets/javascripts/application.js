@@ -13,6 +13,7 @@
 //= require chart_configuration
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require mapbox
 //= require foundation
@@ -30,10 +31,12 @@
  //     }
  //   });
  // });
+
 $(document).foundation();
 $(document).on('ready', function(){
   $('#options').hide()
-  $('#options-button').on('click', function(){
+  $('#options-button').on('click', function(e){
+    e.preventDefault();
     $('#options').toggle()
   })
   // console.log('Derek said to console log something right here')

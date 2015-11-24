@@ -2,39 +2,37 @@
     <div class="top-bar">
       top nav
     </div>
-    <div class="small-6 columns" id="left_column">
+    <div class="small-12 columns medium-6 columns" id="left_column">
       <div class="row" id="pop_up">pop up bar</div>
       <div class="row" id="left_up">
-        <table class="table-condensed table-hover">
-        <tr>
-          <th>Address</th>
-          <th>$/mo</th>
-          <th>WalkScore</th>
-          <th>Crime Rate</th>
-          <th>Increase Estimate</th>
-          <th>More</th>
-          <th>LONGLATLIG</th>
-        </tr>
-        You got <%= @sorted_results.count %> results!
 
-        <% @sorted_results.each_value do |value_hash| %>
-        <tr>
-          <td><a href="<%= value_hash["address"].listing_url %>" target="_blank"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></td>
+          Address
+          $/mo
+          WalkScore
+          Crime Rate
+          Increase Estimate
+          More
+          <%= counter  = 0 %>
+        <div>You got <%= @sorted_results.count %> results! </div>
+        <% @sorted_results.each_pair do |key, value_hash| %>
 
-          <td> $<%= number_with_delimiter(value_hash["address"].price, :delimiter => ",") %>
-            <td> <%= value_hash["address"].walkscore %> </td>
+        <% if counter % 2 == 0 %>
+          <div class="row">
+            <%end%>
+        <div class="tile small-5 columns">
 
-            <td> <%= value_hash["address"].crime_rate %> </td>
+          <%= key %>
+          <%= image_tag(value_hash["image_url"]) %>
 
+          </div>
 
-            <td> $<%= number_with_delimiter(value_hash["address"].rental_average(@length_of_stay), :delimiter => ",") %> over <%= @length_of_stay %> years </td>
-          </tr>
-            <tr>
                 <!-- <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas> -->
-            </tr>
-          <% end %>
 
-          <table>
+        <% if counter % 2 == 1 %>
+          </div>
+            <%end%>
+            <% counter += 1 %>
+          <% end %>
       </div>
     </div>
     <div class="small-6 columns" id="right_column">
@@ -97,8 +95,8 @@ myLayer.on('layeradd', function(e) {
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
 
-$("tbody tr").click(function() {
-  var index = $("tbody tr").index(this)
+$(".tile").click(function() {
+  var index = $(".tile").index(this)
   console.log("Row Index: " + index)
   var long_lat = (geoJson[index].geometry.coordinates)
   console.log("Marker LatLong: " + long_lat)
@@ -112,16 +110,16 @@ $("tbody tr").click(function() {
 $(".leaflet-marker-icon").mouseover(function(){
   var index = $(".leaflet-marker-icon").index(this)
   console.log("Marker Inex: " +  index)
-  $("tbody tr:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
+  $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
 }).mouseout(function() {
   var index = $(".leaflet-marker-icon").index(this)
-  $("tbody tr:eq(" + (index + 1) + ")").css({ "background-color": "", "color": "" })
+  $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "", "color": "" })
 
 });
 
 // Hovering on results row hilights mapbox marker
-$("tbody tr").mouseover(function(){
-  var index = $("tbody tr").index(this)
+$(".tile").mouseover(function(){
+  var index = $(".tile").index(this)
   console.log("Row Index: " + index)
   // console.log(geoJson[index]["properties"]["marker-symbol"])
   console.log(geoJson[index].properties["marker-symbol"])
@@ -131,7 +129,7 @@ $("tbody tr").mouseover(function(){
 
   // geoJson[index].setIcon({"marker-symbol": "heart"})
 }).mouseout(function() {
-  var index = $("tbody tr").index(this)
+  var index = $(".tile").index(this)
   geoJson[index].properties["marker-symbol"] = ""
   geoJson[index].properties["marker-size"] = "medium"
   myLayer.setGeoJSON(geoJson);
