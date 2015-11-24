@@ -1,5 +1,4 @@
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import "foundation_and_overrides"
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -19,7 +18,10 @@
 
  *= require mapbox
  *= require_tree .
+ *= require foundation
  */
+
+
 
 .form-group
   margin-right: 0
@@ -100,6 +102,36 @@ h2
   bottom: 600px
   font-size: 1.6em
 
+
+.top-bar
+  height: 5vh
+  width: 100vw
+  background-color: red
+
+#map
+  height: 90vh
+  background-color: blue
+
+#right_up
+  height: 65vh
+  background-color: purple
+
+
+#right_down
+  height: 30vh
+  background-color: orange
+
+#pop_up
+  height: 5vh
+  background-color: yellow
+
+#right_column
+  padding-left: 0px
+  padding-right: 0px
+
+#left_column
+  padding-left: 0px
+  padding-right: 0px
 
 
 

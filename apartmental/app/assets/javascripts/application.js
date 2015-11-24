@@ -15,8 +15,8 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require bootstrap-sprockets
 //= require mapbox
+//= require foundation
 //= require_tree .
 
  // $(function() {
@@ -32,4 +32,4 @@
  //   });
  // });
 
-$(function(){ $(document).foundation(); });
+$(document).foundation();
