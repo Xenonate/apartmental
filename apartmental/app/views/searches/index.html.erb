@@ -23,7 +23,11 @@
 
 
           <div class="picture">
+            <% if value_hash["address"].image_url %>
           <%= image_tag value_hash["address"].image_url %>
+          <% else %>
+          <%= image_tag "http://drop.ndtv.com/albums/BUSINESS/penthouses_1/2-432-park-avenue.jpg" %>
+          <% end %>
           </div>
           </div>
 
