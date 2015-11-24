@@ -19,7 +19,7 @@
         <% if counter % 2 == 0 %>
           <div class="row">
             <%end%>
-        <div class="tile small-5 columns">
+        <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
 
           <%= key %>
           <%= image_tag(value_hash["image_url"]) %>
@@ -37,10 +37,12 @@
     </div>
     <div class="small-6 columns" id="right_column">
       <div class="row" id="map"></div>
-      <div class="row" id="right_down">right_down</div>
+      <div class="row" id="right_down">
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
     </div>
+
   </div>
-                <canvas id="myChart" width="400" height="400"></canvas>
 
 <script>
   L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';

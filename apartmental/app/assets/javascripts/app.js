@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
   });
 
-  $(".clickable_item").on("click", function(e){
+  $(".tile").on("click", function(e){
     e.preventDefault();
     var id = $(this).attr("id")
     var search_id = $(this).attr("data")

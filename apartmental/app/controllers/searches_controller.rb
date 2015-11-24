@@ -56,17 +56,21 @@ class SearchesController < ActionController::Base
         # get_weight(@crime_weight, search_params[:crime_weight])
         # get_weight(@commutescore_weight, search_params[:commutescore])
 
-        p @price_weight = search_params[:price_weight].to_i
-        p @commute_weight = search_params[:commute_weight].to_i
-        p @walkscore_weight = search_params[:walkscore_weight].to_i
-        p @crime_weight = search_params[:crime_weight].to_i
-
+        p @price_weight = search_params[:price_weight].to_f
+        p @commute_weight = search_params[:commute_weight].to_f
+        p @walkscore_weight = search_params[:walkscore_weight].to_f
+        p @crime_weight = search_params[:crime_weight].to_f
 
         @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
 
         if @commute_time == 0
           @total_weight = @total_weight * 4 / 3
         end
+
+        p @price_weight = (search_params[:price_weight].to_f / @total_weight.to_f) * 100
+        p @commute_weight = (search_params[:commute_weight].to_f / @total_weight.to_f) * 100
+        p @walkscore_weight = (search_params[:walkscore_weight].to_f / @total_weight.to_f) * 100
+        p @crime_weight = (search_params[:crime_weight].to_f / @total_weight.to_f) * 100
 
         case @crime_rate
         when "A"
@@ -76,17 +80,6 @@ class SearchesController < ActionController::Base
         when "C"
           @crimescore = 75
         end
-
-          # p "price weight"
-          # p (@price_weight.to_f/@total_weight.to_f)
-          # p "total weight"
-          # p (@average_price - search_params[:search_min_price].to_i)/(@price_range)
-          # p "average price"
-          # p @average_price
-          # p search_params[:search_min_price].to_i
-          # p "price range"
-          # p @price_range
-          # p "pindex price"
 
           @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(search_params[:search_max_price].to_f - @average_price.to_f)/(@price_range.to_f) * 100
           "*" * 50
@@ -98,6 +91,12 @@ class SearchesController < ActionController::Base
           @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_max_time].to_f-@commute_time / @commute_time_range.to_f)
 
           p @pindex = @pindex_price + @pindex_walkscore + @pindex_crimerate + @pindex_commutescore
+
+          p @pindex_price
+          p @pindex_walkscore
+          p @pindex_crimerate
+          p @pindex_commutescore
+
 
 
 

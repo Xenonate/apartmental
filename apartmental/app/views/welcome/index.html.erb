@@ -1,64 +1,9 @@
-<form id="search_form" name="search" action="/searches" method="post" style="inline" class="form-control">
 
-<label>City</label>
-<select name="search[search_city]" class: "form-control">
-  <option value="San Francisco">San Francisco</option>
-  <option value="New York City">New York City</option>
-  <option value="Melbourne">Melbourne</option>
-  <option value="Beijing">Beijing</option>
-</select>
-
-<label>Price</label>
-<input type="text" name="search[search_min_price]" placeholder="min" class: "form-control" required><br>
-<input type="text" name="search[search_max_price]" placeholder="max" class: "form-control" required><br>
-
-<label>Bedroom</label>
- <select name="search[search_bedroom]" class: "form-control">
-  <option value="Studio">Studio</option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5+</option>
-</select>
-
-<label>Length of stay</label>
- <select name="search[search_period]" class: "form-control">
-  <option value="1">1 year</option>
-  <option value="2">2 years</option>
-  <option value="3">3 years</option>
-  <option value="4">4 years</option>
-  <option value="5">5+ years</option>
-</select>
-
-<label>Address</label>
-<input type="text" name="search[search_address]" placeholder="Where do you work?" class: "form-control"><br>
-
-<label>Mode</label>
- <select name="search[search_mode]" class: "form-control">
-  <option value="transit">Public transit</option>
-  <option value="bike">Bike</option>
-  <option value="drive">Drive</option>
-  <option value="walk">Walk</option>
-</select>
-
-<label>Travel time</label>
-<input type="text" name="search[search_min_time]" placeholder="min" class: "form-control" required><br>
-<input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" required><br>
-
-  <label>How much do you care about price?:</label>
-  <input type="range" class: "form-control" name="search[price_weight]" id="points" value="3" min="1" max="5">
-    <label>How much do you care about commute?:</label>
-  <input type="range" class: "form-control" name="search[commute_weight]" id="points" value="3" min="1" max="5">
-      <label>How much do you care about crime?:</label>
-  <input type="range" class: "form-control" name="search[crime_weight]" id="points" value="3" min="1" max="5">
-      <label>How much do you care about walkscore?:</label>
-  <input type="range" class: "form-control" name="search[walkscore_weight]" id="points" value="3" min="1" max="5">
 
 <!-- slider that kind of works -->
 <!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
   <!-- <head> -->
- <!--  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title> HTML5 Slider </title>
   <script type="text/javascript">
   function showValue(num){
@@ -70,21 +15,18 @@
   <body>
 
   <input type="range" id="sliderBar" min="0" max="100" step="1" value="0" onChange="showValue(this.value);"/>
-  <div id="result" style="height:40px;width:40px;border:1px solid #999">
-=======
+  <div id="result" style="height:40px;width:40px;border:1px solid #999"> -->
+<!-- ======= -->
 <div id="outer-container">
   <div id="inner-container">
     <div id='video-container'>
     <video id="hero" preload="auto" autoplay="true" loop="loop">
-      <!-- <source src="http://sfvideo.com/shutterstock_v1149793.mp4" type="video/mp4"> -->
-      <source src="https://05-lvl3-pdl.vimeocdn.com/01/2151/4/110755925/303525571.mp4?expires=1448341887&amp;token=0261121e9ec6ebdafbdd7" type="video/mp4">
-    </video>
+      <source src="http://sfvideo.com/shutterstock_v1149793.mp4" type="video/mp4">
+      </video>
     </div>
-
     <h1 id="title">APARTMENTAL</h1>
     <h2>BECAUSE WE'RE CRAZY ABOUT APARTMENTS</h2>
     <div id='search'></div>
-
 
 
     <form id='search-form' class="form-inline" name="search" action="/searches" method="post" style="inline">
@@ -99,7 +41,7 @@
         <input id="input-second" class="form-control" type="text" name="search[search_max_price]" placeholder="Price" class: "form-control" required></input>
       </div>
 
-        <!-- <label>Bedroom</label> -->
+        <label>Bedroom</label>
         <div class="row">
           <div class='large-2 columns'>
             <select name="search[search_bedroom]" class="form-control">
@@ -111,7 +53,7 @@
               <option value="5">5+</option>
             </select>
           </div>
-        <!-- <label>Length of stay</label> -->
+        <label>Length of stay</label>
           <div class='large-2 columns'>
             <select name="search[search_period]" class="form-control">
               <option value="1">1 year</option>
