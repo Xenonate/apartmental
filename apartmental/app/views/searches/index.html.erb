@@ -13,7 +13,7 @@
           Increase Estimate
           More
           <%= counter  = 0 %>
-        <div>You got <%= @sorted_results.count %> results! </div>
+        <span>You got <%= @sorted_results.count %> results! </span>
         <% @sorted_results.each_pair do |key, value_hash| %>
 
         <% if counter % 2 == 0 %>
@@ -21,10 +21,10 @@
             <%end%>
         <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
 
-          <%= key %>
+
           <div class="picture">
-          </div>
           <%= image_tag value_hash["address"].image_url %>
+          </div>
           </div>
 
                 <!-- <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas> -->
