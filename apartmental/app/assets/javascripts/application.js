@@ -13,6 +13,7 @@
 //= require chart_configuration
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require mapbox
 //= require foundation
@@ -30,4 +31,5 @@
  //     }
  //   });
  // });
+
 $(document).foundation();
