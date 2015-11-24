@@ -29,7 +29,12 @@ class SearchesController < ActionController::Base
         response = JSON.parse(json.body)
         p "*" * 8
         p response
-        @commute_time = (response["response"]["results"][0]["travel_times"][0]["seconds"])/60 #in mins
+
+        if response
+          @commute_time = (response["response"]["results"][0]["travel_times"][0]["seconds"])/60 #in mins
+        else
+          @commute_time = 0
+        end
 
         @walkscore = address.walkscore.to_i
 
@@ -58,6 +63,10 @@ class SearchesController < ActionController::Base
 
 
         @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
+
+        if @commute_time == 0
+          @total_weight = @total_weight * 4 / 3
+        end
 
         case @crime_rate
         when "A"
@@ -101,7 +110,8 @@ class SearchesController < ActionController::Base
 
       end
 
-    @sorted_results.sort_by{|key, value| key}
+    @sorted_results = Hash[@sorted_results.sort.reverse]
+
     p "*" * 50
 
     render 'searches/index', layout: 'layouts/application'

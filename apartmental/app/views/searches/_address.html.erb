@@ -1,0 +1,9 @@
+Address:<a href="<%= value_hash["address"].listing_url %>" target="_blank"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></a><br>
+
+           Current Price: $<%= number_with_delimiter(value_hash["address"].price, :delimiter => ",") %><br>
+             Walkscore: <%= value_hash["address"].walkscore %><br>
+
+             Crime Score: <%= value_hash["address"].crime_rate %><br>
+
+
+             Predicted rent over <%= @length_of_stay %> years: $<%= number_with_delimiter(value_hash["address"].rental_average(@length_of_stay), :delimiter => ",") %><br>

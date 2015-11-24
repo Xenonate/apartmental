@@ -23,17 +23,19 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'foundation-rails'
+
 gem 'mapbox-rails', :git => "https://github.com/aai/mapbox-rails.git"
 
 gem 'hirb'
 
+gem 'foundation-rails'
 
 gem 'geokit-rails'
 gem 'awesome_print'
 
 gem 'httparty'
 
-gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'bh', '~> 1.2'
 

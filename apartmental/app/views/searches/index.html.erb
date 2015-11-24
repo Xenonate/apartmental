@@ -1,95 +1,74 @@
-<div class="container">
-  <div class ="row">
-    <div class="col-md-12">
-      poppppp
+  <div id="container">
+    <div class="top-bar">
+      top nav
     </div>
-  </div>
-</div>
+    <div class="small-12 columns medium-6 columns" id="left_column">
+      <div class="row" id="pop_up">pop up bar</div>
+      <div class="row" id="left_up">
 
-<div class="container">
-  <div class="row-fluid">
-    <div id='map' class="col-md-6"></div>
+          Address
+          $/mo
+          WalkScore
+          Crime Rate
+          Increase Estimate
+          More
+          <%= counter  = 0 %>
+        <div>You got <%= @sorted_results.count %> results! </div>
+        <% @sorted_results.each_pair do |key, value_hash| %>
 
-    <div id="poop" class="col-md-6">
-      <table class="table-condensed table-hover">
-        <tr>
-          <th>Address</th>
-          <th>$/mo</th>
-          <th>WalkScore</th>
-          <th>Crime Rate</th>
-          <th>Increase Estimate</th>
-          <th>More</th>
-        </tr>
-        You got <%= @sorted_results.count %> results!
+        <% if counter % 2 == 0 %>
+          <div class="row">
+            <%end%>
+        <div class="tile small-5 columns">
 
-        <% @sorted_results.each_value do |value_hash| %>
-        <tr class = "clickable_item" id = "<%= value_hash["address"].id %>", data="<%=value_hash["search_id"]%>">
-          <td><a href="<%= value_hash["address"].listing_url %>" target="_blank"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></td>
+          <%= key %>
+          <%= image_tag(value_hash["image_url"]) %>
 
-          <td> $<%= number_with_delimiter(value_hash["address"].price, :delimiter => ",") %>
-            <td> <%= value_hash["address"].walkscore %> </td>
-
-            <td> <%= value_hash["address"].crime_rate %> </td>
-
-
-            <td> $<%= number_with_delimiter(value_hash["address"].rental_average(@length_of_stay), :delimiter => ",") %> over <%= @length_of_stay %> years </td>
-
-            <td>
-              <%= modal title: 'More Info' do%>
-              <div class="modal-body">
-                <h3>Address: </h3><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %>
-                <h3>Price: </h3>
-                $<%= number_with_delimiter(value_hash["address"].price, :delimiter => ",") %>
-                <h3>Picture: </h3>
-                <img src="<%= value_hash["address"].image_url %>" >
-                <h3>Description: </h3>
-                <%= Address.get_description(value_hash["address"].listing_url) %>
-              </div>
-              <% end %>
-            </td>
-          </tr>
-            <tr>
-            </tr>
-          <% end %>
-
-          <table>
-                <canvas id="myChart" width="400" height="400"></canvas>
           </div>
 
-        </div>
+                <!-- <canvas id="myChart<%= value_hash["address"].id %>" width="400" height="400"></canvas> -->
 
+        <% if counter % 2 == 1 %>
+          </div>
+            <%end%>
+            <% counter += 1 %>
+          <% end %>
+      </div>
+    </div>
+    <div class="small-6 columns" id="right_column">
+      <div class="row" id="map"></div>
+      <div class="row" id="right_down">right_down</div>
+    </div>
+  </div>
+                <canvas id="myChart" width="400" height="400"></canvas>
 
+<script>
+  L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
+  var map = L.mapbox.map('map', 'mapbox.streets')
+  .setView([37.7570841,-122.45], 12);
 
-        <script>
-        L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
-        var map = L.mapbox.map('map', 'mapbox.streets')
-        .setView([37.7570841,-122.45], 12);
+  var myLayer = L.mapbox.featureLayer().addTo(map);
+  var geoJson = []
 
-        var myLayer = L.mapbox.featureLayer().addTo(map);
-        var geoJson = []
+  <% @long_lat_link.each do |longlatlink| %>
+  geoJson.push({
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
+    "properties": {
+      "icon": {
+        "className": "dot",
+        "iconSize": [600,100]
+      },
+      "url": "<%= longlatlink[1] %>",
+      "marker-symbol": "",
+      "marker-color": "#ff8888",
+      "marker-size": "medium",
+      "city": "Washington, D.C.",
+      "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
+    }
+  });
+  <% end %>
 
-        <% @long_lat_link.each do |longlatlink| %>
-        geoJson.push({
-          type: 'Feature',
-          "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
-          "properties": {
-            "icon": {
-              "className": "dot",
-              "iconSize": [600,100]
-            },
-            "url": "<%= longlatlink[1] %>",
-            "marker-symbol": "star",
-            "marker-color": "#ff8888",
-            "marker-size": "large",
-            "city": "Washington, D.C.",
-            "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
-          }
-        });
-        <% end %>
-
-        $(".leaflet-control-attribution").hover(function(){
-          $(this).fadeOut(1500);
-        })
 
 
 
@@ -111,35 +90,51 @@ myLayer.on('layeradd', function(e) {
     });
   });
 
+
+
+
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
 
-// $(".leaflet-marker-icon:gt(0)").hover(function(){
-//   $(this).fadeOut(1000)
-//   console.log("Hi:") + $(this).index
-// })
+$(".tile").click(function() {
+  var index = $(".tile").index(this)
+  console.log("Row Index: " + index)
+  var long_lat = (geoJson[index].geometry.coordinates)
+  console.log("Marker LatLong: " + long_lat)
+  // map.panTo(long_lat, 5)
+  map.setView(long_lat.reverse(), 14)
+  long_lat.reverse()
+});
+
 
 // Hovering mapbox marker hilights appropriate row on results table
 $(".leaflet-marker-icon").mouseover(function(){
-  var index = $(".leaflet-marker-icon").index(this) + 1
-  console.log(index)
-  // $("tbody tr:eq(" + index + ")").fadeOut(1500)
-  // $("tbody tr:eq(" + index + ")").fadeIn(1500)
-  $("tbody tr:eq(" + index + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
+  var index = $(".leaflet-marker-icon").index(this)
+  console.log("Marker Inex: " +  index)
+  $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
 }).mouseout(function() {
-  var index = $(".leaflet-marker-icon").index(this) + 1
-  $("tbody tr:eq(" + index + ")").css({ "background-color": "", "color": "" })
+  var index = $(".leaflet-marker-icon").index(this)
+  $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "", "color": "" })
+
 });
 
-$("tbody tr").mouseover(function(){
-  var index = ($("tbody tr").index(this) - 1)
-  console.log(index)
-  $(".leaflet-marker-icon:eq(" + index + ")").css("background-color", "red")
-}).mouseout(function() {
-  var index = ($("tbody tr").index(this) - 1)
-  $(".leaflet-marker-icon:eq(" + index + ")").css("background-color", "")
-});
+// Hovering on results row hilights mapbox marker
+$(".tile").mouseover(function(){
+  var index = $(".tile").index(this)
+  console.log("Row Index: " + index)
+  // console.log(geoJson[index]["properties"]["marker-symbol"])
+  console.log(geoJson[index].properties["marker-symbol"])
+  geoJson[index].properties["marker-symbol"] = "heart"
+  geoJson[index].properties["marker-size"] = "large"
+  myLayer.setGeoJSON(geoJson);
 
+  // geoJson[index].setIcon({"marker-symbol": "heart"})
+}).mouseout(function() {
+  var index = $(".tile").index(this)
+  geoJson[index].properties["marker-symbol"] = ""
+  geoJson[index].properties["marker-size"] = "medium"
+  myLayer.setGeoJSON(geoJson);
+});
 
 ///////////////////////////////////////////
 </script>
