@@ -14,6 +14,7 @@
           <th>Crime Rate</th>
           <th>Increase Estimate</th>
           <th>More</th>
+          <th>LONGLATLIG</th>
         </tr>
         You got <%= @sorted_results.count %> results!
 
@@ -43,36 +44,33 @@
     </div>
   </div>
 
-        <script>
-        L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
-        var map = L.mapbox.map('map', 'mapbox.streets')
-        .setView([37.7570841,-122.45], 12);
+<script>
+  L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
+  var map = L.mapbox.map('map', 'mapbox.streets')
+  .setView([37.7570841,-122.45], 12);
 
-        var myLayer = L.mapbox.featureLayer().addTo(map);
-        var geoJson = []
+  var myLayer = L.mapbox.featureLayer().addTo(map);
+  var geoJson = []
 
-        <% @long_lat_link.each do |longlatlink| %>
-        geoJson.push({
-          type: 'Feature',
-          "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
-          "properties": {
-            "icon": {
-              "className": "dot",
-              "iconSize": [600,100]
-            },
-            "url": "<%= longlatlink[1] %>",
-            "marker-symbol": "star",
-            "marker-color": "#ff8888",
-            "marker-size": "large",
-            "city": "Washington, D.C.",
-            "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
-          }
-        });
-        <% end %>
+  <% @long_lat_link.each do |longlatlink| %>
+  geoJson.push({
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
+    "properties": {
+      "icon": {
+        "className": "dot",
+        "iconSize": [600,100]
+      },
+      "url": "<%= longlatlink[1] %>",
+      "marker-symbol": "",
+      "marker-color": "#ff8888",
+      "marker-size": "medium",
+      "city": "Washington, D.C.",
+      "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
+    }
+  });
+  <% end %>
 
-        $(".leaflet-control-attribution").hover(function(){
-          $(this).fadeOut(1500);
-        })
 
 
 
@@ -94,35 +92,51 @@ myLayer.on('layeradd', function(e) {
     });
   });
 
+
+
+
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
 
-// $(".leaflet-marker-icon:gt(0)").hover(function(){
-//   $(this).fadeOut(1000)
-//   console.log("Hi:") + $(this).index
-// })
+$("tbody tr").click(function() {
+  var index = $("tbody tr").index(this)
+  console.log("Row Index: " + index)
+  var long_lat = (geoJson[index].geometry.coordinates)
+  console.log("Marker LatLong: " + long_lat)
+  // map.panTo(long_lat, 5)
+  map.setView(long_lat.reverse(), 14)
+  long_lat.reverse()
+});
+
 
 // Hovering mapbox marker hilights appropriate row on results table
 $(".leaflet-marker-icon").mouseover(function(){
-  var index = $(".leaflet-marker-icon").index(this) + 1
-  console.log(index)
-  // $("tbody tr:eq(" + index + ")").fadeOut(1500)
-  // $("tbody tr:eq(" + index + ")").fadeIn(1500)
-  $("tbody tr:eq(" + index + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
+  var index = $(".leaflet-marker-icon").index(this)
+  console.log("Marker Inex: " +  index)
+  $("tbody tr:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
 }).mouseout(function() {
-  var index = $(".leaflet-marker-icon").index(this) + 1
-  $("tbody tr:eq(" + index + ")").css({ "background-color": "", "color": "" })
+  var index = $(".leaflet-marker-icon").index(this)
+  $("tbody tr:eq(" + (index + 1) + ")").css({ "background-color": "", "color": "" })
+
 });
 
+// Hovering on results row hilights mapbox marker
 $("tbody tr").mouseover(function(){
-  var index = ($("tbody tr").index(this) - 1)
-  console.log(index)
-  $(".leaflet-marker-icon:eq(" + index + ")").css("background-color", "red")
-}).mouseout(function() {
-  var index = ($("tbody tr").index(this) - 1)
-  $(".leaflet-marker-icon:eq(" + index + ")").css("background-color", "")
-});
+  var index = $("tbody tr").index(this)
+  console.log("Row Index: " + index)
+  // console.log(geoJson[index]["properties"]["marker-symbol"])
+  console.log(geoJson[index].properties["marker-symbol"])
+  geoJson[index].properties["marker-symbol"] = "heart"
+  geoJson[index].properties["marker-size"] = "large"
+  myLayer.setGeoJSON(geoJson);
 
+  // geoJson[index].setIcon({"marker-symbol": "heart"})
+}).mouseout(function() {
+  var index = $("tbody tr").index(this)
+  geoJson[index].properties["marker-symbol"] = ""
+  geoJson[index].properties["marker-size"] = "medium"
+  myLayer.setGeoJSON(geoJson);
+});
 
 ///////////////////////////////////////////
 <% @sorted_results.each_value do |value_hash| %>
