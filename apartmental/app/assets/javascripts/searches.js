@@ -1,18 +1,13 @@
-$( document ).ready(function() {
-  // $(".search_form").on("submit", function(){
-  //   $(this).serialize();
-
-  // });
-
-  $(".tile").on("click", function(e){
-    e.preventDefault();
-    var id = $(this).attr("id")
-    var search_id = $(this).attr("data")
-    console.log(id)
+$(document).ready(function() {
+  if ($("#left_up").length > 0) {
+    var searchId = $("#left_up").data("search")
+    var addressId = $("#left_up").data("address")
     var myData = {
-      "address_id": id,
-      "search_id": search_id
+      "address_id": addressId,
+      "search_id": searchId,
+      "first_load": "true"
     }
+
     var info="";
     for(var prop in myData){
       if(info.length===0){
@@ -25,10 +20,11 @@ $( document ).ready(function() {
     $.ajax({
       url: "/charts",
       method: "GET",
-      data: info,
-      dataType: 'json'
+      dataType: 'json',
+      data: info
     })
     .done(function(msg){
+      console.log(msg)
       var ctx = $("#myChart").get(0).getContext("2d");
       var data = {
         labels: ["Rent", "Commute Time", "Crime Rate", "Walkscore"],
@@ -42,10 +38,10 @@ $( document ).ready(function() {
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(220,220,220,1)",
           data: [
-          parseFloat(msg[0].price_weight),
-          parseFloat(msg[0].commute_weight),
-          parseFloat(msg[0].crime_weight),
-          parseFloat(msg[0].walkscore_weight)
+            parseFloat(msg[0].price_weight),
+            parseFloat(msg[0].commute_weight),
+            parseFloat(msg[0].crime_weight),
+            parseFloat(msg[0].walkscore_weight)
           ]
         },
         {
@@ -57,10 +53,10 @@ $( document ).ready(function() {
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(151,187,205,1)",
           data: [
-          parseFloat(msg[0].pindex_price),
-          parseFloat(msg[0].pindex_commutescore),
-          parseFloat(msg[0].pindex_crimerate),
-          parseFloat(msg[0].pindex_walkscore)
+            parseFloat(msg[0].pindex_price),
+            parseFloat(msg[0].pindex_commutescore),
+            parseFloat(msg[0].pindex_crimerate),
+            parseFloat(msg[0].pindex_walkscore)
           ]
         }
         ]
@@ -72,20 +68,7 @@ $( document ).ready(function() {
     })
     .fail(function(error){
       console.log(error.responseText);
-    });
-
-    $.ajax({
-      url: "/charts/new",
-      method: "GET",
-      data: info,
-      dataType: 'json'
     })
-    .done(function(msg){
-      $("#description"+id).text(msg.description)
-    })
-    .fail(function(error){
-      console.log(error.responseText);
-    });
-});
+  }
 
 });
