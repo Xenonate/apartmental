@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
   // });
   
-  $(".leaflet-control-attribution").css('display', 'none');
+
   $(".tile").on("click", function(e){
     e.preventDefault();
     var id = $(this).attr("id")
