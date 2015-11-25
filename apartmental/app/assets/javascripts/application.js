@@ -14,27 +14,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require homepage
 //= require app
+//= require apmapbox
 //= require mapbox
 //= require foundation
 //= require_tree
 //= require searches
 
-
 $(document).foundation();
-$(document).on('ready', function(){
-  $('#options').hide()
-  $('#options-button').on('click', function(e){
-    e.preventDefault();
-    $('#options').toggle()
-  })
+
 
   $(document).on('click', ".research", function(event) {
     $("#search-again").toggle()
   })
   // console.log('Derek said to console log something right here')
   // console.log(document.querySelector('.options-open'))
-
-})
-
 
