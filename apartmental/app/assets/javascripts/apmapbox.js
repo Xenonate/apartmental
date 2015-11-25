@@ -61,6 +61,7 @@ $(document).ready(function() {
     // Hovering mapbox marker hilights appropriate row on results table
     $(".leaflet-marker-icon").mouseover(function(){
       var index = $(".leaflet-marker-icon").index(this)
+      console.log("hi")
       console.log("Marker Inex: " +  index)
       $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F"})
     }).mouseout(function() {
