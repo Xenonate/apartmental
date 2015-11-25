@@ -13,24 +13,13 @@
 //= require chart_configuration
 //= require jquery
 //= require jquery_ujs
-//= require foundation
 //= require turbolinks
+//= require app
 //= require mapbox
 //= require foundation
-//= require_tree .
+//= require_tree
+//= require searches
 
- // $(function() {
- //   $( "#slider" ).slider({
- //     min: 400,
- //     max: 2400,
- //     value: 1500,
- //     animate: "slow",
- //     orientation: "horizontal",
- //     slide: function(event, ui) {
- //       $("#price").val(ui.value);
- //     }
- //   });
- // });
 
 $(document).foundation();
 $(document).on('ready', function(){
@@ -42,4 +31,19 @@ $(document).on('ready', function(){
   // console.log('Derek said to console log something right here')
   // console.log(document.querySelector('.options-open'))
 
+  $('.tile').on('click', function(){
+    console.log('hello')
+    $('#left_column').flip();
+    $('.front').hide()
+      $('#left_column').on('flip:done', function(){
+        $('.front').show()
+      })
+  })
+
 })
+
+
+
+
+
+

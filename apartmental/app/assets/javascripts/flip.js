@@ -122,7 +122,7 @@
           $dom.data("front", settings.front);
           $dom.data("back", settings.back);
 
-          var rotateAxis = "rotate" + (settings.axis.toLowerCase() == "x" ? "x" : "y"), 
+          var rotateAxis = "rotate" + (settings.axis.toLowerCase() == "x" ? "x" : "y"),
               perspective = $dom["outer" + (rotateAxis == "rotatex" ? "Height" : "Width")]() * 2;
 
           $dom.find($dom.data("back")).css({
@@ -151,14 +151,14 @@
             transform: rotateAxis + "(" + (settings.reverse? "180deg" : "-180deg") + ")",
             "z-index": "0"
           });
-		  
+
 		  // Back face always visible on Chrome #39
           if ((window.chrome || (window.Intl && Intl.v8BreakIterator)) && 'CSS' in window){
             //Blink Engine, add preserve-3d to $dom
 			$dom.css({"-webkit-transform-style": "preserve-3d"});
           }
 		  // /#39
-		  
+
           // not forcing width/height may cause an initial flip to show up on
           // page load when we apply the style to reverse the backface...
           // To prevent this we first apply the basic styles and then give the
@@ -174,7 +174,7 @@
             }
           //While this used to work with a setTimeout of zero, at some point that became
           //unstable and the initial flip returned. The reason for this is unknown but we
-          //will temporarily use a short delay of 20 to mitigate this issue. 
+          //will temporarily use a short delay of 20 to mitigate this issue.
           }, 20);
 
           if (settings.trigger.toLowerCase() == "click") {

@@ -10,12 +10,12 @@
     <script src="http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
-    <script src="jquery.flip.js"></script>
 
     <link href="http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.css" rel="stylesheet" />
     <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
 
     <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "flip"%>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
