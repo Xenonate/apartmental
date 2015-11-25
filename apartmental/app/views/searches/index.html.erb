@@ -9,7 +9,7 @@
       </div>
         <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
           <%= render "search_bar" %>
-        </div>
+
 
         <div id="tile-wrapper">
           <% counter  = 0 %>
@@ -42,6 +42,7 @@
       </div>
     </div>
   </div>
+</div>
     <div class="small-6 columns" id="right_column">
       <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
       <div class="row" id="right_down">
