@@ -3,7 +3,8 @@ $( document ).ready(function() {
   //   $(this).serialize();
 
   // });
-
+  
+  $(".leaflet-control-attribution").css('display', 'none');
   $(".tile").on("click", function(e){
     e.preventDefault();
     var id = $(this).attr("id")

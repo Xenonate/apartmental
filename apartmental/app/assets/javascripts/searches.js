@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $(".leaflet-control-attribution").css("display","none")
+  
   if ($("#left_up").length > 0) {
     var searchId = $("#left_up").data("search")
     var addressId = $("#left_up").data("address")
