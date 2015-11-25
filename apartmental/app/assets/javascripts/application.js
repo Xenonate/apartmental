@@ -28,7 +28,13 @@ $(document).on('ready', function(){
     e.preventDefault();
     $('#options').toggle()
   })
+
+  $(document).on('click', ".research", function(event) {
+    $("#search-form").toggle()
+  })
   // console.log('Derek said to console log something right here')
   // console.log(document.querySelector('.options-open'))
 
 })
+
+
