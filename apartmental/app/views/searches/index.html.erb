@@ -6,11 +6,11 @@
 
       <div class="row" id="pop_up">
         <div class="search-partial">
-        <button class="research">Search for a new apartment!</button>
+          <button class="research">Search for a new apartment!</button>
         </div>
       </div>
       <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
-          <%= render "search_bar" %>
+        <%= render "search_bar" %>
 
         <div id="tile-wrapper">
           <% counter  = 0 %>
@@ -38,25 +38,25 @@
 
           <% counter += 1 %>
           <% end %>
+        <% if @sorted_results.count % 2 == 1 %>
+        </div>
+        <% end %>
 
         </div>
+
+        <div class="small-6 columns" id="right_column">
+          <div class="row" id="map"></div>
+          <div class="row" id="right_down">
+            <canvas id="myChart" width="400" height="100%"></canvas>
+          </div>
+        </div>
+
       </div>
 
-
-
-      <% if @sorted_results.count % 2 == 1 %>
     </div>
-    <% end %>
 
   </div>
 
-
-  <div class="small-6 columns" id="right_column">
-    <div class="row" id="map"></div>
-    <div class="row" id="right_down">
-      <canvas id="myChart" width="400" height="100%"></canvas>
-    </div>
-  </div>
 
   <script>
   L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
