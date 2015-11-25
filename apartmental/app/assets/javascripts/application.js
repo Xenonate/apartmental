@@ -25,3 +25,9 @@
 $(document).foundation();
 
 
+  $(document).on('click', ".research", function(event) {
+    $("#search-again").toggle()
+  })
+  // console.log('Derek said to console log something right here')
+  // console.log(document.querySelector('.options-open'))
+
