@@ -4,8 +4,13 @@
     </div>
     <div class="small-6 columns" id="left_column">
 
-      <div class="row" id="pop_up">pop up bar</div>
+      <div class="row" id="pop_up">
+        <div class="search-partial">
+          <button class="research">Search for a new apartment!</button>
+        </div>
+      </div>
       <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
+        <%= render "search_bar" %>
 
         <div id="tile-wrapper">
           <% counter  = 0 %>
@@ -23,36 +28,38 @@
               <div class="layer">
                 <img id="tile-image" src="<%= value_hash["address"].image_url %>"></img>
                 <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
-          <div id="description<%=value_hash["address"].id%>"></div>
+                <div id="description<%=value_hash["address"].id%>"></div>
               </div>
             </div>
 
-            <% if counter % 2 == 1 %>
+        <% if counter % 2 == 1 %>
           </div>
-          <%end%>
+        <%end%>
 
           <% counter += 1 %>
           <% end %>
-
+        <% if @sorted_results.count % 2 == 1 %>
         </div>
+        <% end %>
+
       </div>
 
+        </div>
 
 
-      <% if @sorted_results.count % 2 == 1 %>
+
+      </div>
+
+    <div class="small-6 columns" id="right_column">
+      <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
+      <div class="row" id="right_down">
+        <canvas id="myChart" width="400" height="100%"></canvas>
+
+      </div>
     </div>
-    <% end %>
-
-  </div>
 
 
-  <div class="small-6 columns" id="right_column">
-    <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
-    <div class="row" id="right_down">
-      <canvas id="myChart" width="400" height="100%"></canvas>
-    </div>
-  </div>
+</div>
 
-  <script>
 
-</script>
+
