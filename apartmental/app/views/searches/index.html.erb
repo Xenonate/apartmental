@@ -57,10 +57,8 @@
   L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
   var map = L.mapbox.map('map', 'mapbox.streets')
   .setView([37.7570841,-122.45], 12);
-
   var myLayer = L.mapbox.featureLayer().addTo(map);
   var geoJson = []
-
   <% @long_lat_link.each do |longlatlink| %>
   geoJson.push({
     type: 'Feature',
@@ -79,29 +77,23 @@
     }
   });
   <% end %>
-
-
 // Add custom popups to each using our custom feature properties
 myLayer.on('layeradd', function(e) {
   var marker = e.layer,
   feature = marker.feature;
-
     // Create custom popup content
     var popupContent =  '<a target="_blank" class="popup" href="' + feature.properties.url + '">' +
     '<img src="' + feature.properties.image + '" />' +
     feature.properties.city +
     '</a>';
-
     // http://leafletjs.com/reference.html#popup
     marker.bindPopup(popupContent,{
       closeButton: false,
       minWidth: 320
     });
   });
-
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
-
 $(".tile").click(function() {
   var index = $(".tile").index(this)
   console.log("Row Index: " + index)
@@ -111,8 +103,6 @@ $(".tile").click(function() {
   map.setView(long_lat.reverse(), 14)
   long_lat.reverse()
 });
-
-
 // Hovering mapbox marker hilights appropriate row on results table
 $(".leaflet-marker-icon").mouseover(function(){
   var index = $(".leaflet-marker-icon").index(this)
@@ -121,9 +111,7 @@ $(".leaflet-marker-icon").mouseover(function(){
 }).mouseout(function() {
   var index = $(".leaflet-marker-icon").index(this)
   $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "", "color": "" })
-
 });
-
 // Hovering on results row hilights mapbox marker
 $(".tile").mouseover(function(){
   var index = $(".tile").index(this)
@@ -133,7 +121,6 @@ $(".tile").mouseover(function(){
   geoJson[index].properties["marker-symbol"] = "heart"
   geoJson[index].properties["marker-size"] = "large"
   myLayer.setGeoJSON(geoJson);
-
 }).mouseout(function() {
   var index = $(".tile").index(this)
   geoJson[index].properties["marker-symbol"] = ""
@@ -141,8 +128,3 @@ $(".tile").mouseover(function(){
   myLayer.setGeoJSON(geoJson);
 });
 </script>
-
-
-
-
-
