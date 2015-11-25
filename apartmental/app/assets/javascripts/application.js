@@ -14,36 +14,29 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require homepage
 //= require app
+//= require apmapbox
 //= require mapbox
 //= require foundation
 //= require_tree
 //= require searches
 
-
 $(document).foundation();
-$(document).on('ready', function(){
-  $('#options').hide()
-  $('#options-button').on('click', function(e){
-    e.preventDefault();
-    $('#options').toggle()
-  })
-  // console.log('Derek said to console log something right here')
-  // console.log(document.querySelector('.options-open'))
 
+$(document).on('ready', function(){
+  $('.research').on('click', function(){
+    $("#search-again").toggle()
+  })
   $('.tile').on('click', function(){
     console.log('hello')
     $('#left_column').flip();
     $('.front').hide()
-      $('#left_column').on('flip:done', function(){
-        $('.front').show()
-      })
+    $('#left_column').on('flip:done', function(){
+      $('.front').show()
+    })
   })
-
 })
 
-
-
-
-
-
+  // console.log('Derek said to console log something right here')
+  // console.log(document.querySelector('.options-open'))

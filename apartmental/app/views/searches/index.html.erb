@@ -1,148 +1,54 @@
-  <div id="container">
-    <div class="top-bar">
-
-    </div>
+<div id="container">
+  <div class="top-bar"></div>
     <div class="small-6 columns" id="left_column">
       <div class='front'>
-      <div class="row" id="pop_up">pop up bar</div>
-      <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
+      <div class="row" id="pop_up">
+        <div class="search-partial">
+          <button class="research">Search for a new apartment!</button>
+        </div>
+      </div>
+        <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
+          <%= render "search_bar" %>
+        </div>
 
         <div id="tile-wrapper">
           <% counter  = 0 %>
           <div>You got <%= @sorted_results.count %> results! </div>
-
           <% @sorted_results.each_pair do |key, value_hash| %>
-
           <% if counter % 2 == 0 %>
           <div class="row">
-
             <%end%>
+            <div id="front">
             <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
               <!-- <%= key %> -->
               <div class='tile-score'><%= key.round(2) %></div>
               <div class="layer">
                 <img id="tile-image" src="<%= value_hash["address"].image_url %>"></img>
                 <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
-          <div id="description<%=value_hash["address"].id%>"></div>
+                <div id="description<%=value_hash["address"].id%>"></div>
               </div>
             </div>
-
-            <% if counter % 2 == 1 %>
           </div>
-          <%end%>
+        <% if counter % 2 == 1 %>
+          </div>
+        <%end%>
           <% counter += 1 %>
           <% end %>
-
         </div>
       </div>
-      <% if @sorted_results.count % 2 == 1 %>
-    </div>
-    <% end %>
-  </div>
-  <div class='back'>
-    <div id='back-container'>
-      <button id='flip-back'></button>
+    <div class='back'>
+      <div id='back-container'>
+        <button id='flip-back'></button>
+      </div>
     </div>
   </div>
+    <div class="small-6 columns" id="right_column">
+      <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
+      <div class="row" id="right_down">
+        <canvas id="myChart" width="400" height="100%"></canvas>
+      </div>
+    </div>
 </div>
-
-  <div class="small-6 columns" id="right_column">
-    <div class="row" id="map"></div>
-    <div class="row" id="right_down">
-      <canvas id="myChart" width="400" height="100%"></canvas>
-    </div>
-  </div>
-
-  <script>
-  L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
-  var map = L.mapbox.map('map', 'mapbox.streets')
-  .setView([37.7570841,-122.45], 12);
-
-  var myLayer = L.mapbox.featureLayer().addTo(map);
-  var geoJson = []
-
-  <% @long_lat_link.each do |longlatlink| %>
-  geoJson.push({
-    type: 'Feature',
-    "geometry": { "type": "Point", "coordinates": <%= longlatlink[0] %>},
-    "properties": {
-      "icon": {
-        "className": "dot",
-        "iconSize": [600,100]
-      },
-      "url": "<%= longlatlink[1] %>",
-      "marker-symbol": "",
-      "marker-color": "#ff8888",
-      "marker-size": "medium",
-      "city": "Washington, D.C.",
-      "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/035/2e3/1c67744.jpg"
-    }
-  });
-  <% end %>
-
-
-// Add custom popups to each using our custom feature properties
-myLayer.on('layeradd', function(e) {
-  var marker = e.layer,
-  feature = marker.feature;
-
-    // Create custom popup content
-    var popupContent =  '<a target="_blank" class="popup" href="' + feature.properties.url + '">' +
-    '<img src="' + feature.properties.image + '" />' +
-    feature.properties.city +
-    '</a>';
-
-    // http://leafletjs.com/reference.html#popup
-    marker.bindPopup(popupContent,{
-      closeButton: false,
-      minWidth: 320
-    });
-  });
-
-// Add features to the map
-myLayer.setGeoJSON(geoJson);
-
-$(".tile").click(function() {
-  var index = $(".tile").index(this)
-  console.log("Row Index: " + index)
-  var long_lat = (geoJson[index].geometry.coordinates)
-  console.log("Marker LatLong: " + long_lat)
-  // map.panTo(long_lat, 5)
-  map.setView(long_lat.reverse(), 14)
-  long_lat.reverse()
-});
-
-
-// Hovering mapbox marker hilights appropriate row on results table
-$(".leaflet-marker-icon").mouseover(function(){
-  var index = $(".leaflet-marker-icon").index(this)
-  console.log("Marker Inex: " +  index)
-  $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
-}).mouseout(function() {
-  var index = $(".leaflet-marker-icon").index(this)
-  $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "", "color": "" })
-
-});
-
-// Hovering on results row hilights mapbox marker
-$(".tile").mouseover(function(){
-  var index = $(".tile").index(this)
-  // console.log(geoJson[index]["properties"]["marker-symbol"])
-  // $(".leaflet-marker-icon:eq(" + index + ")").css("z-index", 500)
-  // console.log(poo)
-  geoJson[index].properties["marker-symbol"] = "heart"
-  geoJson[index].properties["marker-size"] = "large"
-  myLayer.setGeoJSON(geoJson);
-
-}).mouseout(function() {
-  var index = $(".tile").index(this)
-  geoJson[index].properties["marker-symbol"] = ""
-  geoJson[index].properties["marker-size"] = "medium"
-  myLayer.setGeoJSON(geoJson);
-});
-</script>
-
-
 
 
 
