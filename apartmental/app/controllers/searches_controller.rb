@@ -1,6 +1,9 @@
 class SearchesController < ActionController::Base
 
   def create
+    p '*' * 50
+    ap search_params
+    p '*' * 50
     @addresses = Address.where(city: search_params[:search_city], bedrooms: search_params[:search_bedroom]).where('price > ?', search_params[:search_min_price]).where('price < ?', search_params[:search_max_price])
 
     @search= Search.create
@@ -45,12 +48,6 @@ class SearchesController < ActionController::Base
       @crime_weight = search_params[:crime_weight].to_f
 
       @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
-
-
-
-
-
-
 
       case @crime_rate
       when "A"
