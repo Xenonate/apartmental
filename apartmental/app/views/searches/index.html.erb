@@ -9,8 +9,6 @@
       </div>
         <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
           <%= render "search_bar" %>
-
-
         <div id="tile-wrapper">
           <% counter  = 0 %>
           <div>You got <%= @sorted_results.count %> results! </div>
@@ -35,8 +33,7 @@
           <% counter += 1 %>
           <% end %>
         </div>
-      </div>
-    <div class='back'>
+            <div class='back'>
       <div id='back-container'>
         <button id='flip-back'></button>
         <% @sorted_results.each_pair do |key, value_hash| %>
@@ -44,6 +41,8 @@
         <% end %>
       </div>
     </div>
+      </div>
+
   </div>
 </div>
     <div class="small-6 columns" id="right_column">
