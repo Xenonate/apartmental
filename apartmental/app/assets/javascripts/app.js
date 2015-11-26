@@ -86,6 +86,21 @@ $( document ).ready(function() {
     .fail(function(error){
       console.log(error.responseText);
     });
+
 });
+
+   $(".tile").mouseover(function(){
+    console.log($(this).attr('id'))
+    var image = ".tile-image" + $(this).attr('id')
+    var score = ".tile-score" + $(this).attr('id')
+    $(image).css("opacity", "100")
+    $(score).hide()
+   }).mouseout(function(){
+    console.log($(this).attr('id'))
+    var image = ".tile-image" + $(this).attr('id')
+    var score = ".tile-score" + $(this).attr('id')
+    $(image).css("opacity", "0.1")
+    $(score).show()
+   })
 
 });

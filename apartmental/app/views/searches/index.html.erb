@@ -21,9 +21,9 @@
             <div id="front">
             <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
               <!-- <%= key %> -->
-              <div class='tile-score'><%= key.round(2) %></div>
+              <div class='tile-score tile-score<%=value_hash["address"].id%>'><%= key.round(2) %></div>
               <div class="layer">
-                <img id="tile-image" src="<%= value_hash["address"].image_url %>"></img>
+                <img id="tile-image" class="tile-image<%=value_hash["address"].id%>" src="<%= value_hash["address"].image_url %>"></img>
                 <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
                 <div id="description<%=value_hash["address"].id%>"></div>
               </div>
