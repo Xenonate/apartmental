@@ -32,6 +32,9 @@
         <%end%>
           <% counter += 1 %>
           <% end %>
+      <% if @sorted_results.count % 2 == 1 %>
+        </div>
+      <% end %>
         </div>
             <div class='back'>
       <div id='back-container'>
