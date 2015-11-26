@@ -1,4 +1,5 @@
 <div id="container-search">
+
   <div class="top-bar">
     <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
@@ -22,7 +23,6 @@
       </li>
     </ul>
 
-    <!-- Left Nav Section -->
     <ul class="left">
       <li><a href="#">Left Nav Button</a></li>
     </ul>
@@ -31,6 +31,7 @@
   </div>
   <div class="small-6 columns" id="left_column">
     <div class='front'>
+
       <div class="row" id="pop_up">
         <div class="search-partial">
           <button class="research">Search for a new apartment!</button>
@@ -38,8 +39,6 @@
       </div>
       <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
         <%= render "search_bar" %>
-
-
         <div id="tile-wrapper">
           <% counter  = 0 %>
           <div>You got <%= @sorted_results.count %> results! </div>
@@ -68,16 +67,16 @@
         <% end %>
       </div>
     </div>
-    <div class='back'>
+  </div>
+  <div class='back'>
       <div id='back-container'>
         <button id='flip-back'></button>
         <% @sorted_results.each_pair do |key, value_hash| %>
+        <h1><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></h1>
         <div class="description" id="description<%=value_hash["address"].id%>"></div>
         <% end %>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
   <div class="small-6 columns" id="right_column">
   <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>

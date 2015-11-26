@@ -1,94 +1,86 @@
-<div id="outer-container">
-  <div id="inner-container">
-    <div id='video-container'>
-      <video id="hero" preload="auto" autoplay="true" loop="loop">
-        <!-- <source src="http://sfvideo.com/shutterstock_v1149793.mp4" type="video/mp4"> -->
-        <source src="https://05-lvl3-pdl.vimeocdn.com/01/2151/4/110755925/303525571.mp4?expires=1448519115&token=03325802ea54d31fe1dba" type="video/mp4">
-        </video>
+
+<div id='video-container'>
+  <video id="hero" preload="auto" autoplay="true" loop="loop">
+    <source src="https://05-lvl3-pdl.vimeocdn.com/01/2151/4/110755925/303525571.mp4?expires=1448529781&token=09d1e30964fb4c1072163" type="video/mp4">
+  </video>
+  <h1 id="title">APARTMENTAL</h1>
+  <h2>BECAUSE WE'RE CRAZY ABOUT APARTMENTS</h2>
+  <div id='search'></div>
+  <form id='search-form' class="form-inline" name="search" action="/searches" method="post" style="inline">
+      <div id="options">
+        <span>
+        <label>Address</label>
+          <input type="text" name="search[search_address]" placeholder="Where do you work?" class: "form-control">
+        </span>
+        <span>
+        <label>Mode</label>
+        <select name="search[search_mode]" class: "form-control">
+          <option value="transit">Public transit</option>
+          <option value="bike">Bike</option>
+          <option value="drive">Drive</option>
+          <option value="walk">Walk</option>
+        </select>
+        </span>
+        <span>
+        <label>Travel time</label>
+        <input type="text" name="search[search_min_time]" placeholder="min" class: "form-control" >
+        </span>
+        <span>
+        <input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" >
+        </span>
+        <br>
+        <span>
+        <label>How much do you care about price?:</label>
+        <input type="range" class: "form-control" name="search[price_weight]" id="points" value="3" min="1" max="5">
+        </span>
+        <span>
+        <label>How much do you care about commute?:</label>
+        <input type="range" class: "form-control" name="search[commute_weight]" id="points" value="3" min="1" max="5">
+        </span>
+        <span>
+        <label>How much do you care about crime?:</label>
+        <input type="range" class: "form-control" name="search[crime_weight]" id="points" value="3" min="1" max="5">
+        </span>
+        <span>
+        <label>How much do you care about walkscore?:</label>
+        <input type="range" class: "form-control" name="search[walkscore_weight]" id="points" value="3" min="1" max="5">
+      </span>
       </div>
-
-      <h1 id="title">APARTMENTAL</h1>
-      <h2>BECAUSE WE'RE CRAZY ABOUT APARTMENTS</h2>
-      <div class="switch">
-        <input id="exampleCheckboxSwitch" type="checkbox">
-        <label for="exampleCheckboxSwitch"></label>
-      </div> 
-      <div class="range-slider" data-slider data-options="step: 20;">
-        <span class="range-slider-handle" role="slider" tabindex="0"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
-      </div>
-
-
-      <div id='search'></div>
-
-
-
-      <form id='search-form' class="form-inline" name="search" action="/searches" method="post" style="inline">
-        <div class='row'>
-          <div class='large-3 columns'>
-            <input id="input-first" name="search[search_city]" class="form-control" type="text" placeholder="Which city would you like to live?"></input>
-          </div>
-          <div class='large-2 columns'>
-            <input type="text" name="search[search_min_price]" placeholder="min" class: "form-control" required>
-          </div>
-          <div class='large-2 columns'>
-            <input id="input-second" class="form-control" type="text" name="search[search_max_price]" placeholder="Price" class: "form-control" required></input>
-          </div>
-
-          <!-- <label>Bedroom</label> -->
-          <div class="row">
-            <div class='large-2 columns'>
-              <select name="search[search_bedroom]" class="form-control">
-                <option value="Studio">Studio</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5+</option>
-              </select>
-            </div>
-            <!-- <label>Length of stay</label> -->
-            <div class='large-2 columns'>
-              <select name="search[search_period]" class="form-control">
-                <option value="1">1 year</option>
-                <option value="2">2 years</option>
-                <option value="3">3 years</option>
-                <option value="4">4 years</option>
-                <option value="5">5+ years</option>
-              </select>
-            </div>
-
-            <button id='options-button'>Options</button>
-            <div id="options">
-              <label>Address</label>
-              <input type="text" name="search[search_address]" placeholder="Where do you work?" class: "form-control"><br>
-              <label>Mode</label>
-              <select name="search[search_mode]" class: "form-control">
-                <option value="transit">Public transit</option>
-                <option value="bike">Bike</option>
-                <option value="drive">Drive</option>
-                <option value="walk">Walk</option>
-              </select>
-              <label>Travel time</label>
-              <br>
-              <input type="text" name="search[search_min_time]" placeholder="min" class: "form-control" >
-              <input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" ><br>
-              <label>How much do you care about price?:</label>
-              <input type="range" class: "form-control" name="search[price_weight]" id="points" value="3" min="1" max="5">
-              <label>How much do you care about commute?:</label>
-              <input type="range" class: "form-control" name="search[commute_weight]" id="points" value="3" min="1" max="5">
-              <label>How much do you care about crime?:</label>
-              <input type="range" class: "form-control" name="search[crime_weight]" id="points" value="3" min="1" max="5">
-              <label>How much do you care about walkscore?:</label>
-              <input type="range" class: "form-control" name="search[walkscore_weight]" id="points" value="3" min="1" max="5">
-            </div>
-            <input class='btn submit-btn' type="submit" value="Submit">
-          </form>
-        </div>
-      </div>
-
-
-
+      <button id='options-button'>Options</button>
+    <div class='row'>
+        <span>
+        <input id="input-first" name="search[search_city]" class="form-control" type="text" placeholder="Which city would you like to live?"></input>
+        </span>
+        <span>
+      <span class="input-group-label">$</span>
+      <input type="text" name="search[search_min_price]" placeholder="min" class="form-control small" required>
+      </span>
+      <span>
+      <input id="input-second" class="form-control small" type="text" name="search[search_max_price]" placeholder="Price" class: "form-control" required></input>
+      </span>
+      <span>
+        <select name="search[search_bedroom]" class="form-control small">
+          <option value="Studio">Studio</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5+</option>
+        </select>
+      </span>
+      <!-- <label>Length of stay</label> -->
+      <span>
+          <select name="search[search_period]" class="form-control small">
+            <option value="1">1 year</option>
+            <option value="2">2 years</option>
+            <option value="3">3 years</option>
+            <option value="4">4 years</option>
+            <option value="5">5+ years</option>
+          </select>
+      </span>
+      <span>
+       <input class='small button' type="submit" value="Submit">
+      </span>
     </div>
-
+  </form>
+</div>
