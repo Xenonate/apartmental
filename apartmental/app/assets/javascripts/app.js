@@ -3,6 +3,7 @@ $( document ).ready(function() {
   //   $(this).serialize();
 
   // });
+  
 
   $(".tile").on("click", function(e){
     e.preventDefault();
