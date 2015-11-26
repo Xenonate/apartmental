@@ -32,17 +32,19 @@
       <% if @sorted_results.count % 2 == 1 %>
         </div>
       <% end %>
-        </div>
+       </div>
+      </div>
       </div>
       <div class='back'>
         <div id='back-container'>
           <button id='flip-back'></button>
             <% @sorted_results.each_pair do |key, value_hash| %>
+              <h2><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %></h2>
               <div class="description" id="description<%=value_hash["address"].id%>"></div>
             <% end %>
         </div>
       </div>
-    </div>
+
 
 </div>
     <div class="small-6 columns" id="right_column">
