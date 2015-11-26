@@ -31,7 +31,7 @@ Chart.defaults.global = {
     scaleStartValue: null,
 
     // String - Colour of the scale line
-    scaleLineColor: "rgba(0,0,0,.1)",
+    scaleLineColor: "rgba(227,111,103,.1)",
 
     // Number - Pixel width of the scale line
     scaleLineWidth: 1,
@@ -52,7 +52,7 @@ Chart.defaults.global = {
     scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 
     // Number - Scale label font size in pixels
-    scaleFontSize: 12,
+    scaleFontSize: 36,
 
     // String - Scale label font weight style
     scaleFontStyle: "normal",
@@ -76,13 +76,13 @@ Chart.defaults.global = {
     tooltipEvents: ["mousemove", "touchstart", "touchmove"],
 
     // String - Tooltip background colour
-    tooltipFillColor: "rgba(0,0,0,0.8)",
+    tooltipFillColor: "rgba(255,255,255,0.8)",
 
     // String - Tooltip label font declaration for the scale label
     tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 
     // Number - Tooltip label font size in pixels
-    tooltipFontSize: 14,
+    tooltipFontSize: 36,
 
     // String - Tooltip font weight style
     tooltipFontStyle: "normal",
@@ -94,7 +94,7 @@ Chart.defaults.global = {
     tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 
     // Number - Tooltip title font size in pixels
-    tooltipTitleFontSize: 14,
+    tooltipTitleFontSize: 36,
 
     // String - Tooltip title font weight style
     tooltipTitleFontStyle: "bold",

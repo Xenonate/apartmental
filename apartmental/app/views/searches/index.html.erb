@@ -34,7 +34,6 @@
       <% end %>
         </div>
       </div>
-    </div>
       <div class='back'>
         <div id='back-container'>
           <button id='flip-back'></button>
@@ -43,11 +42,21 @@
             <% end %>
         </div>
       </div>
+    </div>
+
 </div>
     <div class="small-6 columns" id="right_column">
       <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
       <div class="row" id="right_down">
+        <div class="chart-description">
+          Key: <BR>
+          R = Rent <BR>
+          WS = Walk Score <BR>
+          CR = Crime Rating <BR>
+          CT = Commute Time <BR>
+        </div>
         <canvas id="myChart" width="400" height="100%"></canvas>
+        after chart
       </div>
     </div>
 </div>

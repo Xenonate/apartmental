@@ -61,8 +61,9 @@ $(document).ready(function() {
     // Hovering mapbox marker hilights appropriate row on results table
     $(".leaflet-marker-icon").mouseover(function(){
       var index = $(".leaflet-marker-icon").index(this)
+      console.log("hi")
       console.log("Marker Inex: " +  index)
-      $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F" })
+      $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F"})
     }).mouseout(function() {
       var index = $(".leaflet-marker-icon").index(this)
       $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "", "color": "" })
@@ -76,6 +77,7 @@ $(document).ready(function() {
       geoJson[index].properties["marker-symbol"] = "heart"
       geoJson[index].properties["marker-size"] = "large"
       myLayer.setGeoJSON(geoJson);
+      $(".leaflet-marker-icon:eq(" + index + ")").css("z-index", 999);
     }).mouseout(function() {
       var index = $(".tile").index(this)
       geoJson[index].properties["marker-symbol"] = ""

@@ -1,5 +1,6 @@
 @import "foundation_and_overrides"
 @import url(https://fonts.googleapis.com/css?family=Pacifico)
+@import "foundation/components/tabs"
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -15,8 +16,7 @@
  *
  *= require my_css.scss
  *= require_self
- //= require foundation_and_overrides
-
+ *= require foundation_and_overrides
  *= require foundation
  *= require mapbox
  *= require_tree .
@@ -40,14 +40,27 @@
 
 #hero
   width: 100%
-  height: 100%
   position: relative
-  top: -300px
 
 .table-hover > tbody > tr:hover >
   td, th
     background-color: #2A363B
     color: #E84A5F
+
+#video-container
+  display: block
+  position: relative
+  overflow: hidden
+  height: 100%
+
+.small
+  width: 100% !important
+
+form span
+  display: inline-block
+
+
+
 
 #search
   position: absolute
@@ -56,20 +69,23 @@
   height: 10%
   padding-top: 6%
   color: white
-  bottom: 340px
+  bottom: 10%
   opacity: 0.7
 
 #search-form
+  bottom: 10%
+  position: absolute
   margin: 0 auto
-  width: 600px
-  bottom: 380px
-  position: relative
+
+#search-form input[type=text]
+  font-size: 24px
 
 #input-first
   border-radius: 6px 0 0 6px
 
 #input-second
   border-radius: 0 0 0 0
+  width: 10%
 
 #select-first
   border-radius: 0 0 0 0
@@ -106,12 +122,25 @@ h2
 
 #right_down
   height: 30vh
-  background-color: white
   margin-left: 1%
   margin-top: 1%
   border: 2px solid black
+  background-color: #fff
 
 
+#options
+  background-color: white
+  width: 100%
+  left: 25%
+  margin-left: 10%
+  padding: 5px
+  border-radius: 5px 5px 5px 5px
+
+
+
+
+#options span
+  display: inline-block
 
 #pop_up
   height: 5%
@@ -125,9 +154,8 @@ h2
   padding-right: 0px
   height: 95%
   overflow: scroll
-  background-color: white
-
-
+  overflow: auto
+  background-color: #fff
 
 #left_up
   height: 90vh
@@ -188,5 +216,15 @@ h2
 #back-container
   height: 100vh
 
-#left-
+#myChart
+  color: #E36F67
+  margin-left: -28%
+  margin-top: -15%
+
+
+.chart-description
+  float: right
+  margin-right: 30%
+  margin-top: 5%
+
 

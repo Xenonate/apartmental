@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $(".leaflet-control-attribution").css("display","none")
+
   if ($("#left_up").length > 0) {
     var searchId = $("#left_up").data("search")
     var addressId = $("#left_up").data("address")
@@ -27,42 +29,42 @@ $(document).ready(function() {
       console.log(msg)
       var ctx = $("#myChart").get(0).getContext("2d");
       var data = {
-        labels: ["Rent", "Commute Time", "Crime Rate", "Walkscore"],
+        labels: ["R", "CT", "CR", "WS"],
         datasets: [
         {
           label: "perfect weight",
-          fillColor: "rgba(220,220,220,0.2)",
+          fillColor: "rgba(44,62,80,0.2)",
           strokeColor: "rgba(220,220,220,1)",
           pointColor: "rgba(220,220,220,1)",
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(220,220,220,1)",
           data: [
-            parseFloat(msg[0].price_weight),
-            parseFloat(msg[0].commute_weight),
-            parseFloat(msg[0].crime_weight),
-            parseFloat(msg[0].walkscore_weight)
+            parseFloat(msg[0].price_weight).toFixed(2),
+            parseFloat(msg[0].commute_weight).toFixed(2),
+            parseFloat(msg[0].crime_weight).toFixed(2),
+            parseFloat(msg[0].walkscore_weight).toFixed(2)
           ]
         },
         {
           label: "actual weight",
-          fillColor: "rgba(151,187,205,0.2)",
+          fillColor: "rgba(227,111,103,0.6)",
           strokeColor: "rgba(151,187,205,1)",
           pointColor: "rgba(151,187,205,1)",
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(151,187,205,1)",
           data: [
-            parseFloat(msg[0].pindex_price),
-            parseFloat(msg[0].pindex_commutescore),
-            parseFloat(msg[0].pindex_crimerate),
-            parseFloat(msg[0].pindex_walkscore)
+            parseFloat(msg[0].pindex_price).toFixed(2),
+            parseFloat(msg[0].pindex_commutescore).toFixed(2),
+            parseFloat(msg[0].pindex_crimerate).toFixed(2),
+            parseFloat(msg[0].pindex_walkscore).toFixed(2)
           ]
         }
         ]
       };
 
-      var myRadarChart = new Chart(ctx).Radar(data);
+      var myRadarChart = new Chart(ctx).Radar(data,{ pointDot: false, pointLabelFontSize: 18});
       console.log(myRadarChart)
       $("#myChart").append(myRadarChart)
     })
