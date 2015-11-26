@@ -1,7 +1,6 @@
 @import "foundation_and_overrides"
 @import url(https://fonts.googleapis.com/css?family=Pacifico)
 @import "foundation/components/tabs"
-
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -16,8 +15,8 @@
  *
  *= require my_css.scss
  *= require_self
- *= require foundation_and_overrides
- *= require foundation
+ //= require foundation_and_overrides
+/*= require foundation
  *= require mapbox
  *= require_tree .
  */
@@ -227,4 +226,9 @@ h2
   margin-right: 30%
   margin-top: 5%
 
+#whole-form
+  padding: 2% 15% 2% 15%
 
+.large-6
+  padding-right: 0px
+  padding-left: 0px

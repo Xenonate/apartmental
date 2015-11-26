@@ -24,7 +24,7 @@ class ChartsController < ActionController::Base
     if request.xhr?
       @address=Address.find(params[:address_id])
       @description = Address.get_description(@address.listing_url)
-      a = {"description" => @description}
+      a = {"description" => @description,}
       respond_to do |format|
         # format.html #new.html.erb
         format.json { render json: a}
