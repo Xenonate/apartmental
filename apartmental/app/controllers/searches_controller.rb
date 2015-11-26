@@ -7,8 +7,7 @@ class SearchesController < ActionController::Base
     @search_max_price = search_params[:search_max_price].include?(".") ? search_params[:search_max_price][0...-3] : search_params[:search_max_price]
     @search_min_price = search_params[:search_min_price].include?(".") ? search_params[:search_min_price][0...-3] : search_params[:search_min_price]
 
-    @addresses = Address.where(city: search_params[:search_city], bedrooms: search_params[:search_bedroom]).where('price > ?', @search_min_price).where('price < ?', @search_max_price)
-
+    ap @addresses = Address.where(city: search_params[:search_city], bedrooms: search_params[:search_bedroom]).where('price > ?', @search_min_price).where('price < ?', @search_max_price)
     @search= Search.create
 
     @long_lat_link = []
@@ -21,6 +20,8 @@ class SearchesController < ActionController::Base
 # /////////////////////////////////////////////////////////////////////////////
     @sorted_results = {}
     @addresses.each do |address|
+      p "printing attributes"
+      p "*" * 50
       @average_price = address.rental_average(@length_of_stay)
       @crime_rate = address.crime_rate
 
@@ -65,6 +66,7 @@ class SearchesController < ActionController::Base
         @pindex = @pindex * 4 / 3
       end
 
+
       @price_weight = (search_params[:price_weight].to_f / @total_weight.to_f) * 100
       @commute_weight = (search_params[:commute_weight].to_f / @total_weight.to_f) * 100
       @walkscore_weight = (search_params[:walkscore_weight].to_f / @total_weight.to_f) * 100
@@ -72,13 +74,31 @@ class SearchesController < ActionController::Base
 
       SearchResult.create(search_id: @search.id, address_id: address.id, pindex:@pindex, pindex_price: @pindex_price, pindex_walkscore: @pindex_walkscore, pindex_commutescore: @pindex_commutescore, pindex_crimerate: @pindex_crimerate, price_weight: @price_weight, commute_weight: @commute_weight, walkscore_weight: @walkscore_weight, crime_weight:@crime_weight)
 
+      if @sorted_results[@pindex]
+        @pindex = @pindex + 0.00001
+      end
       @sorted_results[@pindex] = {
         "address" => address,
         "search_id" => @search.id
       }
 
+      p "import address"
+      p "*" * 50
+      ap address.id
+
+      p "Sorted results count"
+      p "*" * 50
+      p @sorted_results.count
+
+      p "pindex"
+      p "*" * 50
+      p @pindex
+
     end
 
+    p "Sorted results"
+    p "*" * 50
+    ap @sorted_results
     @sorted_results = Hash[@sorted_results.sort.reverse]
 
     render 'searches/index', layout: 'layouts/application'
