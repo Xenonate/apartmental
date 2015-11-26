@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   if ($("#map").length > 0) {
     L.mapbox.accessToken = 'pk.eyJ1IjoicmljZWI1MyIsImEiOiJjaWg2aHRxcXAwYzYxdWpseHUwemloZ3gyIn0.wmQAtxnSiqgcwz1-66cypQ';
     var map = L.mapbox.map('map', 'mapbox.streets')
@@ -47,6 +48,16 @@ $(document).ready(function() {
       console.log(error.responseText);
     })
 
+    //Search Form Stuff
+    $(".range-slider-handle:eq(1)").mousemove(function() {
+      $(".max-price-js").val($(".range-slider-handle:eq(1)").attr("aria-valuenow"))
+    });
+
+    $(".range-slider-handle:eq(0)").mousemove(function() {
+      $(".min-price-js").val($(".range-slider-handle:eq(0)").attr("aria-valuenow"))
+    });
+    
+    //Search Form Stuff End
 
     // Add features to the map
     $(".tile").click(function() {

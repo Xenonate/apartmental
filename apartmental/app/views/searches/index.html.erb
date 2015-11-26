@@ -1,14 +1,15 @@
 <div id="container-search">
-  <div class="top-bar"></div>
-    <div class="small-6 columns" id="left_column">
-      <div class='front'>
+  <div class="top-bar">
+  </div>
+  <div class="small-6 columns" id="left_column">
+    <div class='front'>
       <div class="row" id="pop_up">
         <div class="search-partial">
           <button class="research">Search for a new apartment!</button>
         </div>
       </div>
-        <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
-          <%= render "search_bar" %>
+      <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
+        <%= render "search_bar" %>
 
 
         <div id="tile-wrapper">
@@ -19,26 +20,26 @@
           <div class="row">
             <%end%>
             <div id="front">
-            <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
-              <!-- <%= key %> -->
-              <div class='tile-score tile-score<%=value_hash["address"].id%>'><%= key.round(2) %></div>
-              <div class="layer">
-                <img id="tile-image" class="tile-image<%=value_hash["address"].id%>" src="<%= value_hash["address"].image_url %>"></img>
-                <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
+              <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
+                <!-- <%= key %> -->
+                <div class='tile-score tile-score<%=value_hash["address"].id%>'><%= key.round(2) %></div>
+                <div class="layer">
+                  <img id="tile-image" class="tile-image<%=value_hash["address"].id%>" src="<%= value_hash["address"].image_url %>"></img>
+                  <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
 
+                </div>
               </div>
             </div>
+            <% if counter % 2 == 1 %>
           </div>
-        <% if counter % 2 == 1 %>
-          </div>
-        <%end%>
+          <%end%>
           <% counter += 1 %>
           <% end %>
-      <% if @sorted_results.count % 2 == 1 %>
+          <% if @sorted_results.count % 2 == 1 %>
         </div>
-      <% end %>
-        </div>
+        <% end %>
       </div>
+    </div>
     <div class='back'>
       <div id='back-container'>
         <button id='flip-back'></button>
@@ -49,18 +50,18 @@
     </div>
   </div>
 </div>
-    <div class="small-6 columns" id="right_column">
-      <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
-      <div class="row" id="right_down">
-        <div class="chart-description">
-          Key: <BR>
-          R = Rent <BR>
-          WS = Walk Score <BR>
-          CR = Crime Rating <BR>
-          CT = Commute Time <BR>
-        </div>
-        <canvas id="myChart" width="400" height="100%"></canvas>
-        after chart
-      </div>
+<div class="small-6 columns" id="right_column">
+  <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
+  <div class="row" id="right_down">
+    <div class="chart-description">
+      Key: <BR>
+      R = Rent <BR>
+      WS = Walk Score <BR>
+      CR = Crime Rating <BR>
+      CT = Commute Time <BR>
     </div>
+    <canvas id="myChart" width="400" height="100%"></canvas>
+    after chart
+  </div>
+</div>
 </div>
