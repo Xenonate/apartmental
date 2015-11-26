@@ -3,106 +3,161 @@
     <form>
       <div class="row">
         <div class="large-12 columns">
-          <input type="text" placeholder="City" />
+          <input type="text" placeholder="City" name="search[search_city]"/>
         </div>
       </div>
 
       <div class="row">
-      <div class="large-6 columns">
-        <select name="search[search_bedroom]" class="form-control">
-          <option value="Studio">Studio</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5+</option>
-        </select>
-      </div>
+        <div class="large-6 columns">
+          <select name="search[search_bedroom]" class="form-control">
+            <option value="Studio">Studio</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5+</option>
+          </select>
+        </div>
 
-      <div class="large-6 columns">
-        <select name="search[search_period]" class="form-control">
-          <option value="1">1 year</option>
-          <option value="2">2 years</option>
-          <option value="3">3 years</option>
-          <option value="4">4 years</option>
-          <option value="5">5+ years</option>
-        </select>
-      </div>
+        <div class="large-6 columns">
+          <select name="search[search_period]" class="form-control">
+            <option value="1">1 year</option>
+            <option value="2">2 years</option>
+            <option value="3">3 years</option>
+            <option value="4">4 years</option>
+            <option value="5">5+ years</option>
+          </select>
+        </div>
       </div>
 
       <div class="row">
-      <div class="large-6 columns">
-        <label>Min Price</label>
-        <div class="range-slider" data-slider data-options="start: 500; end: 10000;step: 100; display_selector: #min-price-slider;">
-          <span class="range-slider-handle" role="slider" tabindex="0"></span>
-          <span class="range-slider-active-segment"></span>
-          <input type="hidden">
-        </div>
-      </div>
-      <div class="large-6 columns">
-        <label>Max Price</label>
-        <div class="range-slider" data-slider data-options="start: 500; end: 10000;step: 100; display_selector: #max-price-slider;">
-          <span class="range-slider-handle" role="slider" tabindex="0"></span>
-          <span class="range-slider-active-segment"></span>
-          <input type="hidden">
-        </div>
-      </div>
-      </div>
-
-      <div class="row">
-      <div class="large-6 columns">
-        <div class="row collapse">
-        <span id="sliderOutput3"></span> 
-          <div class="small-3 columns">
-            <span class="postfix">$</span>
+        <div class="large-3 columns">
+          <label>Min Price</label>
+          <div class="range-slider" data-slider data-options="start: 500; end: 10000;step: 100; display_selector: #min-price-slider;">
+            <span class="range-slider-handle" role="slider" tabindex="0"></span>
+            <span class="range-slider-active-segment"></span>
+            <input type="hidden">
           </div>
-          <div class="small-9 columns">
-            <input class="min-price-js" type="text"/>
-          </div> 
         </div>
-      </div>
 
-      <div class="large-6 columns">
-        <div class="row collapse">
-          <div class="small-3 columns">
-            <span class="postfix">$</span>
+        <div class="large-3 columns" style="padding-top:2em">
+          <div class="row collapse">
+            <span id="sliderOutput3"></span> 
+            <div class="small-3 columns">
+              <span class="postfix">$</span>
+            </div>
+            <div class="small-9 columns">
+              <input class="min-price-js" type="text" name="search[search_min_price]"/>
+            </div> 
           </div>
-          <div class="small-9 columns">
-            <input class="max-price-js" type="text"/>
-          </div> 
         </div>
-      </div>
+
+        <div class="large-3 columns">
+          <label>Max Price</label>
+          <div class="range-slider" data-slider data-options="start: 500; end: 10000;step: 100; display_selector: #max-price-slider;">
+            <span class="range-slider-handle" role="slider" tabindex="0"></span>
+            <span class="range-slider-active-segment"></span>
+            <input type="hidden">
+          </div>
+        </div>
+
+
+        <div class="large-3 columns" style="padding-top:2em">
+          <div class="row collapse">
+            <div class="small-3 columns">
+              <span class="postfix">$</span>
+            </div>
+            <div class="small-9 columns">
+              <input class="max-price-js" type="text" name="search[search_max_price]"/>
+            </div> 
+          </div>
+        </div>
+
       </div>
 
       <div class="row">
-      <div class="large-12 columns">
-          <input type="text" placeholder="City" />
+        <div class="large-12 columns">
+          <input id="input-first" name="search[search_address]" class="form-control" type="text" placeholder="Work Address"></input>
+        </div>
       </div>
+
+      <div class="row">
+        <div class="large-8 columns">
+          <select name="search[search_mode]" class: "form-control">
+            <option value="transit">Public transit</option>
+            <option value="bike">Bike</option>
+            <option value="drive">Drive</option>
+            <option value="walk">Walk</option>
+          </select>
+        </div>
+
+        <div class="large-4 columns">
+        </div>
       </div>
-    </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+
+          <center><label>How much do you care about:</label></center>
+           <input type="text" name="search[search_min_time]" placeholder="min" class: "form-control" >
+  <input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" ><br>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <label>Commute?:</label>
+        <div class="large-6 columns">
+            <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
+              <span class="range-slider-handle" role="slider" tabindex="0"></span>
+              <span class="range-slider-active-segment"></span>
+              <input type="hidden" name="search[price_weight]">
+            </div>
+        </div>
+        
+
+        <label>Price?:</label>
+        <div class="large-6 columns">
+            <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
+              <span class="range-slider-handle" role="slider" tabindex="0"></span>
+              <span class="range-slider-active-segment"></span>
+              <input type="hidden" name="search[price_weight]">
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <label>Crime?:</label>
+        <div class="large-6 columns">
+            <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
+              <span class="range-slider-handle" role="slider" tabindex="0"></span>
+              <span class="range-slider-active-segment"></span>
+              <input type="hidden" name="search[crime_weight]">
+            </div>
+        </div>
+        
+
+        <label>Walkscore?:</label>
+        <div class="large-6 columns">
+            <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
+              <span class="range-slider-handle" role="slider" tabindex="0"></span>
+              <span class="range-slider-active-segment"></span>
+              <input type="hidden" name="search[walkscore_weight]">
+            </div>
+        </div>
+      </div>
 
 
-    <div class="row">
-      <div class="large-6 columns">
-        <label>Choose Your Favorite</label>
-        <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
-        <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Blue</label>
+      <div class="row">
+      <div class="large-12">
+      <center><input class='btn submit-btn' type="submit" value="Submit"></center>
       </div>
-      <div class="large-6 columns">
-        <label>Check these out</label>
-        <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-        <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
       </div>
-    </div>
-    <div class="row">
-      <div class="large-12 columns">
-        <label>Textarea Label
-          <textarea placeholder="small-12.columns"></textarea>
-        </label>
-      </div>
-    </div>
+
+
   </form>
-
+  </div>
 
 
 
