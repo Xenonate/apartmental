@@ -1,9 +1,4 @@
 $( document ).ready(function() {
-  // $(".search_form").on("submit", function(){
-  //   $(this).serialize();
-
-  // });
-  
 
   $(".tile").on("click", function(e){
     e.preventDefault();
