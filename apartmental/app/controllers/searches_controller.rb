@@ -46,9 +46,7 @@ class SearchesController < ActionController::Base
 
       @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
 
-      if @commute_time == 0
-        @total_weight = @total_weight * 4 / 3
-      end
+
 
 
 
@@ -69,11 +67,17 @@ class SearchesController < ActionController::Base
 
       @pindex_crimerate = @crimescore.to_f * @crime_weight.to_f / @total_weight.to_f
 
-
-      @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_max_time].to_f-@commute_time / @commute_time_range.to_f)
+      if @commute_time != 0
+        @pindex_commutescore = (@commute_weight.to_f / @total_weight.to_f)*(search_params[:search_max_time].to_f-@commute_time / @commute_time_range.to_f)
+      else
+        @pindex_commutescore = 0
+      end
 
       @pindex = @pindex_price + @pindex_walkscore + @pindex_crimerate + @pindex_commutescore
 
+      if @pindex_commutescore == 0
+        @pindex = @pindex * 4 / 3
+      end
 
       @price_weight = (search_params[:price_weight].to_f / @total_weight.to_f) * 100
       @commute_weight = (search_params[:commute_weight].to_f / @total_weight.to_f) * 100
