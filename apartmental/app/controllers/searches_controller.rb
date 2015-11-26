@@ -23,21 +23,14 @@ class SearchesController < ActionController::Base
       # coords = Geokit::Geocoders::GoogleGeocoder.geocode(search_params[:search_address])
       #call = "mode=#{search_params[:search_mode]}&origin=#{address.lat},#{address.long}&destination=#{coords.lat},#{coords.lng}"
       call = "mode=#{search_params[:search_mode]}&origin=#{address.lat},#{address.long}&destination=37.7706312,-122.4167"
-      url = URI.parse(URI.encode("http://api2.walkscore.com/api/v1/traveltime/json?wsapikey=b72221d8763203418d081f140357696e&#{call}"))
-      json = HTTParty.get(url)
-      response = JSON.parse(json.body)
 
-      if response
-        @commute_time = (response["response"]["results"][0]["travel_times"][0]["seconds"])/60 #in mins
-      else
-        @commute_time = 0
-      end
+      @commute_time = SearchesHelper.request_travel_time(call)
 
-      @walkscore = address.walkscore.to_i
+      @walkscore = SearchesHelper.get_walkscore(address)
 
-      @price_range = (search_params[:search_max_price].to_i-search_params[:search_min_price].to_i)
+      @price_range = SearchesHelper.get_range(search_params[:search_max_price], search_params[:search_min_price])
 
-      @commute_time_range = (search_params[:search_max_time].to_i- search_params[:search_min_time].to_i)
+      @commute_time_range = SearchesHelper.get_range(search_params[:search_max_time], search_params[:search_min_time])
 
       @price_weight = search_params[:price_weight].to_f
       @commute_weight = search_params[:commute_weight].to_f
@@ -46,20 +39,8 @@ class SearchesController < ActionController::Base
 
       @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
 
+      @crimescore = SearchesHelper.get_crime_score(@crime_rate)
 
-
-
-
-
-
-      case @crime_rate
-      when "A"
-        @crimescore = 95
-      when "B"
-        @crimescore = 85
-      when "C"
-        @crimescore = 75
-      end
 
       @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(search_params[:search_max_price].to_f - @average_price.to_f)/(@price_range.to_f) * 100
 
@@ -83,10 +64,6 @@ class SearchesController < ActionController::Base
       @commute_weight = (search_params[:commute_weight].to_f / @total_weight.to_f) * 100
       @walkscore_weight = (search_params[:walkscore_weight].to_f / @total_weight.to_f) * 100
       @crime_weight = (search_params[:crime_weight].to_f / @total_weight.to_f) * 100
-      # p @pindex_price
-      # p @pindex_walkscore
-      # p @pindex_crimerate
-      # p @pindex_commutescore
 
       SearchResult.create(search_id: @search.id, address_id: address.id, pindex:@pindex, pindex_price: @pindex_price, pindex_walkscore: @pindex_walkscore, pindex_commutescore: @pindex_commutescore, pindex_crimerate: @pindex_crimerate, price_weight: @price_weight, commute_weight: @commute_weight, walkscore_weight: @walkscore_weight, crime_weight:@crime_weight)
 
@@ -98,8 +75,6 @@ class SearchesController < ActionController::Base
     end
 
     @sorted_results = Hash[@sorted_results.sort.reverse]
-
-    p "*" * 50
 
     render 'searches/index', layout: 'layouts/application'
   end
