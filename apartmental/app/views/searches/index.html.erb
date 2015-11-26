@@ -1,69 +1,58 @@
-<div id="container">
-    <div class="top-bar">
-      <div class="slider" data-slider data-initial-start='50' data-end='200'>
-  <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
-  <span class="slider-fill" data-slider-fill></span>
-  <input type="hidden">
-</div>
-    </div>
+<div id="container-search">
+  <div class="top-bar"></div>
     <div class="small-6 columns" id="left_column">
-
+      <div class='front'>
       <div class="row" id="pop_up">
         <div class="search-partial">
           <button class="research">Search for a new apartment!</button>
         </div>
       </div>
-      <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
-        <%= render "search_bar" %>
+        <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
+          <%= render "search_bar" %>
+
 
         <div id="tile-wrapper">
           <% counter  = 0 %>
           <div>You got <%= @sorted_results.count %> results! </div>
-
           <% @sorted_results.each_pair do |key, value_hash| %>
-
           <% if counter % 2 == 0 %>
           <div class="row">
-
             <%end%>
+            <div id="front">
             <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
               <!-- <%= key %> -->
-              <div class='tile-score'><%= key.round(2) %></div>
+              <div class='tile-score tile-score<%=value_hash["address"].id%>'><%= key.round(2) %></div>
               <div class="layer">
-                <img id="tile-image" src="<%= value_hash["address"].image_url %>"></img>
+                <img id="tile-image" class="tile-image<%=value_hash["address"].id%>" src="<%= value_hash["address"].image_url %>"></img>
                 <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
-                <div id="description<%=value_hash["address"].id%>"></div>
+
               </div>
             </div>
-
+          </div>
         <% if counter % 2 == 1 %>
           </div>
         <%end%>
-
           <% counter += 1 %>
           <% end %>
-        <% if @sorted_results.count % 2 == 1 %>
+      <% if @sorted_results.count % 2 == 1 %>
         </div>
+      <% end %>
+        </div>
+      </div>
+    <div class='back'>
+      <div id='back-container'>
+        <button id='flip-back'></button>
+        <% @sorted_results.each_pair do |key, value_hash| %>
+        <div class="description" id="description<%=value_hash["address"].id%>"></div>
         <% end %>
-
       </div>
-
-        </div>
-
-
-
-      </div>
-
+    </div>
+  </div>
+</div>
     <div class="small-6 columns" id="right_column">
       <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
       <div class="row" id="right_down">
         <canvas id="myChart" width="400" height="100%"></canvas>
-
       </div>
     </div>
-
-
 </div>
-
-
-

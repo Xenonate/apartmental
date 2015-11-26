@@ -7,6 +7,7 @@ $( document ).ready(function() {
 
   $(".tile").on("click", function(e){
     e.preventDefault();
+    $('.description').empty()
     var id = $(this).attr("id")
     var search_id = $(this).attr("data")
     console.log(id)
@@ -82,11 +83,27 @@ $( document ).ready(function() {
       dataType: 'json'
     })
     .done(function(msg){
+
       $("#description"+id).text(msg.description)
     })
     .fail(function(error){
       console.log(error.responseText);
     });
+
 });
+
+   $(".tile").mouseover(function(){
+    console.log($(this).attr('id'))
+    var image = ".tile-image" + $(this).attr('id')
+    var score = ".tile-score" + $(this).attr('id')
+    $(image).css("opacity", "100")
+    $(score).hide()
+   }).mouseout(function(){
+    console.log($(this).attr('id'))
+    var image = ".tile-image" + $(this).attr('id')
+    var score = ".tile-score" + $(this).attr('id')
+    $(image).css("opacity", "0.1")
+    $(score).show()
+   })
 
 });
