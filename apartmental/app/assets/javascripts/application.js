@@ -19,10 +19,12 @@
 //= require apmapbox
 //= require mapbox
 //= require foundation
-//= require_tree
 //= require searches
+//= require_tree .
 
-$(document).foundation();
+
+//$(document).foundation();
+$(function(){ $(document).foundation(); });
 
 $(document).on('ready', function(){
   $('.research').on('click', function(){

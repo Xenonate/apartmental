@@ -1,7 +1,13 @@
 class SearchesController < ActionController::Base
 
   def create
-    @addresses = Address.where(city: search_params[:search_city], bedrooms: search_params[:search_bedroom]).where('price > ?', search_params[:search_min_price]).where('price < ?', search_params[:search_max_price])
+    p '*' * 50
+    ap search_params
+    p '*' * 50
+    @search_max_price = search_params[:search_max_price].include?(".") ? search_params[:search_max_price][0...-3] : search_params[:search_max_price]
+    @search_min_price = search_params[:search_min_price].include?(".") ? search_params[:search_min_price][0...-3] : search_params[:search_min_price]
+
+    @addresses = Address.where(city: search_params[:search_city], bedrooms: search_params[:search_bedroom]).where('price > ?', @search_min_price).where('price < ?', @search_max_price)
 
     @search= Search.create
 
@@ -28,7 +34,7 @@ class SearchesController < ActionController::Base
 
       @walkscore = SearchesHelper.get_walkscore(address)
 
-      @price_range = SearchesHelper.get_range(search_params[:search_max_price], search_params[:search_min_price])
+      @price_range = SearchesHelper.get_range(@search_max_price, @search_min_price.to_i)
 
       @commute_time_range = SearchesHelper.get_range(search_params[:search_max_time], search_params[:search_min_time])
 
@@ -39,10 +45,9 @@ class SearchesController < ActionController::Base
 
       @total_weight = @price_weight + @commute_weight + @walkscore_weight + @crime_weight
 
+      @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(@search_max_price.to_f - @average_price.to_f)/(@price_range.to_f) * 100
+
       @crimescore = SearchesHelper.get_crime_score(@crime_rate)
-
-
-      @pindex_price = (@price_weight.to_f/@total_weight.to_f)*(search_params[:search_max_price].to_f - @average_price.to_f)/(@price_range.to_f) * 100
 
       @pindex_walkscore = @walkscore.to_f * @walkscore_weight.to_f / @total_weight.to_f
 
