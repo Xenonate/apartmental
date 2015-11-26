@@ -48,7 +48,7 @@
               <span class="postfix">$</span>
             </div>
             <div class="small-9 columns">
-              <input class="min-price-js" type="text" name="search[search_min_price]"/>
+              <input class="min-price-js" type="number" name="search[search_min_price]"/>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@
               <span class="postfix">$</span>
             </div>
             <div class="small-9 columns">
-              <input class="max-price-js" type="text" name="search[search_max_price]"/>
+              <input class="max-price-js" type="number" name="search[search_max_price]"/>
             </div>
           </div>
         </div>
@@ -109,45 +109,49 @@
     </div>
 
     <div class="row">
-
-      <label>Commute?:</label>
-      <div class="large-6 columns">
-        <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
-          <span class="range-slider-handle" role="slider" tabindex="0"></span>
-          <span class="range-slider-active-segment"></span>
-          <input type="hidden" name="search[commute_weight]">
-        </div>
+      <div class="row">
+        <label class="large-6 columns">Commute?:</label>
+        <label class="large-6 columns">Price?:</label>
       </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
+            <span class="range-slider-handle" role="slider" tabindex="0"></span>
+            <span class="range-slider-active-segment"></span>
+            <input type="hidden" name="search[commute_weight]">
+          </div>
+        </div>
 
-
-      <label>Price?:</label>
-      <div class="large-6 columns">
-        <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
-          <span class="range-slider-handle" role="slider" tabindex="0"></span>
-          <span class="range-slider-active-segment"></span>
-          <input type="hidden" name="search[price_weight]">
+        <div class="large-6 columns">
+          <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
+            <span class="range-slider-handle" role="slider" tabindex="0"></span>
+            <span class="range-slider-active-segment"></span>
+            <input type="hidden" name="search[price_weight]">
+          </div>
         </div>
       </div>
     </div>
 
     <div class="row">
-
-      <label>Crime?:</label>
-      <div class="large-6 columns">
-        <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
-          <span class="range-slider-handle" role="slider" tabindex="0"></span>
-          <span class="range-slider-active-segment"></span>
-          <input type="hidden" name="search[crime_weight]">
-        </div>
+      <div class="row">
+        <label class="large-6 columns">Crime?:</label>
+        <label class="large-6 columns">Walkscore?:</label>
       </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
+            <span class="range-slider-handle" role="slider" tabindex="0"></span>
+            <span class="range-slider-active-segment"></span>
+            <input type="hidden" name="search[crime_weight]">
+          </div>
+        </div>
 
-
-      <label>Walkscore?:</label>
-      <div class="large-6 columns">
-        <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
-          <span class="range-slider-handle" role="slider" tabindex="0"></span>
-          <span class="range-slider-active-segment"></span>
-          <input type="hidden" name="search[walkscore_weight]">
+        <div class="large-6 columns">
+          <div class="range-slider" data-slider data-options="start: 1; end: 5;step: 1;">
+            <span class="range-slider-handle" role="slider" tabindex="0"></span>
+            <span class="range-slider-active-segment"></span>
+            <input type="hidden" name="search[walkscore_weight]">
+          </div>
         </div>
       </div>
     </div>
