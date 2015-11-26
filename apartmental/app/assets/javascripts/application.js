@@ -19,8 +19,8 @@
 //= require apmapbox
 //= require mapbox
 //= require foundation
-//= require_tree
-//= require searches
+//= require bootstrap-sprockets
+//= require_tree .
 
 $(document).foundation();
 
