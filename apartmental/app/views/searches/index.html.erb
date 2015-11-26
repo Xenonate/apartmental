@@ -1,4 +1,4 @@
-<div id="container">
+<div id="container-search">
   <div class="top-bar"></div>
     <div class="small-6 columns" id="left_column">
       <div class='front'>
@@ -25,7 +25,7 @@
               <div class="layer">
                 <img id="tile-image" class="tile-image<%=value_hash["address"].id%>" src="<%= value_hash["address"].image_url %>"></img>
                 <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
-                <div id="description<%=value_hash["address"].id%>"></div>
+
               </div>
             </div>
           </div>
@@ -34,11 +34,17 @@
         <%end%>
           <% counter += 1 %>
           <% end %>
+      <% if @sorted_results.count % 2 == 1 %>
+        </div>
+      <% end %>
         </div>
       </div>
     <div class='back'>
       <div id='back-container'>
         <button id='flip-back'></button>
+        <% @sorted_results.each_pair do |key, value_hash| %>
+        <div class="description" id="description<%=value_hash["address"].id%>"></div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -50,6 +56,3 @@
       </div>
     </div>
 </div>
-
-
-

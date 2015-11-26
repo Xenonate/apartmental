@@ -6,6 +6,7 @@ $( document ).ready(function() {
 
   $(".tile").on("click", function(e){
     e.preventDefault();
+    $('.description').empty()
     var id = $(this).attr("id")
     var search_id = $(this).attr("data")
     console.log(id)
@@ -81,6 +82,7 @@ $( document ).ready(function() {
       dataType: 'json'
     })
     .done(function(msg){
+
       $("#description"+id).text(msg.description)
     })
     .fail(function(error){
