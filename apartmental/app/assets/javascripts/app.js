@@ -78,8 +78,8 @@ $( document ).ready(function() {
       dataType: 'json'
     })
     .done(function(msg){
-
-      $("#description"+id).text(msg.description)
+      $("#title"+id).css('display', 'inline')
+      $("#description"+id).append(msg.description)
     })
     .fail(function(error){
       console.log(error.responseText);
