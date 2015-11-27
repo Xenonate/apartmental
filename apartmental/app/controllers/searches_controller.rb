@@ -4,6 +4,23 @@ class SearchesController < ActionController::Base
     p '*' * 50
     ap search_params
     p '*' * 50
+
+     p  @params_hash = {
+        "city" => search_params[:search_city],
+        "max_price" => search_params[:search_max_price],
+        "min_price" => search_params[:search_min_price],
+        "bedrooms" => search_params[:search_bedroom],
+        "length_of_stay" => search_params[:search_period],
+        "work_address" => search_params[:search_address],
+        "mode_of_transport" => search_params[:search_mode],
+        "min_commute_time" => search_params[:search_min_time],
+        "max_commute_time" => search_params[:search_max_time],
+        "price_weight" => search_params[:price_weight],
+        "commute_weight" => search_params[:commute_weight],
+        "crime_weight" => search_params[:crime_weight],
+        "walkscore_weight" => search_params[:walkscore_weight]
+      }
+
     @search_max_price = search_params[:search_max_price].include?(".") ? search_params[:search_max_price][0...-3] : search_params[:search_max_price]
     @search_min_price = search_params[:search_min_price].include?(".") ? search_params[:search_min_price][0...-3] : search_params[:search_min_price]
 
@@ -64,6 +81,10 @@ class SearchesController < ActionController::Base
       if @pindex_commutescore == 0
         @pindex = @pindex * 4 / 3
       end
+
+
+
+
 
       @price_weight = (search_params[:price_weight].to_f / @total_weight.to_f) * 100
       @commute_weight = (search_params[:commute_weight].to_f / @total_weight.to_f) * 100
