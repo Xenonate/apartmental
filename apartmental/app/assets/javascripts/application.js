@@ -19,12 +19,10 @@
 //= require apmapbox
 //= require mapbox
 //= require foundation
+//= require_tree
 //= require searches
-//= require_tree .
 
-
-//$(document).foundation();
-$(function(){ $(document).foundation(); });
+$(document).foundation();
 
 $(document).on('ready', function(){
   $('.research').on('click', function(){
@@ -33,8 +31,9 @@ $(document).on('ready', function(){
   $('.tile').on('click', function(){
     console.log('hello')
     $('#left_column').flip();
-    $('.front').hide()
-    $('#left_column').on('flip:done', function(){
+     $('.front').hide()
+    $('#left_column').on('flip:done', function(e){
+      e.preventDefault()
       $('.front').show()
     })
   })

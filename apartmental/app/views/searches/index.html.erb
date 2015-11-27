@@ -19,7 +19,6 @@ $(document).on('ready', function(){
 
   <div class="small-6 columns" id="left_column">
     <div class='front'>
-
       <div class="row" id="pop_up">
         <div class="search-partial">
           <button class="research">Search for a new apartment!</button>
@@ -52,8 +51,18 @@ $(document).on('ready', function(){
       <div class='panel'>
         <a class="button radius" id='flip-back'>Back To Results</a>
         <% @sorted_results.each_pair do |key, value_hash| %>
-        <h1><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></h1>
-        <div class="description" id="description<%=value_hash["address"].id%>"></div>
+
+        <div class="title" id="title<%=value_hash["address"].id%>" style="display: none">
+          <h1><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></h1>
+        </div>
+        <div class='row'>
+          <div class="description large-8 columns" id="description<%=value_hash["address"].id%>" >
+            <%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %>
+          </div>
+          <div class="image large-4 columns" id="image<%=value_hash["address"].id%>">
+            <img src="<%= value_hash["address"].image_url %>"</img>
+          </div>
+        </div>
         <% end %>
       </div>
     </div>
@@ -100,3 +109,6 @@ $(document).on('ready', function(){
 
 </div>
 </div>
+
+
+
