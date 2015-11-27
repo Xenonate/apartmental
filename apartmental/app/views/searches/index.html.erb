@@ -72,19 +72,43 @@
       </div>
     </div>
   </div>
-    <div class="small-6 columns" id="right_column">
-      <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
-      <div class="row" id="right_down">
-        <div class="chart-description">
-          Key: <BR>
-          R = Rent <BR>
-          WS = Walk Score <BR>
-          CR = Crime Rating <BR>
-          CT = Commute Time <BR>
-        </div>
-        <canvas id="myChart" width="400" height="100%"></canvas>
+  <div class="small-6 columns" id="right_column">
+    <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
+    <div class="row" id="right_down">
+      <div class="large-6 columns">
+        <canvas id="myChart"></canvas>
+
       </div>
+
+      <div class="large-6 columns">
+        <center>
+        <table>
+          <thead>
+            <tr>
+              <th width="200"><center>Key</center></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><center>R: Rent</center></td>
+            </tr>
+            <tr>
+              <td><center>WS: WalkScore</center></td>
+            </tr>
+            <tr>
+              <td><center>CR:Crime Rate</td>
+            </tr>
+            <tr>
+              <td><center>CT:Commute Time</center></td>
+            </tr>
+          </tbody>
+        </table>
+      </center>
+      </div>
+
     </div>
+
+  </div>
   </div>
 </div>
 
