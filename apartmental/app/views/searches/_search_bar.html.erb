@@ -115,15 +115,15 @@
       </div>
       <div class="row">
         <div class="large-6 columns">
-          <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
-            <span class="range-slider-handle" role="slider" tabindex="0" value=<%= @params_hash["commute_weight"] %>></span>
+          <div class="range-slider radius" data-slider = "<%= @params_hash["commute_weight"] %>" data-options="start: 1; end: 5;step: 1;">
+            <span class="range-slider-handle" role="slider" tabindex="0" ></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden" name="search[commute_weight]">
           </div>
         </div>
 
         <div class="large-6 columns">
-          <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
+          <div class="range-slider radius" data-slider = "<%= @params_hash["price_weight"] %>" data-options="start: 1; end: 5;step: 1;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden" name="search[price_weight]">
@@ -139,7 +139,7 @@
       </div>
       <div class="row">
         <div class="large-6 columns">
-          <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
+          <div class="range-slider radius" data-slider = "<%= @params_hash["crime_weight"] %>" data-options="start: 1; end: 5;step: 1;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden" name="search[crime_weight]">
@@ -147,7 +147,7 @@
         </div>
 
         <div class="large-6 columns">
-          <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
+          <div class="range-slider radius" data-slider = "<%= @params_hash["walkscore_weight"] %>" data-options="start: 1; end: 5;step: 1;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden" name="search[walkscore_weight]">
