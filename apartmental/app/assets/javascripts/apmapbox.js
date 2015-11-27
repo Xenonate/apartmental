@@ -37,7 +37,7 @@ $(document).ready(function() {
               "iconSize": [600,100]
             },
             "marker-symbol": "",
-            "marker-color": "#ff8888",
+            "marker-color": "#c8bfbf",
             "marker-size": "medium",
           }
         });
@@ -56,7 +56,7 @@ $(document).ready(function() {
     $(".range-slider-handle:eq(0)").mousemove(function() {
       $(".min-price-js").val($(".range-slider-handle:eq(0)").attr("aria-valuenow"))
     });
-    
+
     //Search Form Stuff End
 
     // Add features to the map
@@ -72,7 +72,6 @@ $(document).ready(function() {
     // Hovering mapbox marker hilights appropriate row on results table
     $(".leaflet-marker-icon").mouseover(function(){
       var index = $(".leaflet-marker-icon").index(this)
-      console.log("hi")
       console.log("Marker Inex: " +  index)
       $(".tile:eq(" + (index + 1) + ")").css({ "background-color": "#2A363B", "color": "#E84A5F"})
     }).mouseout(function() {
@@ -87,12 +86,14 @@ $(document).ready(function() {
       // console.log(poo)
       geoJson[index].properties["marker-symbol"] = "heart"
       geoJson[index].properties["marker-size"] = "large"
+      geoJson[index].properties["marker-color"] = "#ff8888"
       myLayer.setGeoJSON(geoJson);
       $(".leaflet-marker-icon:eq(" + index + ")").css("z-index", 999);
     }).mouseout(function() {
       var index = $(".tile").index(this)
       geoJson[index].properties["marker-symbol"] = ""
       geoJson[index].properties["marker-size"] = "medium"
+      geoJson[index].properties["marker-color"] = "#c8bfbf"
       myLayer.setGeoJSON(geoJson);
     });
 
