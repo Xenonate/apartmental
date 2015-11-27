@@ -25,6 +25,7 @@ $(document).on('ready', function(){
           <button class="research">Search for a new apartment!</button>
         </div>
       </div>
+
       <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
         <%= render "search_bar" %>
         <div id="tile-wrapper">
@@ -38,7 +39,6 @@ $(document).on('ready', function(){
               <div class="layer">
                 <img id="tile-image" class="tile-image<%=value_hash["address"].id%>" src="<%= value_hash["address"].image_url %>"></img>
                 <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
-
               </div>
             </div>
           </div>
@@ -49,8 +49,8 @@ $(document).on('ready', function(){
     </div>
 
     <div class='back'>
-      <div id='back-container'>
-        <button id='flip-back'></button>
+      <div class='panel'>
+        <a class="button radius" id='flip-back'>Back To Results</a>
         <% @sorted_results.each_pair do |key, value_hash| %>
         <h1><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></h1>
         <div class="description" id="description<%=value_hash["address"].id%>"></div>
