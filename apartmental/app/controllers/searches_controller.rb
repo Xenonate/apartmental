@@ -13,7 +13,6 @@ class SearchesController < ActionController::Base
         "length_of_stay" => search_params[:search_period],
         "work_address" => search_params[:search_address],
         "mode_of_transport" => search_params[:search_mode],
-        "min_commute_time" => search_params[:search_min_time],
         "max_commute_time" => search_params[:search_max_time],
         "price_weight" => search_params[:price_weight],
         "commute_weight" => search_params[:commute_weight],
@@ -54,7 +53,7 @@ class SearchesController < ActionController::Base
 
       @price_range = SearchesHelper.get_range(@search_max_price, @search_min_price.to_i)
 
-      @commute_time_range = SearchesHelper.get_range(search_params[:search_max_time], search_params[:search_min_time])
+      @commute_time_range = search_params[:search_max_time]
 
       @price_weight = search_params[:price_weight].to_f
       @commute_weight = search_params[:commute_weight].to_f
@@ -127,7 +126,7 @@ class SearchesController < ActionController::Base
   private
 
   def search_params
-    params.require(:search).permit(:search_min_price, :search_max_price, :search_city, :search_bedroom, :search_period, :search_mode, :search_address, :search_min_time, :search_max_time, :walkscore_weight, :crime_weight, :price_weight, :commute_weight)
+    params.require(:search).permit(:search_min_price, :search_max_price, :search_city, :search_bedroom, :search_period, :search_mode, :search_address, :search_max_time, :walkscore_weight, :crime_weight, :price_weight, :commute_weight)
   end
 
 end
