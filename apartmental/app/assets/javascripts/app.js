@@ -2,6 +2,8 @@ $( document ).ready(function() {
 
   $(".tile").on("click", function(e){
     e.preventDefault();
+    $(".title").css('display', 'none')
+    $(".image").css('display', 'none')
     $('.description').empty()
     var id = $(this).attr("id")
     var search_id = $(this).attr("data")
@@ -78,7 +80,9 @@ $( document ).ready(function() {
       dataType: 'json'
     })
     .done(function(msg){
+
       $("#title"+id).css('display', 'inline')
+      $("#image"+id).css('display', 'inline')
       $("#description"+id).append(msg.description)
     })
     .fail(function(error){
