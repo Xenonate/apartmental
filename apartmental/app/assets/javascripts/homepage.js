@@ -4,6 +4,15 @@ $(document).on('ready', function(){
     e.preventDefault();
     $('#options').toggle()
   })
+
+  $(".range-slider-handle:eq(1)").mousemove(function() {
+      $(".max-price-js").val($(".range-slider-handle:eq(1)").attr("aria-valuenow"))
+    });
+
+    $(".range-slider-handle:eq(0)").mousemove(function() {
+      $(".min-price-js").val($(".range-slider-handle:eq(0)").attr("aria-valuenow"))
+    });
+
   // console.log('Derek said to console log something right here')
   // console.log(document.querySelector('.options-open'))
 
