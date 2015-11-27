@@ -56,8 +56,10 @@
         <button id='flip-back'></button>
         <% @sorted_results.each_pair do |key, value_hash| %>
         <div class='info' id='info<%=value_hash["address"].id%>'>
+          <div class="panel">
           <div class="title" id="title<%=value_hash["address"].id%>">
             <h1><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></h1>
+            <h3>$<%= value_hash["address"].price %></h3>
           </div>
           <div class='row'>
             <div class="description large-8 columns" id="description<%=value_hash["address"].id%>" >
@@ -67,7 +69,9 @@
               <img src="<%= value_hash["address"].image_url %>"</img>
             </div>
           </div>
+          </div>
         </div>
+
         <% end %>
       </div>
     </div>
