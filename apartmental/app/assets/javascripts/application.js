@@ -28,7 +28,7 @@ $(function(){ $(document).foundation(); });
 
 $(document).on('ready', function(){
   $('.research').on('click', function(){
-    $("#search-again").toggle()
+    $("#search-again").toggle(750)
   })
   $('.tile').on('click', function(){
     console.log('hello')

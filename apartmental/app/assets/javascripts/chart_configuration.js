@@ -58,7 +58,7 @@ Chart.defaults.global = {
     scaleFontStyle: "normal",
 
     // String - Scale label font colour
-    scaleFontColor: "#666",
+    scaleFontColor: "#000",
 
     // Boolean - whether or not the chart should be responsive and resize when the browser does.
     responsive: true,
@@ -67,7 +67,7 @@ Chart.defaults.global = {
     maintainAspectRatio: true,
 
     // Boolean - Determines whether to draw tooltips on the canvas or not
-    showTooltips: true,
+    showTooltips: false,
 
     // Function - Determines whether to execute the customTooltips function instead of drawing the built in tooltips (See [Advanced - External Tooltips](#advanced-usage-custom-tooltips))
     customTooltips: false,
@@ -82,25 +82,25 @@ Chart.defaults.global = {
     tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 
     // Number - Tooltip label font size in pixels
-    tooltipFontSize: 36,
+    tooltipFontSize: 18,
 
     // String - Tooltip font weight style
     tooltipFontStyle: "normal",
 
     // String - Tooltip label font colour
-    tooltipFontColor: "#fff",
+    tooltipFontColor: "#000",
 
     // String - Tooltip title font declaration for the scale label
     tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 
     // Number - Tooltip title font size in pixels
-    tooltipTitleFontSize: 36,
+    tooltipTitleFontSize: 18,
 
     // String - Tooltip title font weight style
     tooltipTitleFontStyle: "bold",
 
     // String - Tooltip title font colour
-    tooltipTitleFontColor: "#fff",
+    tooltipTitleFontColor: "#000",
 
     // Number - pixel width of padding around tooltip text
     tooltipYPadding: 6,
