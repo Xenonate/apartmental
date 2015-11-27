@@ -1,36 +1,37 @@
 <div id="container-search">
+
   <div class="top-bar">
     <nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="/">My Site</a></h1>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">My Site</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
 
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="active"><a href="#">Right Button Active</a></li>
-      <li class="has-dropdown">
-        <a href="#">Right Button Dropdown</a>
-        <ul class="dropdown">
-          <li><a href="#">First link in dropdown</a></li>
-          <li class="active"><a href="#">Active link in dropdown</a></li>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="active"><a href="#">Right Button Active</a></li>
+          <li class="has-dropdown">
+            <a href="#">Right Button Dropdown</a>
+            <ul class="dropdown">
+              <li><a href="#">First link in dropdown</a></li>
+              <li class="active"><a href="#">Active link in dropdown</a></li>
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
 
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li><a href="#">Left Nav Button</a></li>
-    </ul>
-  </section>
-</nav>
+        <ul class="left">
+          <li><a href="#">Left Nav Button</a></li>
+        </ul>
+      </section>
+    </nav>
   </div>
   <div class="small-6 columns" id="left_column">
     <div class='front'>
+
       <div class="row" id="pop_up">
         <div class="search-partial">
           <button class="research">Search for a new apartment!</button>
@@ -38,61 +39,50 @@
       </div>
       <div class="row" id="left_up" data-search ="<%= @sorted_results.values[0]["search_id"] %>" data-address="<%= @sorted_results.values[0]["address"].id%>">
         <%= render "search_bar" %>
-
-
         <div id="tile-wrapper">
-          <% counter  = 0 %>
           <div>You got <%= @sorted_results.count %> results! </div>
           <% @sorted_results.each_pair do |key, value_hash| %>
-          <% if counter % 2 == 0 %>
-          <div class="row">
-            <%end%>
-            <div id="front">
-              <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
-                <!-- <%= key %> -->
-                <div class='tile-score tile-score<%=value_hash["address"].id%>'><%= key.round(2) %></div>
-                <div class="layer">
-                  <img id="tile-image" class="tile-image<%=value_hash["address"].id%>" src="<%= value_hash["address"].image_url %>"></img>
-                  <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
 
-                </div>
+          <div id="front">
+            <div class="tile small-5 columns" id="<%=value_hash["address"].id%>" data="<%=value_hash["search_id"]%>">
+              <!-- <%= key %> -->
+              <div class='tile-score tile-score<%=value_hash["address"].id%>'><%= key.round(2) %></div>
+              <div class="layer">
+                <img id="tile-image" class="tile-image<%=value_hash["address"].id%>" src="<%= value_hash["address"].image_url %>"></img>
+                <div id="tile-desc"><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></div>
+
               </div>
             </div>
-            <% if counter % 2 == 1 %>
           </div>
-          <%end%>
-          <% counter += 1 %>
           <% end %>
-          <% if @sorted_results.count % 2 == 1 %>
+
         </div>
-        <% end %>
       </div>
     </div>
     <div class='back'>
       <div id='back-container'>
         <button id='flip-back'></button>
         <% @sorted_results.each_pair do |key, value_hash| %>
+        <h1><%= value_hash["address"].street_number %> <%= value_hash["address"].street_name %> <%= value_hash["address"].street_type %></h1>
         <div class="description" id="description<%=value_hash["address"].id%>"></div>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+    <div class="small-6 columns" id="right_column">
+      <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
+      <div class="row" id="right_down">
+        <div class="chart-description">
+          Key: <BR>
+          R = Rent <BR>
+          WS = Walk Score <BR>
+          CR = Crime Rating <BR>
+          CT = Commute Time <BR>
+        </div>
+        <canvas id="myChart" width="400" height="100%"></canvas>
+      </div>
 
-  <div class="small-6 columns" id="right_column">
-  <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
-  <div class="row" id="right_down">
-    <div class="chart-description">
-      Key: <BR>
-      R = Rent <BR>
-      WS = Walk Score <BR>
-      CR = Crime Rating <BR>
-      CT = Commute Time <BR>
     </div>
-    <canvas id="myChart" width="400" height="100%"></canvas>
+
   </div>
-
-</div>
-
-</div>
 </div>

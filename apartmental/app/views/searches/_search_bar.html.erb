@@ -4,13 +4,13 @@
      <form>
       <div class="row">
         <div class="large-12 columns">
-          <input type="text" placeholder="City" name="search[search_city]"/>
+          <input type="text" value="<%= @params_hash["city"] %>" name="search[search_city]"/>
         </div>
       </div>
 
       <div class="row">
         <div class="large-6 columns">
-          <select name="search[search_bedroom]" class="form-control">
+          <select name="search[search_bedroom]" class="form-control" value=<%= @params_hash["bedrooms"] %>>
             <option value="Studio">Studio</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -48,7 +48,7 @@
               <span class="postfix">$</span>
             </div>
             <div class="small-9 columns">
-              <input class="min-price-js" type="number" name="search[search_min_price]"/>
+              <input class="min-price-js" type="number" name="search[search_min_price]" value=<%= @params_hash["min_price"] %>>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@
               <span class="postfix">$</span>
             </div>
             <div class="small-9 columns">
-              <input class="max-price-js" type="number" name="search[search_max_price]"/>
+              <input class="max-price-js" type="number" name="search[search_max_price]" value=<%= @params_hash["max_price"] %>>
             </div>
           </div>
         </div>
@@ -78,13 +78,13 @@
 
       <div class="row">
         <div class="large-12 columns">
-          <input id="input-first" name="search[search_address]" class="form-control" type="text" placeholder="Work Address"></input>
+          <input id="input-first" name="search[search_address]" class="form-control" type="text" placeholder="Work Address" value="<%= @params_hash["work_address"] %>"></input>
         </div>
       </div>
 
       <div class="row">
         <div class="large-8 columns">
-          <select name="search[search_mode]" class: "form-control">
+          <select name="search[search_mode]" class: "form-control" value=<%= @params_hash["mode_of_transport"] %>>
             <option value="transit">Public transit</option>
             <option value="bike">Bike</option>
             <option value="drive">Drive</option>
@@ -94,11 +94,11 @@
         </div>
 
         <div class="large-2 columns">
-         <input type="text" name="search[search_min_time]" placeholder="min" class: "form-control" >
+         <input type="text" name="search[search_min_time]" placeholder="min" class: "form-control" value=<%=@params_hash["min_commute_time"] %>>
        </div>
 
        <div class="large-2 columns">
-        <input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" >
+        <input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" value=<%=@params_hash["max_commute_time"] %>>
       </div>
     </div>
 
@@ -116,7 +116,7 @@
       <div class="row">
         <div class="large-6 columns">
           <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
-            <span class="range-slider-handle" role="slider" tabindex="0"></span>
+            <span class="range-slider-handle" role="slider" tabindex="0" value=<%= @params_hash["commute_weight"] %>></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden" name="search[commute_weight]">
           </div>
