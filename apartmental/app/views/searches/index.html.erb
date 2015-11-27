@@ -1,3 +1,10 @@
+<script>
+$(document).on('ready', function(){
+  $(".large-6:eq(-1)").css({'position' : 'relative', 'top': '50%', 'transform': 'translateY(-50%)'})
+  $(".large-6:eq(-2)").css({'position' : 'relative', 'top': '50%', 'transform': 'translateY(-50%)'})
+})
+</script>
+
 <div id="container-search">
 
   <div class="top-bar">
@@ -70,22 +77,44 @@
         <% end %>
       </div>
     </div>
+
   </div>
-    <div class="small-6 columns" id="right_column">
-      <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
-      <div class="row" id="right_down">
-        <div class="chart-description">
-          Key: <BR>
-          R = Rent <BR>
-          WS = Walk Score <BR>
-          CR = Crime Rating <BR>
-          CT = Commute Time <BR>
-        </div>
-        <canvas id="myChart" width="400" height="100%"></canvas>
+
+  <div class="small-6 columns" id="right_column">
+    <div class="row" id="map" name="<%=@sorted_results.values[0]["search_id"]%>"></div>
+    <div class="row" id="right_down">
+      <div class="large-6 columns">
+        <canvas id="myChart"></canvas>
+
+      </div>
+
+      <div class="large-6 columns">
+        <table>
+          <thead>
+            <tr>
+              <center><th width="200">Key</th></center>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <center><td>R: Rent</td></center>
+            </tr>
+            <tr>
+              <center><td>WS: WalkScore</td></center>
+            </tr>
+            <tr>
+              <center><td>CR:Crime Rate</td></center>
+            </tr>
+            <tr>
+              <center><td>CT:Commute Time</td></center>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </div>
->>>>>>> master
 
   </div>
+
+</div>
 </div>
