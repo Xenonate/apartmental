@@ -37,7 +37,7 @@ $(document).ready(function() {
               "iconSize": [600,100]
             },
             "marker-symbol": "",
-            "marker-color": "#c8bfbf",
+            "marker-color": "#ffbbbb",
             "marker-size": "medium",
           }
         });
@@ -93,7 +93,7 @@ $(document).ready(function() {
       var index = $(".tile").index(this)
       geoJson[index].properties["marker-symbol"] = ""
       geoJson[index].properties["marker-size"] = "medium"
-      geoJson[index].properties["marker-color"] = "#c8bfbf"
+      geoJson[index].properties["marker-color"] = "#ffbbbb"
       myLayer.setGeoJSON(geoJson);
     });
 
