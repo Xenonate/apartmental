@@ -1,11 +1,8 @@
 class SearchesController < ActionController::Base
 
   def create
-    p '*' * 50
-    ap search_params
-    p '*' * 50
 
-     p  @params_hash = {
+     ap  @params_hash = {
         "city" => search_params[:search_city],
         "max_price" => search_params[:search_max_price],
         "min_price" => search_params[:search_min_price],
@@ -13,7 +10,6 @@ class SearchesController < ActionController::Base
         "length_of_stay" => search_params[:search_period],
         "work_address" => search_params[:search_address],
         "mode_of_transport" => search_params[:search_mode],
-        "min_commute_time" => search_params[:search_min_time],
         "max_commute_time" => search_params[:search_max_time],
         "price_weight" => search_params[:price_weight],
         "commute_weight" => search_params[:commute_weight],
@@ -24,7 +20,7 @@ class SearchesController < ActionController::Base
     @search_max_price = search_params[:search_max_price].include?(".") ? search_params[:search_max_price][0...-3] : search_params[:search_max_price]
     @search_min_price = search_params[:search_min_price].include?(".") ? search_params[:search_min_price][0...-3] : search_params[:search_min_price]
 
-    ap @addresses = Address.where(city: search_params[:search_city], bedrooms: search_params[:search_bedroom]).where('price > ?', @search_min_price).where('price < ?', @search_max_price)
+    @addresses = Address.where(city: search_params[:search_city], bedrooms: search_params[:search_bedroom]).where('price > ?', @search_min_price).where('price < ?', @search_max_price)
     @search= Search.create
 
     @long_lat_link = []
@@ -37,24 +33,29 @@ class SearchesController < ActionController::Base
 # /////////////////////////////////////////////////////////////////////////////
     @sorted_results = {}
     @addresses.each do |address|
-      p "printing attributes"
-      p "*" * 50
       @average_price = address.rental_average(@length_of_stay)
       @crime_rate = address.crime_rate
 
       #////Commented out Google API calls //////#
+      # if !search_params[:search_address]
+      #   p "coordsssssssssss"
+      #   ap coords = Geokit::Geocoders::GoogleGeocoder.geocode(search_params[:city])
+      #   @call = "mode=#{search_params[:search_mode]}&origin=#{address.lat},#{address.long}&destination=#{coords.lat},#{coords.lng}"
+      # else
+      #   p "coordsssssssssss"
+      #   ap coords = Geokit::Geocoders::GoogleGeocoder.geocode(search_params[:search_address])
+      #   @call = "mode=#{search_params[:search_mode]}&origin=#{address.lat},#{address.long}&destination=#{coords.lat},#{coords.lng}"
+      # end
 
-      # coords = Geokit::Geocoders::GoogleGeocoder.geocode(search_params[:search_address])
-      #call = "mode=#{search_params[:search_mode]}&origin=#{address.lat},#{address.long}&destination=#{coords.lat},#{coords.lng}"
-      call = "mode=#{search_params[:search_mode]}&origin=#{address.lat},#{address.long}&destination=37.7706312,-122.4167"
+      @call = "mode=#{search_params[:search_mode]}&origin=#{address.lat},#{address.long}&destination=37.7706312,-122.4167"
 
-      @commute_time = SearchesHelper.request_travel_time(call)
+      @commute_time = SearchesHelper.request_travel_time(@call)
 
       @walkscore = SearchesHelper.get_walkscore(address)
 
       @price_range = SearchesHelper.get_range(@search_max_price, @search_min_price.to_i)
 
-      @commute_time_range = SearchesHelper.get_range(search_params[:search_max_time], search_params[:search_min_time])
+      @commute_time_range = search_params[:search_max_time]
 
       @price_weight = search_params[:price_weight].to_f
       @commute_weight = search_params[:commute_weight].to_f
@@ -98,23 +99,8 @@ class SearchesController < ActionController::Base
         "search_id" => @search.id
       }
 
-      p "import address"
-      p "*" * 50
-      ap address.id
-
-      p "Sorted results count"
-      p "*" * 50
-      p @sorted_results.count
-
-      p "pindex"
-      p "*" * 50
-      p @pindex
-
     end
 
-    p "Sorted results"
-    p "*" * 50
-    ap @sorted_results
     @sorted_results = Hash[@sorted_results.sort.reverse]
 
     render 'searches/index', layout: 'layouts/application'
@@ -127,7 +113,7 @@ class SearchesController < ActionController::Base
   private
 
   def search_params
-    params.require(:search).permit(:search_min_price, :search_max_price, :search_city, :search_bedroom, :search_period, :search_mode, :search_address, :search_min_time, :search_max_time, :walkscore_weight, :crime_weight, :price_weight, :commute_weight)
+    params.require(:search).permit(:search_min_price, :search_max_price, :search_city, :search_bedroom, :search_period, :search_mode, :search_address, :search_max_time, :walkscore_weight, :crime_weight, :price_weight, :commute_weight)
   end
 
 end

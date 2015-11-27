@@ -34,7 +34,7 @@
       <div class="row">
         <div class="large-3 columns">
           <label>Min Price</label>
-          <div class="range-slider radius" data-slider data-options="start: 500; end: 10000;step: 100; display_selector: #min-price-slider;">
+          <div class="range-slider radius" data-slider = "<%= @params_hash["min_price"] %>" data-options="start: 500; end: 9999;step: 100; display_selector: #min-price-slider;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden">
@@ -48,14 +48,14 @@
               <span class="postfix">$</span>
             </div>
             <div class="small-9 columns">
-              <input class="min-price-js" type="number" name="search[search_min_price]" value=<%= @params_hash["min_price"] %>>
+              <input class="min-price-js" type="number" name="search[search_min_price]" value="<%= @params_hash["min_price"] %>">
             </div>
           </div>
         </div>
 
         <div class="large-3 columns">
           <label>Max Price</label>
-          <div class="range-slider radius" data-slider data-options="start: 500; end: 10000;step: 100; display_selector: #max-price-slider;">
+          <div class="range-slider radius" data-slider = "<%= @params_hash["max_price"] %>" data-options="start: 500; end: 9999;step: 100; display_selector: #max-price-slider;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden">
@@ -69,7 +69,7 @@
               <span class="postfix">$</span>
             </div>
             <div class="small-9 columns">
-              <input class="max-price-js" type="number" name="search[search_max_price]" value=<%= @params_hash["max_price"] %>>
+              <input class="max-price-js" type="number" name="search[search_max_price]" value="<%= @params_hash["max_price"] %>">
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@
         </div>
 
        <div class="large-4 columns">
-        <input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" >
+        <input type="text" name="search[search_max_time]" placeholder="max" class: "form-control" value = "<%= @params_hash["max_commute_time"] %>">
       </div>
     </div>
 
@@ -111,15 +111,15 @@
       </div>
       <div class="row">
         <div class="large-6 columns">
-          <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
-            <span class="range-slider-handle" role="slider" tabindex="0" value=<%= @params_hash["commute_weight"] %>></span>
+          <div class="range-slider radius" data-slider = "<%= @params_hash["commute_weight"] %>" data-options="start: 1; end: 5;step: 1;">
+            <span class="range-slider-handle" role="slider" tabindex="0" ></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden" name="search[commute_weight]">
           </div>
         </div>
 
         <div class="large-6 columns">
-          <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
+          <div class="range-slider radius" data-slider = "<%= @params_hash["price_weight"] %>" data-options="start: 1; end: 5;step: 1;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden" name="search[price_weight]">
@@ -135,7 +135,7 @@
       </div>
       <div class="row">
         <div class="large-6 columns">
-          <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
+          <div class="range-slider radius" data-slider = "<%= @params_hash["crime_weight"] %>" data-options="start: 1; end: 5;step: 1;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden" name="search[crime_weight]">
@@ -143,7 +143,7 @@
         </div>
 
         <div class="large-6 columns">
-          <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
+          <div class="range-slider radius" data-slider = "<%= @params_hash["walkscore_weight"] %>" data-options="start: 1; end: 5;step: 1;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden" name="search[walkscore_weight]">
