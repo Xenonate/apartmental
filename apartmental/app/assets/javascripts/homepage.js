@@ -6,11 +6,11 @@ $(document).on('ready', function(){
   })
 
   $(".range-slider-handle:eq(1)").mousemove(function() {
-      $(".max-price-js").val($(".range-slider-handle:eq(1)").attr("aria-valuenow"))
+      $(".max-price-js").val(Math.floor($(".range-slider-handle:eq(1)").attr("aria-valuenow")))
     });
 
     $(".range-slider-handle:eq(0)").mousemove(function() {
-      $(".min-price-js").val($(".range-slider-handle:eq(0)").attr("aria-valuenow"))
+      $(".min-price-js").val(Math.floor($(".range-slider-handle:eq(0)").attr("aria-valuenow")))
     });
 
   // console.log('Derek said to console log something right here')
