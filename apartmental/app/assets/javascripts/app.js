@@ -4,6 +4,7 @@ $( document ).ready(function() {
     e.preventDefault();
     $(".title").css('display', 'none')
     $(".image").css('display', 'none')
+    $('.info').hide()
     $('.description').empty()
     var id = $(this).attr("id")
     var search_id = $(this).attr("data")
@@ -80,10 +81,15 @@ $( document ).ready(function() {
       dataType: 'json'
     })
     .done(function(msg){
+<<<<<<< HEAD
 
       $("#title"+id).css('display', 'inline')
       $("#image"+id).css('display', 'inline')
       $("#description"+id).append(msg.description)
+=======
+      $("#info"+id).show()
+      $("#description"+id).text(msg.description)
+>>>>>>> development
     })
     .fail(function(error){
       console.log(error.responseText);

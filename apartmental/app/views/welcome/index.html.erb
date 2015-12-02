@@ -5,12 +5,10 @@
       $('label:eq(1)').css("color", "white")
       $("#panel1a").css("background-color", "rgba(204, 204, 204, 0.4)")
     });
-
-
     </script>
 
 
-    <div id='homepage-search'>
+    <div id='homepage-search' class="large-4 columns">
      <form id='search-formm' name="search" action="/searches" method="post">
       <div class="row">
         <div class="large-12 columns">
@@ -44,7 +42,7 @@
       <div class="row">
         <div class="large-3 columns">
           <label>Min Price</label>
-          <div class="range-slider radius" data-slider data-options="start: 500; end: 10000;step: 100; display_selector: #min-price-slider;">
+          <div class="range-slider radius" data-slider data-options="start: 500; end: 9999;step: 100; display_selector: #min-price-slider;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden">
@@ -65,7 +63,7 @@
 
         <div class="large-3 columns">
           <label>Max Price</label>
-          <div class="range-slider radius" data-slider data-options="start: 500; end: 10000;step: 100; display_selector: #max-price-slider;">
+          <div class="range-slider radius" data-slider data-options="start: 500; end: 9999;step: 100; display_selector: #max-price-slider;">
             <span class="range-slider-handle" role="slider" tabindex="0"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden">
@@ -133,7 +131,7 @@
 
             <div class="row">
               <div class="large-6 columns">
-                <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
+                <div class="range-slider radius" data-slider="3" data-options="start: 1; end: 5;step: 1;">
                   <span class="range-slider-handle" role="slider" tabindex="0"></span>
                   <span class="range-slider-active-segment"></span>
                   <input type="hidden" name="search[commute_weight]">
@@ -141,7 +139,7 @@
               </div>
 
               <div class="large-6 columns">
-                <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
+                <div class="range-slider radius" data-slider="3" data-options="start: 1; end: 5;step: 1;">
                   <span class="range-slider-handle" role="slider" tabindex="0"></span>
                   <span class="range-slider-active-segment"></span>
                   <input type="hidden" name="search[price_weight]">
@@ -157,7 +155,7 @@
             </div>
             <div class="row">
               <div class="large-6 columns">
-                <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
+                <div class="range-slider radius" data-slider="3" data-options="start: 1; end: 5;step: 1;">
                   <span class="range-slider-handle" role="slider" tabindex="0"></span>
                   <span class="range-slider-active-segment"></span>
                   <input type="hidden" name="search[crime_weight]">
@@ -165,7 +163,7 @@
               </div>
 
               <div class="large-6 columns">
-                <div class="range-slider radius" data-slider data-options="start: 1; end: 5;step: 1;">
+                <div class="range-slider radius" data-slider="3" data-options="start: 1; end: 5;step: 1;">
                   <span class="range-slider-handle" role="slider" tabindex="0"></span>
                   <span class="range-slider-active-segment"></span>
                   <input type="hidden" name="search[walkscore_weight]">
