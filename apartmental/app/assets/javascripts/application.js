@@ -27,6 +27,13 @@
 $(function(){ $(document).foundation(); });
 
 $(document).on('ready', function(){
+  $(document).foundation({
+    accordion: {
+      callback : function (accordion) {
+        $(document).foundation('reflow');
+      }
+    }                             
+  });
   $('.research').on('click', function(){
     $("#search-again").toggle(750)
   })
