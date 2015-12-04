@@ -103,7 +103,14 @@ class SearchesController < ActionController::Base
 
     @sorted_results = Hash[@sorted_results.sort.reverse]
 
-    render 'searches/index', layout: 'layouts/application'
+    if @sorted_results.empty?
+      p "*" * 50
+      p "empty array"
+      flash[:error] = "We got 0 results based on your preference, try again!"
+      redirect_to root_path
+    else
+      render 'searches/index', layout: 'layouts/application'
+    end
   end
 
   def index
