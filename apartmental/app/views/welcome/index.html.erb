@@ -184,6 +184,11 @@
     <source src="/assets/303525571.mp4">
     </video>
     <h1 id="title">APARTMENTAL</h1>
-    <h2>BE SMART WITH YOUR RENTAL</h2>
+    <h2>BE SMART WITH YOUR RENTAL</h2><br>
     <h2><%= flash[:error] if flash[:error] %></h2>
+    <% if flash[:notice] && !flash[:notice].empty? %>
+      <% flash[:notice].each do |error| %>
+        <h2><%= error %></h2><br><br>
+      <% end %>
+    <% end %>
  </div>

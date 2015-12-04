@@ -30,5 +30,15 @@ module SearchesHelper
       max.to_i-min.to_i
     end
 
+    def self.validate_form_input(search_inputs)
+      error = []
+      error << "Plese enter a city" if search_inputs[:search_city] == ""
+      error << "Please enter a minimum price" if search_inputs[:search_max_price]
+      error << "please enter a maximum price" if search_inputs[:search_min_price]
+      error << "Please enter a working address" if search_inputs[:search_address]
+      error << "The max price has to be larger the min price" if search_inputs[:search_max_price] <= search_inputs[:search_min_price]
+      error
+    end
+
 
 end
